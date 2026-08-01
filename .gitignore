@@ -1,0 +1,52 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Testing
+/coverage
+
+# Next.js Build Outputs
+/.next/
+/out/
+
+# Production Outputs
+/build
+
+# Local Database & User Submissions (CRITICAL SECURITY)
+src/data/db.json
+*.log
+
+# Environment Files (CRITICAL SECURITY - Never commit API keys or webhooks)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+.env*
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.pem
+
+# Debug Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
