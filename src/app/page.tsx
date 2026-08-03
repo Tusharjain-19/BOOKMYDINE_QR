@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { homepageFaqs } from "@/components/JsonLd";
 import { 
   QrCode, 
   Check, 
@@ -20,7 +22,18 @@ import {
   Printer,
   Sparkles,
   ChevronUp,
-  Upload
+  Upload,
+  Utensils,
+  Globe,
+  TrendingUp,
+  IndianRupee,
+  Coffee,
+  UtensilsCrossed,
+  Building2,
+  Truck,
+  IceCreamCone,
+  Wine,
+  Store
 } from "lucide-react";
 
 export default function HomePage() {
@@ -100,28 +113,7 @@ export default function HomePage() {
     }
   ];
 
-  const faqs = [
-    {
-      q: "Is it completely safe? How do I pay?",
-      a: "100% Safe! You pay only after our team designs your digital menu and sends you a live preview link to test on your own phone. We do not ask for any upfront credit card details."
-    },
-    {
-      q: "Do I need to learn software or manage a dashboard?",
-      a: "No! BookMyDine QR is a done-for-you service. You simply send us your menu items or PDF over WhatsApp, and our operations team handles all designing, updates, and hosting for you."
-    },
-    {
-      q: "How fast are menu updates made?",
-      a: "Whenever you change prices or add dishes, message us on WhatsApp. Most updates are live in under 2 to 4 hours."
-    },
-    {
-      q: "Can I cancel anytime?",
-      a: "Yes! There are no lock-in contracts or cancellation penalties. You can pause or cancel your subscription whenever you want."
-    },
-    {
-      q: "Will my QR code expire?",
-      a: "No. Your custom QR code remains active for as long as your subscription is active, and points directly to your hosted digital menu."
-    }
-  ];
+  const faqs = homepageFaqs;
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fafaf8] text-slate-800 font-sans selection:bg-emerald-600 selection:text-white">
@@ -228,9 +220,12 @@ export default function HomePage() {
               </div>
 
               <div className="relative w-full max-w-lg overflow-hidden flex justify-center items-center">
-                <img
+                <Image
                   src="/hero_artistic_showcase.png"
-                  alt="BookMyDine Digital Menu Showcase"
+                  alt="BookMyDine QR Digital Menu Platform — 6 Premium Restaurant Menu Themes with QR Code Table Stands for Cafes, Fine Dining and Cloud Kitchens in India"
+                  width={600}
+                  height={600}
+                  priority
                   className="w-full h-auto object-contain mix-blend-multiply"
                 />
               </div>
@@ -812,17 +807,204 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ Accordion */}
-      <section id="faq" className="py-16 sm:py-20 bg-white border-t border-stone-200/80">
+      {/* ========== SEO CONTENT SECTIONS ========== */}
+
+      {/* What is BookMyDine QR? — GEO Optimized */}
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-200/80">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200">
+              <Globe className="h-3.5 w-3.5 text-emerald-600" /> About Our Platform
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">What is BookMyDine QR?</h2>
+          </div>
+
+          <div className="bg-[#fafaf8] p-6 sm:p-8 rounded-3xl border border-stone-200/80 space-y-4">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              <strong className="text-slate-900">BookMyDine QR</strong> is a done-for-you digital menu platform built specifically for the Indian restaurant industry. Unlike self-serve tools that require you to learn complex dashboards, BookMyDine QR operates as a fully managed service — you send us your menu via WhatsApp, and our design team creates a beautiful, mobile-optimized QR code menu within 24 to 48 hours.
+            </p>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              The platform is designed for restaurants, cafes, hotels, resorts, bars, pubs, cloud kitchens, bakeries, sweet shops, food courts, juice bars, ice cream parlours, fine dining establishments, fast food outlets, and food trucks. Each digital menu is hosted on our high-speed CDN, loads in under 1 second, and requires zero app downloads for your guests — they simply scan a QR code with their phone camera and view your menu instantly.
+            </p>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              BookMyDine QR includes 6 professionally designed themes, printable QR table stand graphics, veg and non-veg indicator badges, bestseller tags, search and category filtering, and WhatsApp-based menu update support. Plans start at ₹99 per month with free custom setup and no lock-in contracts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Should Use BookMyDine QR? — Industry Grid */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200">
+              <Utensils className="h-3.5 w-3.5 text-emerald-600" /> Industries We Serve
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Who Should Use BookMyDine QR?</h2>
+            <p className="text-slate-600 text-sm">Our platform serves every type of food establishment in India</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {[
+              { name: "Restaurants", desc: "Family, casual, and multi-cuisine dining", icon: UtensilsCrossed },
+              { name: "Cafes & Bakeries", desc: "Coffee shops, patisseries, and tea lounges", icon: Coffee },
+              { name: "Hotels & Resorts", desc: "In-room dining, poolside, and lobby menus", icon: Building2 },
+              { name: "Bars & Pubs", desc: "Cocktail menus, drinks lists, and night lounges", icon: Wine },
+              { name: "Cloud Kitchens", desc: "Virtual restaurants and delivery-only brands", icon: Store },
+              { name: "Fine Dining", desc: "Upscale tasting menus and wine pairings", icon: Sparkles },
+              { name: "Fast Food & QSR", desc: "Quick service, burgers, pizza, and wraps", icon: Zap },
+              { name: "Food Trucks", desc: "Mobile vendors, pop-ups, and street food", icon: Truck },
+              { name: "Sweet Shops", desc: "Mithai, desserts, and bakery outlets", icon: IceCreamCone },
+              { name: "Food Courts", desc: "Multi-vendor spaces and mall food zones", icon: Utensils },
+            ].map((industry) => (
+              <div key={industry.name} className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200/80 text-center hover:border-emerald-500 transition-all hover:shadow-md hover:-translate-y-1 space-y-2">
+                <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mx-auto">
+                  <industry.icon className="h-5 w-5 text-emerald-700" />
+                </div>
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900">{industry.name}</h3>
+                <p className="text-[10px] sm:text-xs text-slate-500 leading-tight">{industry.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose BookMyDine QR Over Competitors? — Comparison */}
+      <section className="py-16 sm:py-20 bg-white border-b border-stone-200/80">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Why We&apos;re Different</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">How BookMyDine QR Compares to Other Options</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-emerald-50/70 p-6 rounded-3xl border border-emerald-200 space-y-4">
+              <h3 className="text-base font-extrabold text-emerald-900 flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-emerald-700" />
+                BookMyDine QR (Managed Service)
+              </h3>
+              <ul className="space-y-2.5 text-xs text-slate-700">
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Done-for-you: we handle all design, hosting, and updates</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>No dashboard to learn, no technical skills needed</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>WhatsApp-based support and menu updates</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>6 professionally designed themes to match your brand</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Free custom setup — pay only after you approve</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Starting at just ₹99/month — built for India</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Printable QR stand graphics with your branding</span></li>
+              </ul>
+            </div>
+
+            <div className="bg-stone-50 p-6 rounded-3xl border border-stone-200 space-y-4">
+              <h3 className="text-base font-extrabold text-slate-500 flex items-center gap-2">
+                Traditional Alternatives
+              </h3>
+              <ul className="space-y-2.5 text-xs text-slate-500">
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Paper menus: expensive reprinting, outdated info, unhygienic</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>DIY QR tools: complex dashboards, you do all the work</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>PDF menus: slow to load, not mobile-optimized, no interactivity</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Aggregator listings: limited menu control, competitor ads</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>International tools: expensive, not localized for India</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>No veg/non-veg badges, no Indian pricing support</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Hidden fees, annual contracts, no WhatsApp support</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Deep-Dive with Real Numbers */}
+      <section className="py-16 sm:py-20 bg-[#fafaf8] border-b border-stone-200/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200">
+              <TrendingUp className="h-3.5 w-3.5 text-emerald-600" /> Real Impact
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">How BookMyDine QR Helps Your Restaurant</h2>
+            <p className="text-slate-600 text-sm">Measurable benefits that directly impact your bottom line and guest experience</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/80 text-center space-y-2 hover:shadow-md transition-all">
+              <div className="text-3xl font-black text-emerald-700">100%</div>
+              <h3 className="text-sm font-bold text-slate-900">Printing Cost Saved</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Never spend on reprinting paper menus again. Update prices and dishes instantly without waste.</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/80 text-center space-y-2 hover:shadow-md transition-all">
+              <div className="text-3xl font-black text-emerald-700">&lt;1s</div>
+              <h3 className="text-sm font-bold text-slate-900">Page Load Time</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Menus load in under 1 second on any mobile connection. No app download or registration needed.</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/80 text-center space-y-2 hover:shadow-md transition-all">
+              <div className="text-3xl font-black text-emerald-700">24hr</div>
+              <h3 className="text-sm font-bold text-slate-900">Setup Time</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">From menu submission to live digital menu and QR code — all done within 24-48 hours.</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/80 text-center space-y-2 hover:shadow-md transition-all">
+              <div className="text-3xl font-black text-emerald-700">99.9%</div>
+              <h3 className="text-sm font-bold text-slate-900">Uptime Guarantee</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Your digital menu is always available. Hosted on enterprise-grade CDN infrastructure across India.</p>
+            </div>
+          </div>
+
+          {/* Pricing Highlight for SEO */}
+          <div className="mt-10 bg-white p-6 sm:p-8 rounded-3xl border border-emerald-100 shadow-sm max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 mb-4">
+              <IndianRupee className="h-6 w-6 text-emerald-700" />
+              <h3 className="text-lg font-extrabold text-slate-900">Affordable Pricing for Every Restaurant</h3>
+            </div>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              BookMyDine QR plans start at just <strong className="text-slate-900">₹99 per month</strong> for the Starter plan (digital menu + QR code), <strong className="text-slate-900">₹199 per month</strong> for the Growth plan (dish photos, tags, 5 updates), and <strong className="text-slate-900">₹499 per month</strong> for Premium (unlimited updates, custom theme, dedicated manager). Annual billing saves you 2 months free. Every plan includes free custom setup with no credit card required upfront.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Cities We Serve — Internal Linking */}
+      <section className="py-12 sm:py-16 bg-white border-b border-stone-200/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Available Across India</h2>
+            <p className="text-slate-600 text-sm">BookMyDine QR serves restaurants in major cities and beyond</p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { name: "Mumbai", slug: "mumbai" },
+              { name: "Delhi", slug: "delhi" },
+              { name: "Bangalore", slug: "bangalore" },
+              { name: "Jaipur", slug: "jaipur" },
+              { name: "Hyderabad", slug: "hyderabad" },
+              { name: "Pune", slug: "pune" },
+              { name: "Chennai", slug: "chennai" },
+              { name: "Kolkata", slug: "kolkata" },
+              { name: "Ahmedabad", slug: "ahmedabad" },
+              { name: "Lucknow", slug: "lucknow" },
+            ].map((c) => (
+              <Link
+                key={c.slug}
+                href={`/${c.slug}`}
+                className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 hover:border-emerald-400 px-4 py-2 rounded-full text-xs font-bold text-emerald-900 transition-all"
+              >
+                <span>QR Menu in {c.name}</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion — Expanded 25 FAQs */}
+      <section id="faq" className="py-16 sm:py-20 bg-[#fafaf8] border-t border-stone-200/80">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-3 mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Questions Answered</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Frequently Asked Questions</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Frequently Asked Questions About QR Menus</h2>
+            <p className="text-slate-600 text-sm">Everything restaurant owners need to know about digital QR code menus</p>
           </div>
 
           <div className="space-y-3">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="border border-stone-200/80 rounded-xl overflow-hidden text-left bg-[#fafaf8]">
+              <div key={idx} className="border border-stone-200/80 rounded-xl overflow-hidden text-left bg-white">
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
