@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Submit your restaurant details and menu to BookMyDine QR. Our team will design your custom digital QR menu for free within 24-48 hours. No credit card required. Plans start at ₹99/month.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
 };

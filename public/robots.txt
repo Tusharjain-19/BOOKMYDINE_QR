@@ -4,7 +4,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /onboard
 
 # Sitemaps
 Sitemap: https://bookmydineqr.vercel.app/sitemap.xml
