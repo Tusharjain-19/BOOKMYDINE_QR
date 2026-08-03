@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import seedData from "@/data/db.json";
+import seedData from "@/data/seed.json";
 
 const DB_FILE = path.join(process.cwd(), "src", "data", "db.json");
 

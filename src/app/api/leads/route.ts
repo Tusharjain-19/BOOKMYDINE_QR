@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import seedData from "@/data/db.json";
+import seedData from "@/data/seed.json";
 
 const DB_FILE = path.join(process.cwd(), "src", "data", "db.json");
 
@@ -63,7 +63,12 @@ export async function POST(request: Request) {
       db.leads = [];
     }
 
-    db.leads.push(newLead);
+    // Omit heavy base64 fields before saving lead to db to prevent db.json bloat
+    const dbLead = { ...newLead };
+    delete (dbLead as any).pdfBase64;
+    delete (dbLead as any).logoBase64;
+
+    db.leads.push(dbLead);
     saveDB(db);
 
     // Forward to Google Sheets Apps Script Webhook if configured

@@ -1,0 +1,744 @@
+{
+  "leads": [
+    {
+      "ownerName": "Tushar Jain",
+      "phone": "+919216891957",
+      "email": "jaint0910@gmail.com",
+      "restaurantName": "Niranjan cafe",
+      "restaurantType": "Fine Dining",
+      "address": "basandvguvdi blr",
+      "mapsLink": "",
+      "instagramLink": "",
+      "plan": "growth",
+      "theme": "modern",
+      "brandColor": "#5d181b",
+      "accentColor": "#7c580a",
+      "logoName": "logovital_app_256.png",
+      "logoBase64": "",
+      "pdfName": "tusharlab_domain.pdf",
+      "pdfBase64": "",
+      "foodImages": [],
+      "id": "lead_1785592613777",
+      "createdAt": "2026-08-01T13:56:53.777Z",
+      "status": "pending"
+    },
+    {
+      "ownerName": "Tushar Jain",
+      "phone": "+919216891957",
+      "email": "jaint0910@gmail.com",
+      "restaurantName": "NINJA",
+      "restaurantType": "Fine Dining",
+      "address": "BLR",
+      "mapsLink": "",
+      "instagramLink": "",
+      "plan": "premium",
+      "theme": "street",
+      "brandColor": "#5d181b",
+      "accentColor": "#7c580a",
+      "logoName": "",
+      "logoBase64": "",
+      "pdfName": "tusharlab_domain.pdf",
+      "pdfBase64": "",
+      "foodImages": [],
+      "id": "lead_1785592896998",
+      "createdAt": "2026-08-01T14:01:36.998Z",
+      "status": "pending"
+    },
+    {
+      "ownerName": "Tushar Jain",
+      "phone": "+919216891957",
+      "email": "jaint0910@gmail.com",
+      "restaurantName": "THE PINK CITY CAFE",
+      "restaurantType": "Fine Dining",
+      "address": "LAL KHOTI JAIPUR",
+      "mapsLink": "",
+      "instagramLink": "",
+      "plan": "growth",
+      "billingCycle": "monthly",
+      "planPrice": "₹199/month",
+      "offerApplied": "Standard Monthly",
+      "theme": "modern",
+      "brandColor": "#5d181b",
+      "accentColor": "#7c580a",
+      "logoName": "",
+      "logoBase64": "",
+      "pdfName": "test_qr.png",
+      "pdfBase64": "",
+      "foodImages": [],
+      "id": "lead_1785593830154",
+      "createdAt": "2026-08-01T14:17:10.155Z",
+      "status": "pending"
+    }
+  ],
+  "menus": {
+    "cafe-cozy": {
+      "slug": "cafe-cozy",
+      "name": "The Minimalist",
+      "type": "Artisanal Coffee",
+      "tagline": "Artisanal Coffee & Slow Living",
+      "logoUrl": "",
+      "brandColor": "#170f0b",
+      "accentColor": "#ca7857",
+      "theme": "minimal",
+      "phone": "+91 98765 43210",
+      "address": "72 Silence St, København",
+      "instagramUrl": "https://instagram.com",
+      "mapsUrl": "https://maps.google.com",
+      "categories": [
+        {
+          "name": "Coffee",
+          "items": [
+            {
+              "name": "Flat White",
+              "price": 220,
+              "description": "Double shot espresso, silky microfoam.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuB90zqp2VXV2KOrl0t68gojHSZKhDdG-Td7bMcSAjIjPIRIBCqEH_aegLk3Rq1FrfnRSAj5_1EaRYq_unw5dYbpkLl-poyyolwT28pu9FKdYhTJvMCdfKrJIwbYCL2Y6K8VXpa1kVKjhHAxvhH6P9CfslwXSlae-Ic9gf-Vhj4l4fxTsIvLDlDIYJSPfkDvZzb59VfZJCChaBQyPKM51tST4iOnWJB-tXXXzf0ySbOXj0zRvGgbLss",
+              "isVeg": true,
+              "isBestseller": true,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Iced Oat Latte",
+              "price": 260,
+              "description": "House blend, organic oat milk, over ice.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBhQj_u_dZJ8QtvrEpBL0BHpAmqAOYiXouN-eTdStb-jdL7Fxcy_ZIIN1I3I352F095O4vJVo_Eu_3w7PK2Cwk4eQtb3_ZWpfVhhEVhgJGBZq_SO1kS-yoIAqzQdrzPBLERsI_xW2WQ9UeIFDD-c1pKLJ3AIZvPq3rC9wx8DebDBBTs4zk1iy-LCc12-0MH6-M-AiwZPZfBvICRrlipjuA1ox0HiECn6VWkgBPjyomoIRlYNO97NKQ",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Espresso",
+              "price": 160,
+              "description": "Pure, intense double shot extract.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCFE71VmYVnZUhrSyadgztD-QfFbzm3e1q-K3Q4B07_6aXvy2zZZXDIOStJJanE76cSvyzomZ81dK97Sch_HuIBN4Ou0DOHIB64xvfLUFqWLBZV_irbf7YAq4_EFYqjZguYOB--AXUw84k8XsDmo1umtH69UaxHhk-HXGHNoCsJcLE1VxaBtTAVx3Qy5ssjitJ34Ao_LiazQrYPfqAfD5tqg2Lm0OIOiTrS4eG4_zsh1RFygJ5xnZ0",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Single-Origin Pour Over",
+              "price": 280,
+              "description": "Ethiopian Yirgacheffe, notes of jasmine and citrus, clean finish.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuDSn5YqsYkqpad_tX85hSHtSsmBJz_qfCgWYbZxqOlW3-ei9jjzEZ7ZFd7QuSFrw2djSz9WugcpQUe5mYYS7MsW80fooRV_-tvxQHnnpWNKnm7AIL4kGbyAEkIH8P-7RTTqinnBmhMoHhlT7_8keKyoVF0CIV4Ui9jYseEmUyenama7hGVDmLaAbyA6tRzxIMH7LPhk8Fg2ku98UrpT_CCXxcZWT799hbDbIhRqu2YsWXe0mxJ_iCo",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": true
+            }
+          ]
+        },
+        {
+          "name": "Breakfast",
+          "items": [
+            {
+              "name": "Almond Croissant",
+              "price": 220,
+              "description": "Twice-baked, almond frangipane filling.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBIbGfoJ-DlZIa3o7FQXF1NImkh9u2mAJTkUFiHVWFcSVABU4iPqAOnYJ88fRC4NczN-teOAOA_Khe_urTeT2dZlOQRt-G-cnv4szm5fLbMr5fH_AW7uJKdltQzmrsvQS65UzNqToKYMpHk4mcJLAsgC9HZqCcJOov7sZDEtW_lezcDj7MCdR9rVinXzmPeJWxatSPbyZq1_MRcq5gdvTChGaxgnhv5j9G_4RRryo3tgvH3IRpl534",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Sourdough Benedict",
+              "price": 380,
+              "description": "Poached eggs, hollandaise, baby spinach on sourdough.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAyjDAMiSGq930UOcsdmjID6YvWBpJx6HNQ1_85bir8yVQbJ0N0HDUrtCBCA_KGb-SUTJJwWvVQWHQFN4X_1j4fAf2kpTYGihXhninx4OgbTBC7BJg0wxLPozMbrgdILUgeZhJ058aExnhYC0BA04oEeC9xRuTVMmObz24IHkNCsrwvLl99vyOFImTeeeiC_Rgwdtq3GXdxGPXN-v2_kYfg-VFKGVdjk_2abIsbXESZLMFF-_V2Mx4",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Smoked Salmon Avocado Toast",
+              "price": 420,
+              "description": "Sourdough, whipped cream cheese, sustainable salmon, capers.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAsAJLq1OuT1XZaWFZRK3CfSIOoMekUgQzCV-sN_gFqQnf0deMG41HBT6tY6f3Re0btONXvx1M1rDYp5hRVuAltGSU6zVwd3ot3a30Qu7P1HAXQL-ibqxC2e1652Ua8s41c4ef_aO8wQ5ka53TJzaVo9bwBuY9puGRcNU-N1MPJdw6evet5SyP2UgnPf5JD97EkZKrXHt13KHKbX1RkT5wSAnF8HxHS8Dvn2qKeg1knMncLlpAsgC8",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": true
+            }
+          ]
+        }
+      ]
+    },
+    "komorebi-bistro": {
+      "slug": "komorebi-bistro",
+      "name": "KOMOREBI",
+      "type": "Modern Bistro",
+      "tagline": "Inspired by Nature. Crafted with Passion.",
+      "logoUrl": "",
+      "brandColor": "#1a1a1a",
+      "accentColor": "#4b6549",
+      "theme": "modern",
+      "phone": "+91 98765 43210",
+      "address": "12 Oak Street, Arts District",
+      "instagramUrl": "https://instagram.com",
+      "mapsUrl": "https://maps.google.com",
+      "categories": [
+        {
+          "name": "Chef's Specials",
+          "items": [
+            {
+              "name": "Truffle Mushroom Risotto",
+              "price": 425,
+              "description": "Arborio rice slow-cooked with wild forest mushrooms, truffle oil, and aged parmesan.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCgAsxBa2cLtrFLYADxibOz9-LIUt8CVChoJMfb3pDBbMh0VWD2TQW-of77z2pouKwU43ejef--vzNVXGL8VleatoQYE4JD6vR9I9U6NUOEo6ELiirOStFdjLaJ1jNugHszDRoQ8n-fvuDwgb5P_Yf9qAjs8CdPAqX1sg3ciSQ9PzhV3a7p_knzWyudy-ZjIcmV9z2-b_y8m9HIjzj1ZUXXKRdEzn-LpBzcwkYq2hclOMb9CH_lUE8",
+              "isVeg": true,
+              "isBestseller": true,
+              "isChefSpecial": true
+            },
+            {
+              "name": "Grilled Herb Chicken",
+              "price": 495,
+              "description": "Sous-vide chicken breast finished on the grill, served with herb jus and root vegetables.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuB1rgC2JN7Qim3K94Stc9afQMKVQG00Nf8bgAT1WrDC53Akb3cVzDjYgg8eY-uV6mFjsltkYaTzYt_eTKWPNJoMQ94qsVu5_nyJkdvS0wWffiaQUaiixch0cr4fWwZtM4ejoD18tn3rY5D6dEL94SWG1Sz88Uu437GeW89D6SRCyc2aW7-kLPzGoZmhH4D7t5_YAYFyaZeDCBecm33AyGsJgAhX7mcV5poTxUJFzmx0pnGdvP_4A8k",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Mediterranean Bowl",
+              "price": 295,
+              "description": "Ancient grains, roasted chickpeas, heirloom tomatoes, and citrus tahini dressing.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-l3U_UDUZsmvYleG7dy31EJUzCslrYVuaSwleeQMXtxxzAHkvB1hzJDrIoWlQ7bq43X_AXt8z5FYyLDk4rXrDL1amwcHT-kLKvksDYqxR532pDEoAxPSC5mXo317RYzP-A4obyilhEKaKSPjd7EBvSubB58qxQNh9G8z5artExSdHzjOF6KmvYroJcao3xAVyKEri1QgbFc8yfP6IEIImSBOKSc5waAZx_Lq0KLwDt-XXleCrorw",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Breakfast",
+          "items": [
+            {
+              "name": "Avocado Toast",
+              "price": 245,
+              "description": "Sourdough, smashed avocado, chili flakes, poached egg.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Classic Eggs Benedict",
+              "price": 275,
+              "description": "English muffin, smoked ham, hollandaise sauce.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Belgian Waffles",
+              "price": 225,
+              "description": "Fresh berries, maple syrup, vanilla whipped cream.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Small Plates",
+          "items": [
+            {
+              "name": "Crispy Lotus Stem",
+              "price": 215,
+              "description": "Honey chili glaze, toasted sesame, scallions.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Mushroom Croquettes",
+              "price": 245,
+              "description": "Panko crusted wild mushrooms with truffle mayo.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Creamy Burrata Salad",
+              "price": 345,
+              "description": "Heirloom tomatoes, basil pesto, balsamic glaze.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Coffee & Matcha",
+          "items": [
+            {
+              "name": "Espresso",
+              "price": 120,
+              "description": "Single origin house blend, medium roast.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Flat White",
+              "price": 160,
+              "description": "Micro-foam milk, double shot espresso.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Japanese Matcha",
+              "price": 210,
+              "description": "Ceremonial grade matcha whisked with oat milk.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        }
+      ]
+    },
+    "l-orangerie": {
+      "slug": "l-orangerie",
+      "name": "The Obsidian",
+      "type": "Executive Fine Dining",
+      "tagline": "A Journey Through Contemporary Fine Dining",
+      "logoUrl": "",
+      "brandColor": "#e5c276",
+      "accentColor": "#b5c5fa",
+      "theme": "luxury",
+      "phone": "+91 98765 43210",
+      "address": "Michelin Plaza, Downtown",
+      "instagramUrl": "https://instagram.com",
+      "mapsUrl": "https://maps.google.com",
+      "categories": [
+        {
+          "name": "Tasting",
+          "items": [
+            {
+              "name": "Wagyu A5 Striploin",
+              "price": 1450,
+              "description": "Hokkaido beef, truffle-infused jus, heritage root vegetables, smoked marrow butter.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBSw-vPrXlPJL1p4prxhRLFP59HYx9IpKfYE9DGtQLqjPoIjzLLyOpP7cUIJ7WFvyEFMvXzRp4AboTFBa62HZaDMAUty48PchPgnyptMuTVy1k-G23gQ0UrKNT_SgqOKFoVE-rcYAoHsgicz7dYpl_d1oP13r9-UUIFjUy5G01q2oHKFMi4aA1X5Itg4L0yP8Wjm69gsOeYDJmMTl0XvgYdCHWEpk630PKPuyGYMFWnB9gCFQDr2HU",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": true
+            },
+            {
+              "name": "Lobster Bisque",
+              "price": 750,
+              "description": "Cognac-infused velvet, butter-poached Maine lobster, chive oil emulsion, saffron foam.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA5yqeb_h0_3TUFBDZOqW6pafhKQ5IjnsLmd5uw-xmJIHhg2xqrthYFDrNYlF5fvyfDdW2B3kHgDLPm49a-dqUZRss3Vfee08n6OwyQ9yVnNFemNve08FpGiILOBM3zf9qKmMXBqh5vR-MhTILKBr91GQow2QxO13vIpZUX8mDB4H01A3YxsW2WQjHi0x4mww7ivsE_E_ODYjQp8Zw2u7h4npHyexSB1x6tM-JNP5S2YgP2Vd9j9zg",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "items": [
+            {
+              "name": "Truffle Burrata",
+              "price": 580,
+              "description": "Hand-tied burrata, shaved Périgord black truffles, aged balsamic pearls, sourdough tuille.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Hokkaido Scallops",
+              "price": 850,
+              "description": "Pan-seared dive scallops, cauliflower silk, caviar de Rio, brown butter crumb.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        }
+      ]
+    },
+    "neon-taproom": {
+      "slug": "neon-taproom",
+      "name": "NEON TAPROOM",
+      "type": "Premium Dark Bar",
+      "tagline": "WHERE CRAFT MEETS NIGHTLIFE",
+      "logoUrl": "",
+      "brandColor": "#ffc574",
+      "accentColor": "#46d9e8",
+      "theme": "dark",
+      "phone": "+91 98765 43210",
+      "address": "77 Industrial Ring Road",
+      "instagramUrl": "https://instagram.com",
+      "mapsUrl": "https://maps.google.com",
+      "categories": [
+        {
+          "name": "Chef's Specials",
+          "items": [
+            {
+              "name": "Signature BBQ Chicken Burger",
+              "price": 349,
+              "description": "Double flame-grilled chicken, aged cheddar, hickory smoked bbq sauce, and handcrafted brioche.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCpRPat5Sb9UcrR4SEj5tRvpZk_z5l-CfSAN4yepXEXAPmU-gjpX3Ai-aHaYBPGfYKcUsYL0I90ARoRxdVhJx0OwIzFSDvX5pf4S50nReGqp415LVe4Onvm1t6bnumNkjXDIEqU8vDTvRo0BqprDjrRe2WUo612G51K8e3wxn6KnuUoU9j_rSQgHXpT0DIGrDkhqY7_DYPKu7ct5ZOC7xVmS1DMM4LRExs5lY9_E-TMWOdiP-4wEXs",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": true
+            },
+            {
+              "name": "Loaded Nachos Supreme",
+              "price": 289,
+              "description": "Hand-cut corn chips, triple cheese blend, house-made guacamole, and zesty pico de gallo.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAu2Kp9lQQ1HToGysuJo3-EUTUPLCEguY9040990u4QSGe3DNbEg1AANTxneSr4Jf-IQgOikFsztEgqyjPEfT9SYfZG198SGJGANGjS3xnTt_X1PA8La3lm2HrLirHsWGSFplN5bhwClJDoR37xkyAwKo_kwttMFpq0RGrQsYxj9nvj6cB364h8g1GeLlf37MvMAvv7stHXBMz4x2gEdHUbaAwy5QQO-mK2LoFX_UcdinZ0ppP-P6U",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": true
+            }
+          ]
+        },
+        {
+          "name": "Bar Bites",
+          "items": [
+            {
+              "name": "Classic Fries",
+              "price": 149,
+              "description": "Triple-cooked, sea salt, smoked paprika aioli.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Mozzarella Sticks",
+              "price": 249,
+              "description": "Herb-crusted, molten center, spicy marinara dip.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Jalapeño Cheese Poppers",
+              "price": 229,
+              "description": "Tempura battered, cream cheese filling.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Burgers",
+          "items": [
+            {
+              "name": "Classic Veg",
+              "price": 249,
+              "description": "Quinoa & beet patty, avocado, chipotle slaw.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Double Smash Burger",
+              "price": 389,
+              "description": "Aged beef blend, double American cheese, secret sauce.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Smoked BBQ Chicken",
+              "price": 349,
+              "description": "Pulled smoked chicken, slaw, whiskey glaze.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Mocktails",
+          "items": [
+            {
+              "name": "Virgin Mojito",
+              "price": 179,
+              "description": "Muddled mint, fresh lime, sparkling water.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Passion Fruit Spritz",
+              "price": 229,
+              "description": "Passion fruit nectar, tonic, citrus zest.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Signature Pizza",
+          "items": [
+            {
+              "name": "Wood Fired Farmhouse",
+              "price": 379,
+              "description": "Roasted veggies, fresh bocconcini, basil oil.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        }
+      ]
+    },
+    "street-express": {
+      "slug": "street-express",
+      "name": "STREET EATS",
+      "type": "Urban Kitchen",
+      "tagline": "Big Flavours. Fresh Ingredients. Street Food Reimagined.",
+      "logoUrl": "",
+      "brandColor": "#ac2c23",
+      "accentColor": "#ffce5e",
+      "theme": "street",
+      "phone": "+91 98765 43210",
+      "address": "Food Truck Lane, Sector 15",
+      "instagramUrl": "https://instagram.com",
+      "mapsUrl": "https://maps.google.com",
+      "categories": [
+        {
+          "name": "Best Sellers",
+          "items": [
+            {
+              "name": "Ultimate Smash Burger",
+              "price": 249,
+              "description": "Double smash patties, secret sauce, caramelized onions, and gooey cheddar.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCtGn_f4QmfRVYeT97OkVPvU83D1LbcSFe23B4WiYJ7vAfE9x8ZJXB81UCRbtBExpva4KUbS4U87RDdn4CIuWolO5hpal81PAk6AzyA71Tmbh3davVo2BxKN3TFKhPogg97jEJMRLfuxWris-OPNZaevKlg2-qttdDzmle_LdQaWmZO61Eb8hEXepO1euB19mxQpebPs6ZnryJN48o_llafS-9fqymmrzKcmYkduXkt-_8fkrqSQes",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": true
+            },
+            {
+              "name": "Loaded Peri Peri Fries",
+              "price": 169,
+              "description": "Crispy fries tossed in spicy peri peri, topped with house cheese and garlic mayo.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuDPWBTRfrH2OwzCt-K7F3gWFLp-Uhz3-s8EyyLUS5Lv5Bv8Mtr8n4KtMKtm5-vSvLO47T4pLvEWdU_SHaM9kj1q5EGqAh-MktJzvjZ_HFJqys8RQkuutavSxR-dmW6hl7X7tsQecZ1IyS4zvOSPUaIb4wPE9ZaNSk1SHxDM_76DECeaIlZWy6hubitbpeMar2PfVEoSUUu6j0RfBGg_Gapb4ORxFzPihmzSQMGghB3itRzeYZ_RjYY",
+              "isVeg": true,
+              "isBestseller": true,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Oreo Thick Shake",
+              "price": 189,
+              "description": "Velvety vanilla base blended with real Oreo chunks and topped with whipped cream.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBhTnnCNshG-GGCoh7EOTf7g7DQ6SMgmXzumHw1GFoGG3mzWf1o2b9fxiE-Rst4A4wxZuCHbr0MA1gHF_jBfSvelyegcy1U0tDKt49PBBsxAkOxKsmOhAauAnROqXpV6pn0OHUvulJ2aKQnZSjsJvUuJ54_KNTjZxVT38i2cNKkv2NE2TMYGYoBDtyTeiL2Bz-L1FbuUotaa5fX3NqhqmGYwy36VaZHeRdZODbLFZct_73GDUipd88",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Burgers",
+          "items": [
+            {
+              "name": "Classic Veg Burger",
+              "price": 149,
+              "description": "Crispy potato patty with fresh greens.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA1qdqCWBIlm9usRRlO0LWfQKfrnyzuzYP3MKWc2kUDSwIw4tJz0AwksbrEgHKlXS0kPLcDZb6udV9PA2oS7eXqmvrS2lIzg4pLCmKZK8NgoYdXoehj76kBviHyu5gs7KW_G12l9uKCeLsZn5NL5EaFJogFgmn3YNTc5mvRkizwZHFwu03VeteNb-NNKYvZlNOJtaye-n2qZHwLrrHQ0TUEBTENCs6Usj1-oG1cQn6zz3AG013L4fE",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "BBQ Paneer Burger",
+              "price": 219,
+              "description": "Char-grilled paneer & hickory bbq sauce.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBHUPuLGwmOhTqQ3lURU6Wn1aCjCk8wNyoJioPvApB43wyngVOxhj7gIhFCyM-HwxiFDWxW5fjvk0e8v5IFWi0hsewsMtr45v0xwFrSZSYTgI9JU0O8EwKozAcv9Pjo2Mf_iZgW1N9UCjrlpdaewqq10mquhDgD-K1y0tKJCk7Ogm56CjMu0ticb-zlzCeO-FkNZGrXxrAFORpLQgBGWIcmaXDjXIUVN4uLFBlistONOLt2f2_taUE",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Crispy Chicken",
+              "price": 229,
+              "description": "Crunchy fried breast with zesty mayo.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuD7htiqZtPXLBILZ6CloCjJ_1QVy3LXa5i3P-NZuFPU4qgIUp7JHEgakaXENnlKV0aWqHl0JVQchfVYAVhnOxXSP-SMxlN8vdV1LDgUWGgCKpaM84tzVhp2ksC0fqlZr5hs6w7iteTDd9jR92KUcCeCJKaFBpS9C649b8IY2YFr_yZlbBlhwr9us_Asy5ugaOyQ09OnjayuPh0Ae1G1z5HaMf3uOsO_wBrJP8fUOjckM-LJptnEUtM",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Combo Deals",
+          "items": [
+            {
+              "name": "Solo Stacker",
+              "price": 329,
+              "description": "Burger + Fries + Coke",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCQUIk9G1pELygYlR9mWCtfMNKO8NUggj57HEYbddqZALHmKqzrzgSriMTXVIlAXZ0xKG4q87jAC4Xbs6apRz3zzm6-B0TJj8jmI8Xj9DoDTToimiLoRcyxVqL0dn9v4lesW-smOKO2d5U6ArMjoDufNgeSsJN32nkHW4nQ-A6HgEXfyPXs8S33KT2pdqFDc5Xl-2frOTWVM_2IiZItAMV9-gZZJXGnlyqm5z_1t3c0JwakqKNXRX4",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Family Feast",
+              "price": 999,
+              "description": "Serves 4 - Everything Mix Platter",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBVd0dnXbOsmT7CkHCS-Qqw92-rbL765uI0YOOsKTbRogSoP543ggYCaJuLt6z_nOyW7v16G6et5S5rXQe1UXbcrZjQlhxIXu6k1uMpStD7cR0tFsTfW7D6P8ICjyv5ZayPkpJdi8gyw_XR039kpNw855zuqRdQs9CLzgzJhXth8YQ73wDYdo-ZZP1q7iXztL0wQ36bRH_WdbUhkNRTMrjNEIPdB_IdJ1-zt19d4reHvuvn6nhAlGA",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        }
+      ]
+    },
+    "tandoori-palace": {
+      "slug": "tandoori-palace",
+      "name": "The Heritage Reserve",
+      "type": "Authentic Indian Dining",
+      "tagline": "Celebrating the Timeless Flavours of India",
+      "logoUrl": "",
+      "brandColor": "#5d181b",
+      "accentColor": "#7c580a",
+      "theme": "traditional",
+      "phone": "+91 98765 43210",
+      "address": "Heritage Palace, Jaipur",
+      "instagramUrl": "https://instagram.com",
+      "mapsUrl": "https://maps.google.com",
+      "categories": [
+        {
+          "name": "Chef's Specials",
+          "items": [
+            {
+              "name": "Royal Rajasthani Thali",
+              "price": 699,
+              "description": "Inspired by the 'Thana' banquets of Mewar, this selection features Laal Maas slow-cooked for 8 hours and smoked with cloves.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCwkRgG28xxtxSbBMRvvjHnXq18bwgALwgKUyVGsAYBCQSXoGPfZeEdBgkT95avG636VThKB0RMtectmkCc1zl33EJHxfxmyDgHruuOs1S3Us92zgpD6a5HaCwwxQDSBGjn45c8Smkm653zIcoyKJuwmptXm3ZI-boXiJgeizw7XqfEZgWptU-nGFCZ7ELTZBD4005l8ePk-cuKOCNdkwzSmPW573iWAFO6c2nOuV9WVGt39SZlbD8",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": true
+            },
+            {
+              "name": "Dal Bukhara Signature",
+              "price": 345,
+              "description": "Our master chef's secret recipe. Urad lentils simmered overnight on slow charcoal fires, finished with clarified butter and hand-churned cream.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuABj8qL6oLPP9BuBXaqaYY1defjPf8y-0n6R2mUWBWg3WvHwq41Z46-w_hcyYQ1TY1dfZDQCjHjRH_d2eANGtBqkde77f7vXsMapSmHWs6waAPcXRQN8vzp8Yu8lrD7vrye8eL4R3nm59gB-c4msOxeHF2FKrm0_kPVUmT5Z6IRxGAJORPV3-Z8JZobE2lo2ZIWv7oVRN0sDQylgd78UOZyjI1mjmtgkvKE9V45K7W62JjiA9GtE7E",
+              "isVeg": true,
+              "isBestseller": true,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Lucknowi Dum Biryani",
+              "price": 425,
+              "description": "Fragrant Basmati rice and tender lamb layered in a clay pot, sealed with dough (Dum) to trap the essence of 16 secret spices.",
+              "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBzwJp26ee1RY1vncDFXw_nOg46qRiHWtQb-FUIAtvDsRnhypFZ-Ul04njaRSXaNfnQyAgkeZuq0wjPey3Ofo5rRDUy1kJjU__7UxJ5k36C9ucsaSu43NiG4w5e4SsTJvuSC_8UdNhRmpOgImqhH-7hHU-M_yAxtjTkKyUufk9ZnGWGunbKWXq7cuWxiaM4luW0pzolj0EekoCicJDmSyLCcVS9-THVAPwdunybIMzHG4sVFUGWBlU",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": true
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "items": [
+            {
+              "name": "Paneer Tikka Angare",
+              "price": 280,
+              "description": "Clay-oven roasted cottage cheese, hung curd marinade, Kashmiri red chili.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Murg Malai Kebab",
+              "price": 360,
+              "description": "Boneless chicken, cardamom, processed cheese, cardamom powder.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Tandoor",
+          "items": [
+            {
+              "name": "Tandoori Pomfret",
+              "price": 550,
+              "description": "Whole silver pomfret, yellow chili, lemon, carom seeds.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": true
+            }
+          ]
+        },
+        {
+          "name": "North Indian",
+          "items": [
+            {
+              "name": "Butter Chicken 1998",
+              "price": 420,
+              "description": "Our original recipe. Tandoori chicken pulled and simmered in velvet tomato makhani.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": true,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Chettinad Chicken",
+              "price": 380,
+              "description": "From the Karaikudi region. Freshly roasted spices, coconut, peppercorns.",
+              "imageUrl": "",
+              "isVeg": false,
+              "isBestseller": false,
+              "isChefSpecial": false
+            },
+            {
+              "name": "Paneer Lababdar",
+              "price": 320,
+              "description": "Cottage cheese cubes tossed in a luscious tomato-onion gravy with ginger juliennes.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        },
+        {
+          "name": "Desserts",
+          "items": [
+            {
+              "name": "Gulab Jamun e Gulkand",
+              "price": 140,
+              "description": "Reduced milk dumplings stuffed with rose petal preserve, served warm.",
+              "imageUrl": "",
+              "isVeg": true,
+              "isBestseller": false,
+              "isChefSpecial": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
