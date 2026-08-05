@@ -1,0 +1,15 @@
+{
+  "restaurantId": "r_9GF51EmhRp3W",
+  "restaurantName": "OM SWEETS",
+  "sourceFile": "user_menu/om_sweet_gaya_bihar.html",
+  "theme": "heritage",
+  "location": "Muffasil, Gaya Bihar",
+  "createdAt": "2026-08-05T16:33:13.440Z",
+  "published": true,
+  "security": {
+    "xRobotsTag": "noindex, nofollow",
+    "xFrameOptions": "DENY",
+    "referrerPolicy": "no-referrer",
+    "contentTypeOptions": "nosniff"
+  }
+}
