@@ -1,71 +1,33 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import seedData from "@/data/seed.json";
-
-const DB_FILE = path.join(process.cwd(), "src", "data", "db.json");
-
-// In-memory cache fallback for Serverless environments (like Vercel)
-const inMemoryDB: { leads: any[]; menus: Record<string, any> } = {
-  leads: [...((seedData as any).leads || [])],
-  menus: { ...((seedData as any).menus || {}) },
-};
-
-function getDB(): { leads: any[]; menus: Record<string, any> } {
-  try {
-    if (fs.existsSync(DB_FILE)) {
-      const fileContent = fs.readFileSync(DB_FILE, "utf-8");
-      if (fileContent.trim()) {
-        const fileData = JSON.parse(fileContent);
-        return {
-          leads: fileData.leads || inMemoryDB.leads,
-          menus: { ...inMemoryDB.menus, ...(fileData.menus || {}) },
-        };
-      }
-    }
-  } catch (error) {
-    console.error("Error reading db.json:", error);
-  }
-  return inMemoryDB;
-}
-
-function saveDB(db: any): boolean {
-  inMemoryDB.leads = db.leads || inMemoryDB.leads;
-  inMemoryDB.menus = db.menus || inMemoryDB.menus;
-
-  try {
-    fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
-    fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-    return true;
-  } catch (error) {
-    console.error("Error writing db.json (read-only filesystem on Vercel):", error);
-    return false;
-  }
-}
-
-function sanitizeSlug(slug: string): string {
-  return slug.toLowerCase().replace(/[^a-z0-9-_]/g, "-");
-}
+import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
+import { db } from "@/lib/firebase";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const slug = searchParams.get("slug");
-    const db = getDB();
-    const menus = db.menus || {};
 
-    if (!slug) {
-      return NextResponse.json(Object.values(menus));
+    if (!db) {
+      return NextResponse.json({ error: "Firebase not initialized" }, { status: 500 });
     }
 
-    const cleanSlug = sanitizeSlug(slug);
-    const menu = menus[cleanSlug];
+    if (!slug) {
+      const q = query(collection(db, 'restaurants'));
+      const snapshot = await getDocs(q);
+      const menus = snapshot.docs.map(doc => doc.data().menuData);
+      return NextResponse.json(menus);
+    }
 
-    if (!menu) {
+    const docId = `menu-${slug}`;
+    const q = query(collection(db, 'restaurants'), where('id', '==', docId));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
       return NextResponse.json({ error: "Menu not found" }, { status: 404 });
     }
 
-    return NextResponse.json(menu);
+    const record = snapshot.docs[0].data();
+    return NextResponse.json(record.menuData);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -78,17 +40,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Slug is required" }, { status: 400 });
     }
 
-    const cleanSlug = sanitizeSlug(menuData.slug);
-    const db = getDB();
-
-    if (!db.menus) {
-      db.menus = {};
+    if (!db) {
+      return NextResponse.json({ error: "Firebase not initialized" }, { status: 500 });
     }
 
-    db.menus[cleanSlug] = { ...menuData, slug: cleanSlug };
-    saveDB(db);
-
-    return NextResponse.json({ success: true, slug: cleanSlug });
+    // The Admin Studio already handles saving to Firebase securely via lib/menuStorage.ts.
+    // This endpoint acts as a compatibility layer to confirm the sync.
+    return NextResponse.json({ success: true, slug: menuData.slug });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
