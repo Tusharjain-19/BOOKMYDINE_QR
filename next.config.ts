@@ -34,6 +34,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/m/r_9GF51EmhRp3W",
+        destination: "/m/r_9GF51EmhRp3W.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
