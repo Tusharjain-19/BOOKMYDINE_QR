@@ -192,6 +192,15 @@ Raj Kachori ... ₹120 (Veg) (Chef Special)`);
     setProgressMsg('Reading uploaded file...');
 
     try {
+      if (file.name.endsWith('.json') || file.type === 'application/json') {
+        const text = await file.text();
+        setJsonInputText(text);
+        setActiveTab('json');
+        setIsProcessing(false);
+        setExtractSuccess(`JSON file "${file.name}" loaded successfully. Please review and click Import JSON Menu.`);
+        return;
+      }
+
       let extractedText = '';
       if (file.type === 'application/pdf') {
         extractedText = await extractTextFromPdfFile(file, (_, status) => setProgressMsg(status));
@@ -359,7 +368,7 @@ Raj Kachori ... ₹120 (Veg) (Chef Special)`);
               <div className="border-2 border-dashed border-stone-300 hover:border-emerald-600 rounded-2xl p-8 text-center bg-stone-50/50 transition-all">
                 <input
                   type="file"
-                  accept="image/*,application/pdf"
+                  accept="image/*,application/pdf,application/json,.json"
                   onChange={handleFileUpload}
                   className="hidden"
                   id="smart-file-upload"
