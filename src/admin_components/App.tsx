@@ -254,6 +254,7 @@ export function App() {
     };
     updateAndSaveMenu(updated);
     setCurrentView('editor');
+    setActiveTab('editor');
   };
 
   // Add Category

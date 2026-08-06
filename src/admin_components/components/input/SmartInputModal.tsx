@@ -164,6 +164,11 @@ Raj Kachori ... ₹120 (Veg) (Chef Special)`);
         restaurantDetails = parsed.restaurant;
       }
 
+      let themeDetails: ThemeConfig | undefined = undefined;
+      if (parsed.theme && typeof parsed.theme === 'object') {
+        themeDetails = parsed.theme;
+      }
+
       const totalDishes = categories.reduce((sum, c) => sum + (c.items?.length || 0), 0);
 
       if (categories.length === 0 && !restaurantDetails.name) {
@@ -174,7 +179,7 @@ Raj Kachori ... ₹120 (Veg) (Chef Special)`);
       setExtractSuccess(`✓ Valid JSON! ${categories.length} Categories & ${totalDishes} Dishes loaded. Applying...`);
 
       setTimeout(() => {
-        onApplyImportedMenu(categories, undefined, restaurantDetails);
+        onApplyImportedMenu(categories, themeDetails, restaurantDetails);
         onClose();
       }, 800);
     } catch (err: any) {
