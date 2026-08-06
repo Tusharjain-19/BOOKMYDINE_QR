@@ -404,7 +404,22 @@ export function App() {
         onExportHtml={() => downloadStandaloneHtmlFile(menuData)}
         onExportJson={handleExportJsonPackage}
         onReset={handleResetData}
-        onSave={() => setToastMessage({ title: 'Saved Successfully', message: 'Menu saved successfully to your Admin Dashboard!', type: 'success' })}
+        onSave={async () => {
+          try {
+            const res = await fetch('/api/menu', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(menuData)
+            });
+            if (res.ok) {
+              setToastMessage({ title: 'Synced Successfully', message: 'Menu saved and synced to your live digital menu instantly!', type: 'success' });
+            } else {
+              setToastMessage({ title: 'Sync Failed', message: 'Failed to sync to live server.', type: 'error' });
+            }
+          } catch (e) {
+            setToastMessage({ title: 'Error', message: 'Error syncing. Check connection.', type: 'error' });
+          }
+        }}
         onPublish={async () => {
           try {
             const res = await fetch('/api/menu', {
