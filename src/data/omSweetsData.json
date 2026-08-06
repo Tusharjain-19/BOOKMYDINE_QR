@@ -1,0 +1,448 @@
+{
+  "slug": "r_9GF51EmhRp3W",
+  "restaurant": {
+    "name": "OM SWEETS",
+    "tagline": "Authentic Indian Sweets • Namkeen • Snacks",
+    "address": "Muffasil, Gaya Bihar",
+    "currency": "₹",
+    "phone": "",
+    "notice": ""
+  },
+  "theme": {
+    "id": "heritage",
+    "name": "Heritage Indian",
+    "primaryColor": "#5d181b",
+    "bgColor": "#fffdf8",
+    "textColor": "#3f1113"
+  },
+  "categories": [
+    {
+      "id": "cat-0",
+      "name": "Namkeen & Snacks",
+      "description": "Freshly prepared traditional snacks",
+      "items": [
+        {
+          "id": "item-0-0",
+          "name": "Samosa",
+          "description": "Freshly fried potato-filled samosa",
+          "price": 15,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-1",
+          "name": "Aloo Tikki Chaat",
+          "description": "Crispy potato tikki topped with curd & chutneys",
+          "price": 35,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-2",
+          "name": "Dahi Bhalla",
+          "description": "Soft lentil dumplings with curd & chutneys",
+          "price": 45,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-3",
+          "name": "Papdi Chaat",
+          "description": "Crunchy papdi with yogurt and tangy chutneys",
+          "price": 45,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-4",
+          "name": "Bhujia Sev",
+          "description": "Traditional crispy gram flour sev",
+          "price": 260,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-5",
+          "name": "Phulki",
+          "description": "Light and crispy fried snack",
+          "price": 260,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-6",
+          "name": "Mixture Namkeen",
+          "description": "Traditional spicy namkeen mix",
+          "price": 280,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-0-7",
+          "name": "Masala Peanuts",
+          "description": "Roasted spicy peanuts",
+          "price": 320,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat-1",
+      "name": "Premium Sweets",
+      "description": "Handcrafted premium Indian sweets",
+      "items": [
+        {
+          "id": "item-1-0",
+          "name": "Fresh Chenna",
+          "description": "Available in Regular & Premium Quality",
+          "price": 220320,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-1",
+          "name": "Peda",
+          "description": "Traditional Khoya Peda",
+          "price": 480,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-2",
+          "name": "Kalakand",
+          "description": "Soft milk cake",
+          "price": 500,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-3",
+          "name": "Raskadam",
+          "description": "Premium Bengali sweet",
+          "price": 600,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-4",
+          "name": "Kheer Kadam",
+          "description": "Soft rasgulla coated with khoya",
+          "price": 560,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-5",
+          "name": "Mugdal",
+          "description": "Traditional sweet delicacy",
+          "price": 200,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-6",
+          "name": "Kaju Mugdal",
+          "description": "Premium cashew delicacy",
+          "price": 400,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-7",
+          "name": "Lai",
+          "description": "Traditional puffed rice sweet",
+          "price": 400,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-1-8",
+          "name": "Anarsa",
+          "description": "Rice flour & jaggery festive sweet",
+          "price": 360,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat-2",
+      "name": "Bengali Sweets",
+      "description": "Authentic Bengali delicacies",
+      "items": [
+        {
+          "id": "item-2-0",
+          "name": "Rasgulla",
+          "description": "Soft spongy cottage cheese balls",
+          "price": 20,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-2-1",
+          "name": "Rajbhog",
+          "description": "Large saffron flavoured rasgulla",
+          "price": 25,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-2-2",
+          "name": "Gulab Jamun (Regular)",
+          "description": "Soft milk solid sweet in sugar syrup",
+          "price": 15,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-2-3",
+          "name": "Gulab Jamun (Premium)",
+          "description": "Premium quality gulab jamun",
+          "price": 20,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-2-4",
+          "name": "Gulab Jamun",
+          "description": "Traditional gulab jamun by weight",
+          "price": 360,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat-3",
+      "name": "Barfi Collection",
+      "description": "Premium handcrafted barfis",
+      "items": [
+        {
+          "id": "item-3-0",
+          "name": "Milk Barfi",
+          "description": "Classic milk barfi",
+          "price": 320,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-3-1",
+          "name": "Kaju Barfi",
+          "description": "Premium cashew barfi",
+          "price": 850,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-3-2",
+          "name": "Pista Barfi",
+          "description": "Rich pistachio barfi",
+          "price": 700,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-3-3",
+          "name": "Coconut Barfi",
+          "description": "Traditional coconut sweet",
+          "price": 320,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-3-4",
+          "name": "Chocolate Barfi",
+          "description": "Chocolate-flavoured milk barfi",
+          "price": 380,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-3-5",
+          "name": "Malai Barfi",
+          "description": "Creamy milk barfi",
+          "price": 400,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-3-6",
+          "name": "Seasonal Special Barfi",
+          "description": "Variety changes according to season",
+          "price": 300450,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat-4",
+      "name": "Traditional Specials",
+      "description": "Seasonal heritage sweets",
+      "items": [
+        {
+          "id": "item-4-0",
+          "name": "Long Latta",
+          "description": "Stuffed crispy sweet pastry",
+          "price": 15,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-4-1",
+          "name": "Tilkut",
+          "description": "Sesame & jaggery sweet",
+          "price": 280,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-4-2",
+          "name": "Morabba",
+          "description": "Traditional fruit preserve",
+          "price": 220,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-4-3",
+          "name": "Maska",
+          "description": "Traditional milk sweet",
+          "price": 240,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat-5",
+      "name": "Laddu Collection",
+      "description": "Traditional laddus made fresh daily",
+      "items": [
+        {
+          "id": "item-5-0",
+          "name": "Boondi Laddu",
+          "description": "Classic boondi laddus",
+          "price": 220,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-5-1",
+          "name": "Motichoor Laddu",
+          "description": "Soft premium motichoor laddus",
+          "price": 260,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-5-2",
+          "name": "Besan Laddu",
+          "description": "Roasted gram flour laddus",
+          "price": 300,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-5-3",
+          "name": "Dry Fruit Laddu",
+          "description": "Premium mixed dry fruit laddus",
+          "price": 480,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat-6",
+      "name": "⭐ Chef's Recommendations",
+      "description": "Our most loved signature sweets",
+      "items": [
+        {
+          "id": "item-6-0",
+          "name": "Kheer Kadam",
+          "description": "Soft rasgulla coated with khoya",
+          "price": 560,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-6-1",
+          "name": "Kalakand",
+          "description": "Soft milk cake",
+          "price": 500,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-6-2",
+          "name": "Peda",
+          "description": "Traditional Khoya Peda",
+          "price": 480,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-6-3",
+          "name": "Raskadam",
+          "description": "Premium Bengali sweet",
+          "price": 600,
+          "tags": [
+            "Veg"
+          ]
+        },
+        {
+          "id": "item-6-4",
+          "name": "Rajbhog",
+          "description": "Large saffron-flavoured rasgulla",
+          "price": 25,
+          "tags": [
+            "Veg"
+          ]
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-08-06T09:23:17.796Z"
+}

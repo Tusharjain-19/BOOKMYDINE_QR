@@ -218,15 +218,24 @@ export default function DigitalMenuPage() {
   // Dynamic filter for search
   const getFilteredCategories = () => {
     if (!menu) return [];
-    if (!searchQuery) return menu.categories;
-
-    return menu.categories.map(cat => {
-      const filteredItems = cat.items.filter(item => 
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      return { ...cat, items: filteredItems };
-    }).filter(cat => cat.items.length > 0);
+    
+    let cats = menu.categories;
+    
+    if (searchQuery) {
+      cats = cats.map(cat => {
+        const filteredItems = cat.items.filter(item => 
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        return { ...cat, items: filteredItems };
+      }).filter(cat => cat.items.length > 0);
+    }
+    
+    if (activeCategory && activeCategory !== 'All Categories' && !searchQuery) {
+       cats = cats.filter(cat => cat.name === activeCategory);
+    }
+    
+    return cats;
   };
 
   if (loading) {
@@ -405,7 +414,9 @@ export default function DigitalMenuPage() {
         {/* Top App Bar */}
         <header className="bg-background sticky top-0 z-50 flex justify-between items-center px-container-margin py-3 w-full border-b border-outline-variant/30">
           <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
-            <span className="material-symbols-outlined text-primary shrink-0">restaurant_menu</span>
+            {menu.logoUrl && (
+              <img src={menu.logoUrl} alt="Logo" className="h-7 w-auto max-w-[60px] object-contain shrink-0 rounded" />
+            )}
             <h1 className="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider line-clamp-2 leading-tight break-words">{menu.name}</h1>
           </div>
           <div className="flex flex-col items-end shrink-0">
