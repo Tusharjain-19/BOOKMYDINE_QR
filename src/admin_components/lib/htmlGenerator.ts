@@ -714,12 +714,12 @@ export function generateJS(): string {
           dishes.forEach(dish => {
             const text = (dish.textContent || '').toLowerCase();
             const match = !q || text.includes(q);
-            (dish as HTMLElement).style.setProperty('display', match ? '' : 'none', 'important');
+            dish.setAttribute('style', match ? '' : 'display: none !important');
             if (match) visibleCount++;
           });
-          const nr = sec.querySelector('.no-results') as HTMLElement;
-          if (nr) nr.style.display = (!visibleCount && q) ? 'block' : 'none';
-          (sec as HTMLElement).style.display = (!visibleCount && q) ? 'none' : '';
+          const nr = sec.querySelector('.no-results');
+          if (nr) nr.setAttribute('style', (!visibleCount && q) ? 'display: block' : 'display: none');
+          sec.setAttribute('style', (!visibleCount && q) ? 'display: none' : '');
         });
       });
     }
