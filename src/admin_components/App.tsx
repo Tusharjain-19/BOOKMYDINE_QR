@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
+import { Check, X, Copy } from 'lucide-react';
 import { auth } from './lib/firebase';
 import { Login } from './components/auth/Login';
 import { HeaderNav } from './components/layout/HeaderNav';
@@ -22,6 +23,7 @@ import {
   type SavedMenuRecord 
 } from './lib/menuStorage';
 import { downloadStandaloneHtmlFile } from './lib/htmlGenerator';
+import { generateSignedToken } from './lib/tokenGenerator';
 import type { MenuCategory, MenuData, MenuItem, RestaurantDetails, ThemeConfig, ThemePresetId } from './types/menu';
 
 export function App() {
@@ -42,6 +44,7 @@ export function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isAuthLoading, setIsAuthLoading] = useState<boolean>(true);
+  const [toastMessage, setToastMessage] = useState<{title: string, message: string, type: 'success'|'error', url?: string} | null>(null);
 
   // Check auth state
   useEffect(() => {
@@ -401,7 +404,7 @@ export function App() {
         onExportHtml={() => downloadStandaloneHtmlFile(menuData)}
         onExportJson={handleExportJsonPackage}
         onReset={handleResetData}
-        onSave={() => alert("Menu saved successfully to your Admin Dashboard!")}
+        onSave={() => setToastMessage({ title: 'Saved Successfully', message: 'Menu saved successfully to your Admin Dashboard!', type: 'success' })}
         onPublish={async () => {
           try {
             const res = await fetch('/api/menu', {
@@ -411,13 +414,22 @@ export function App() {
             });
             if (res.ok) {
               const data = await res.json();
-              alert(`Published successfully!\n\nYour live digital menu is now instantly available at:\nhttp://localhost:3000/menu/${data.slug}`);
+              const token = activeMenuRecord?.token || generateSignedToken();
+              const baseUrl = window.location.origin;
+              const publishUrl = `${baseUrl}/menu/${data.slug}?token=${token}`;
+              
+              setToastMessage({
+                title: 'Published Successfully!',
+                message: 'Your live digital menu is now instantly available.',
+                type: 'success',
+                url: publishUrl
+              });
             } else {
-              alert("Failed to publish to live server.");
+              setToastMessage({ title: 'Publish Failed', message: 'Failed to publish to live server.', type: 'error' });
             }
           } catch (e) {
             console.error(e);
-            alert("Error publishing. Check connection.");
+            setToastMessage({ title: 'Error', message: 'Error publishing. Check connection.', type: 'error' });
           }
         }}
         restaurantName={menuData.restaurant.name}
@@ -512,6 +524,46 @@ export function App() {
         menuRecord={subscriptionMenuRecord}
         onSave={handleSaveSubscription}
       />
+
+      {/* Global In-App Toast/Modal UI */}
+      {toastMessage && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white border border-stone-200 rounded-2xl w-full max-w-md shadow-2xl p-6 relative flex flex-col items-center text-center">
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${toastMessage.type === 'success' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
+              {toastMessage.type === 'success' ? <Check className="w-6 h-6" /> : <X className="w-6 h-6" />}
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-2">{toastMessage.title}</h3>
+            <p className="text-sm text-slate-600 mb-4">{toastMessage.message}</p>
+            
+            {toastMessage.url && (
+              <div className="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 mb-6 text-left">
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <Check className="w-3 h-3 text-emerald-600" /> Live 64-Bit Secure URL
+                </label>
+                <div className="flex items-center gap-2">
+                  <input type="text" readOnly value={toastMessage.url} className="flex-1 bg-transparent text-xs font-mono text-emerald-700 focus:outline-none" />
+                  <button 
+                    onClick={() => {
+                      navigator.clipboard.writeText(toastMessage.url!);
+                      setToastMessage(prev => prev ? { ...prev, title: 'URL Copied!' } : null);
+                    }} 
+                    className="p-1.5 bg-white hover:bg-stone-200 border border-stone-200 rounded-lg text-slate-700 transition-colors shadow-sm"
+                  >
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            <button 
+              onClick={() => setToastMessage(null)} 
+              className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-sm transition-all shadow-sm"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );
