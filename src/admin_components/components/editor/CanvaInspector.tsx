@@ -16,7 +16,10 @@ import {
   Award,
   Leaf,
   FileText,
-  PlusCircle
+  PlusCircle,
+  Database,
+  FileCode,
+  Zap
 } from 'lucide-react';
 import { PRESET_THEMES } from '../../lib/defaultTemplates';
 import type { MenuData, MenuItem, RestaurantDetails, ThemeConfig, ThemePresetId } from '../../types/menu';
@@ -45,6 +48,8 @@ interface CanvaInspectorProps {
   onUpdateItem: (categoryId: string, itemId: string, item: Partial<MenuItem>) => void;
   onDeleteItem: (categoryId: string, itemId: string) => void;
   onOpenSmartInput?: () => void;
+  onSaveDatabase?: () => void;
+  onExportHtml?: () => void;
 }
 
 export const CanvaInspector: React.FC<CanvaInspectorProps> = ({
@@ -59,6 +64,8 @@ export const CanvaInspector: React.FC<CanvaInspectorProps> = ({
   onUpdateItem,
   onDeleteItem,
   onOpenSmartInput,
+  onSaveDatabase,
+  onExportHtml,
 }) => {
   const [activeTab, setActiveTab] = useState<'themes' | 'restaurant' | 'items'>('themes');
   const [selectedCatId, setSelectedCatId] = useState<string>(menuData.categories[0]?.id || '');
@@ -121,6 +128,42 @@ export const CanvaInspector: React.FC<CanvaInspectorProps> = ({
         {/* ================= TAB 1: THEMES & STYLING ================= */}
         {activeTab === 'themes' && (
           <div className="space-y-6">
+            
+            {/* Quick Action Card: Save to Database & Download HTML */}
+            <div className="bg-slate-900 text-white p-3.5 rounded-2xl space-y-3 shadow-md border border-slate-800">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-black tracking-wider uppercase text-emerald-400 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" /> Design Platform Actions
+                </span>
+                <span className="text-[10px] font-mono bg-slate-800 px-2 py-0.5 rounded text-slate-300">
+                  {menuData.theme.name}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {onSaveDatabase && (
+                  <button
+                    type="button"
+                    onClick={onSaveDatabase}
+                    className="py-2 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+                  >
+                    <Database className="w-3.5 h-3.5 text-emerald-200" />
+                    <span>Save to DB</span>
+                  </button>
+                )}
+
+                {onExportHtml && (
+                  <button
+                    type="button"
+                    onClick={onExportHtml}
+                    className="py-2 px-3 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+                  >
+                    <FileCode className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Download HTML</span>
+                  </button>
+                )}
+              </div>
+            </div>
             
             {/* 6 Visual Preset Selector */}
             <div className="space-y-3">
@@ -440,7 +483,8 @@ export const CanvaInspector: React.FC<CanvaInspectorProps> = ({
             <div className="space-y-3 pt-3 border-t border-stone-200">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold text-slate-800 flex items-center gap-1">
-                  <span>⚡ BookMyDine Branding Badge</span>
+                  <Zap className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>BookMyDine Branding Badge</span>
                 </label>
                 <button
                   type="button"

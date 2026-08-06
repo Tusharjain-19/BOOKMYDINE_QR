@@ -1,6 +1,12 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { 
+  initializeAuth, 
+  browserLocalPersistence, 
+  browserSessionPersistence, 
+  inMemoryPersistence, 
+  getAuth 
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -18,7 +24,18 @@ let auth: any;
 if (process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
   app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
   db = getFirestore(app);
-  auth = getAuth(app);
+
+  if (typeof window !== 'undefined') {
+    try {
+      auth = initializeAuth(app, {
+        persistence: [browserLocalPersistence, browserSessionPersistence, inMemoryPersistence]
+      });
+    } catch (e) {
+      auth = getAuth(app);
+    }
+  } else {
+    auth = getAuth(app);
+  }
 } else {
   console.warn('Firebase API Key is missing. Firebase services will not be initialized.');
 }

@@ -74,12 +74,13 @@ export function App() {
   }, []);
 
   // Save current menu changes to localStorage automatically
-  const updateAndSaveMenu = async (newMenuData: MenuData) => {
+  const updateAndSaveMenu = async (newMenuData: MenuData): Promise<SavedMenuRecord> => {
     setMenuData(newMenuData);
     const updatedRecord = await saveStoredMenu(newMenuData, activeMenuRecord?.status || 'draft', activeMenuRecord?.subscription, activeMenuRecord?.isActive, activeMenuRecord?.token);
     setActiveMenuRecord(updatedRecord);
     const menus = await getStoredMenus();
     setStoredMenus(menus);
+    return updatedRecord;
   };
 
   // Switch Active Menu
@@ -377,6 +378,29 @@ export function App() {
     }
   };
 
+  const handleSaveToDatabase = async () => {
+    try {
+      const savedRecord = await updateAndSaveMenu(menuData);
+      const res = await fetch('/api/menu', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(menuData)
+      });
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+      const liveUrl = `${baseUrl}/m/${savedRecord.slug || menuData.slug}`;
+
+      setToastMessage({
+        title: 'Saved to Database!',
+        message: `Menu for "${menuData.restaurant.name}" and design "${menuData.theme.name}" are saved to Firebase.`,
+        type: 'success',
+        url: liveUrl,
+      });
+    } catch (e) {
+      console.error(e);
+      setToastMessage({ title: 'Save Failed', message: 'Could not sync to database.', type: 'error' });
+    }
+  };
+
   if (isAuthLoading) {
     return <div className="min-h-screen bg-stone-100 flex items-center justify-center">Loading...</div>;
   }
@@ -400,54 +424,14 @@ export function App() {
         deviceView={deviceView}
         setDeviceView={setDeviceView}
         onOpenSmartInput={() => setIsSmartInputOpen(true)}
-        onOpenStitchMd={() => setIsStitchMdOpen(true)}
         onExportHtml={() => downloadStandaloneHtmlFile(menuData)}
         onExportJson={handleExportJsonPackage}
         onReset={handleResetData}
-        onSave={async () => {
-          try {
-            const res = await fetch('/api/menu', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(menuData)
-            });
-            if (res.ok) {
-              setToastMessage({ title: 'Synced Successfully', message: 'Menu saved and synced to your live digital menu instantly!', type: 'success' });
-            } else {
-              setToastMessage({ title: 'Sync Failed', message: 'Failed to sync to live server.', type: 'error' });
-            }
-          } catch (e) {
-            setToastMessage({ title: 'Error', message: 'Error syncing. Check connection.', type: 'error' });
-          }
-        }}
-        onPublish={async () => {
-          try {
-            const res = await fetch('/api/menu', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(menuData)
-            });
-            if (res.ok) {
-              const data = await res.json();
-              const token = activeMenuRecord?.token || generateSignedToken();
-              const baseUrl = window.location.origin;
-              const publishUrl = `${baseUrl}/menu/${data.slug}?token=${token}`;
-              
-              setToastMessage({
-                title: 'Published Successfully!',
-                message: 'Your live digital menu is now instantly available.',
-                type: 'success',
-                url: publishUrl
-              });
-            } else {
-              setToastMessage({ title: 'Publish Failed', message: 'Failed to publish to live server.', type: 'error' });
-            }
-          } catch (e) {
-            console.error(e);
-            setToastMessage({ title: 'Error', message: 'Error publishing. Check connection.', type: 'error' });
-          }
-        }}
+        onSaveDatabase={handleSaveToDatabase}
+        onSelectPresetTheme={handleSelectPresetTheme}
+        currentThemeId={menuData.theme.id}
         restaurantName={menuData.restaurant.name}
+        restaurantSlug={menuData.slug}
       />
 
       {/* Main Workspace Body */}
@@ -486,14 +470,13 @@ export function App() {
               onUpdateItem={handleUpdateItem}
               onDeleteItem={handleDeleteItem}
               onOpenSmartInput={() => setIsSmartInputOpen(true)}
+              onSaveDatabase={handleSaveToDatabase}
+              onExportHtml={() => downloadStandaloneHtmlFile(menuData)}
             />
 
             <MenuCanvasPreview
               menuData={menuData}
               deviceView={deviceView}
-              onUpdateItem={handleUpdateItem}
-              onUpdateRestaurant={handleUpdateRestaurant}
-              onUpdateCategory={handleUpdateCategory}
             />
           </div>
         )}
