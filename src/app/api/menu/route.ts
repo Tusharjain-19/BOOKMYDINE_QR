@@ -1,57 +1,103 @@
 import { NextResponse } from "next/server";
-import { collection, query, where, getDocs, getDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, getDoc, doc } from 'firebase/firestore';
 import { db } from "@/lib/firebase";
+import seedData from "@/data/seed.json";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const slug = searchParams.get("slug");
 
-    if (!db) {
-      return NextResponse.json({ error: "Firebase not initialized" }, { status: 500 });
-    }
-
+    // 1. Handle no slug - Return list of all menus
     if (!slug) {
-      const q = query(collection(db, 'restaurants'));
-      const snapshot = await getDocs(q);
-      const menus = snapshot.docs.map(doc => doc.data().menuData);
-      return NextResponse.json(menus);
+      let firebaseMenus: any[] = [];
+      if (db) {
+        try {
+          const q = query(collection(db, 'restaurants'));
+          const snapshot = await getDocs(q);
+          firebaseMenus = snapshot.docs.map(doc => {
+            const data = doc.data();
+            return data.menuData || data;
+          });
+        } catch (e) {
+          console.error("Error fetching Firestore menus:", e);
+        }
+      }
+      
+      const seedMenuList = Object.values(seedData.menus || {});
+      return NextResponse.json([...firebaseMenus, ...seedMenuList]);
     }
 
-    const docId = `menu-${slug}`;
-    const docRef = doc(db, 'restaurants', docId);
-    const docSnap = await getDoc(docRef);
+    // 2. Try fetching from Firebase if db is initialized
+    let rawData: any = null;
 
-    if (!docSnap.exists()) {
+    if (db) {
+      try {
+        // Try docId = menu-${slug}
+        const docRef1 = doc(db, 'restaurants', `menu-${slug}`);
+        const snap1 = await getDoc(docRef1);
+        if (snap1.exists()) {
+          rawData = snap1.data();
+        } else {
+          // Try docId = slug
+          const docRef2 = doc(db, 'restaurants', slug);
+          const snap2 = await getDoc(docRef2);
+          if (snap2.exists()) {
+            rawData = snap2.data();
+          } else {
+            // Try query where slug == slug
+            const q = query(collection(db, 'restaurants'), where('slug', '==', slug));
+            const snap3 = await getDocs(q);
+            if (!snap3.empty) {
+              rawData = snap3.docs[0].data();
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Firestore lookup error for slug:", slug, e);
+      }
+    }
+
+    // 3. Fallback to seed.json if not found in Firebase
+    if (!rawData) {
+      const seedMenus = (seedData.menus as Record<string, any>) || {};
+      if (seedMenus[slug]) {
+        return NextResponse.json(seedMenus[slug]);
+      }
+      // Check if slug matches any seed menu by lowercasing or stripping menu- prefix
+      const cleanSlug = slug.replace(/^menu-/, '').toLowerCase();
+      if (seedMenus[cleanSlug]) {
+        return NextResponse.json(seedMenus[cleanSlug]);
+      }
+    }
+
+    // 4. If still no data found, return 404
+    if (!rawData) {
       return NextResponse.json({ error: "Menu not found" }, { status: 404 });
     }
 
-    const record = docSnap.data();
-    if (!record || !record.menuData) {
-      return NextResponse.json({ error: "Invalid menu data" }, { status: 500 });
-    }
-    
-    const md = record.menuData;
-    
-    // If it's already in the legacy flat format, return as is
-    if (md.name) {
+    // Extract menuData payload if nested
+    const md = rawData.menuData || rawData;
+
+    // If already flat format, return directly
+    if (md.name && md.categories) {
       return NextResponse.json(md);
     }
 
-    // Map to frontend expected format
+    // Map nested structure to flat structure expected by frontend
     const mapped = {
       slug: md.slug || slug,
-      name: md.restaurant?.name || "Untitled",
-      type: "Restaurant",
-      tagline: md.restaurant?.tagline || "",
-      logoUrl: md.restaurant?.logoUrl || "",
-      brandColor: md.theme?.primaryColor || "#2563eb",
-      accentColor: md.theme?.accentColor || "#f59e0b",
-      theme: md.theme?.id || "minimal",
-      phone: md.restaurant?.phone || "",
-      address: md.restaurant?.address || "",
-      instagramUrl: "",
-      mapsUrl: "",
+      name: md.restaurant?.name || md.name || "Untitled Menu",
+      type: md.type || md.restaurant?.type || "Restaurant",
+      tagline: md.tagline || md.restaurant?.tagline || "",
+      logoUrl: md.logoUrl || md.restaurant?.logoUrl || "",
+      brandColor: md.brandColor || md.theme?.primaryColor || "#2563eb",
+      accentColor: md.accentColor || md.theme?.accentColor || "#f59e0b",
+      theme: typeof md.theme === 'string' ? md.theme : (md.theme?.id || "minimal"),
+      phone: md.phone || md.restaurant?.phone || "",
+      address: md.address || md.restaurant?.address || "",
+      instagramUrl: md.instagramUrl || "",
+      mapsUrl: md.mapsUrl || "",
       categories: md.categories || []
     };
 
@@ -72,8 +118,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Firebase not initialized" }, { status: 500 });
     }
 
-    // The Admin Studio already handles saving to Firebase securely via lib/menuStorage.ts.
-    // This endpoint acts as a compatibility layer to confirm the sync.
     return NextResponse.json({ success: true, slug: menuData.slug });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
