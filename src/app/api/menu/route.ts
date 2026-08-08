@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, getDoc, doc, setDoc } from 'firebase/firestore';
 import { db } from "@/lib/firebase";
 
 export async function GET(request: Request) {
@@ -19,15 +19,43 @@ export async function GET(request: Request) {
     }
 
     const docId = `menu-${slug}`;
-    const q = query(collection(db, 'restaurants'), where('id', '==', docId));
-    const snapshot = await getDocs(q);
+    const docRef = doc(db, 'restaurants', docId);
+    const docSnap = await getDoc(docRef);
 
-    if (snapshot.empty) {
+    if (!docSnap.exists()) {
       return NextResponse.json({ error: "Menu not found" }, { status: 404 });
     }
 
-    const record = snapshot.docs[0].data();
-    return NextResponse.json(record.menuData);
+    const record = docSnap.data();
+    if (!record || !record.menuData) {
+      return NextResponse.json({ error: "Invalid menu data" }, { status: 500 });
+    }
+    
+    const md = record.menuData;
+    
+    // If it's already in the legacy flat format, return as is
+    if (md.name) {
+      return NextResponse.json(md);
+    }
+
+    // Map to frontend expected format
+    const mapped = {
+      slug: md.slug || slug,
+      name: md.restaurant?.name || "Untitled",
+      type: "Restaurant",
+      tagline: md.restaurant?.tagline || "",
+      logoUrl: md.restaurant?.logoUrl || "",
+      brandColor: md.theme?.primaryColor || "#2563eb",
+      accentColor: md.theme?.accentColor || "#f59e0b",
+      theme: md.theme?.id || "minimal",
+      phone: md.restaurant?.phone || "",
+      address: md.restaurant?.address || "",
+      instagramUrl: "",
+      mapsUrl: "",
+      categories: md.categories || []
+    };
+
+    return NextResponse.json(mapped);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
