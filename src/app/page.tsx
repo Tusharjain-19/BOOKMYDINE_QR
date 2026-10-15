@@ -142,17 +142,17 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white border-b border-stone-200/80">
+      <section className="py-10 sm:py-16 lg:py-20 bg-white border-b border-stone-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Hero Left Text */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+            {/* Hero Left Text & Mobile Visual */}
+            <div className="lg:col-span-7 space-y-5 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200/80 px-3.5 py-1 text-xs font-bold text-emerald-800">
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
                 <span>Done-For-You Digital Menu</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]">
                 One Scan.<br />
                 Their <span className="relative inline-block text-emerald-800">
                   Perfect Meal.
@@ -162,49 +162,95 @@ export default function HomePage() {
                 </span>
               </h1>
 
-              <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+              <p className="text-slate-600 text-sm sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 Replace your paper menu with a beautiful <strong className="text-slate-900 font-bold">digital menu</strong>.<br />
                 We design, host & manage everything for you.
               </p>
 
-              {/* 3 Hero Feature Pills */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 max-w-2xl mx-auto lg:mx-0 text-left">
-                <div className="bg-emerald-50/70 border border-emerald-100 p-3.5 rounded-2xl flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                    <Smartphone className="h-4 w-4" />
+              {/* Mobile Hero Visual Showcase (Prominently Visible Above The Fold on Phones) */}
+              <div className="lg:hidden my-3 relative max-w-sm mx-auto">
+                <div className="relative rounded-3xl bg-linear-to-b from-stone-50 via-white to-emerald-50/40 p-2.5 sm:p-3 border border-stone-200/90 shadow-xl overflow-hidden">
+                  {/* Top Left Floating Badge */}
+                  <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-md border border-stone-200/90 shadow-sm rounded-full px-3 py-1 flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[10px] font-black text-slate-900">1s Instant Load</span>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">No App Needed</h4>
-                    <p className="text-[10px] text-slate-500 font-medium">Just scan & view</p>
+
+                  {/* Top Right Floating Badge */}
+                  <div className="absolute top-4 right-4 z-20 bg-slate-900 text-white shadow-sm rounded-full px-3 py-1 flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+                    <span className="text-[10px] font-bold">Free Setup</span>
+                  </div>
+
+                  <Image
+                    src="/hero_artistic_showcase.webp"
+                    alt="BookMyDine QR Digital Menu Themes"
+                    width={480}
+                    height={480}
+                    priority
+                    className="w-full h-auto object-contain drop-shadow-md rounded-2xl"
+                  />
+
+                  <div className="mt-2 pt-2 border-t border-stone-200/60 flex items-center justify-between text-[10px] text-slate-600 font-bold px-1">
+                    <span className="text-emerald-800 font-black">6 Curated Themes</span>
+                    <span>•</span>
+                    <span>Zero App Needed</span>
+                    <span>•</span>
+                    <span>Printable QR Stand</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3 Differentiated Hero Feature Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 max-w-2xl mx-auto lg:mx-0 text-left">
+                {/* Card 1: Emerald (Guest Experience) */}
+                <div className="bg-linear-to-br from-emerald-50/90 via-emerald-100/30 to-white border border-emerald-200/90 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xs hover:shadow-sm transition-all group">
+                  <div className="h-10 w-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                    <Smartphone className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <h4 className="text-xs font-black text-slate-900 truncate">No App Needed</h4>
+                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 shrink-0">Diners</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 font-medium truncate">Instant camera scan</p>
                   </div>
                 </div>
 
-                <div className="bg-emerald-50/70 border border-emerald-100 p-3.5 rounded-2xl flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                    <RefreshCw className="h-4 w-4" />
+                {/* Card 2: Amber (Live Updates) */}
+                <div className="bg-linear-to-br from-amber-50/90 via-amber-100/30 to-white border border-amber-200/90 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xs hover:shadow-sm transition-all group">
+                  <div className="h-10 w-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                    <Zap className="h-5 w-5" />
                   </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">Always Updated</h4>
-                    <p className="text-[10px] text-slate-500 font-medium">Live menu in real time</p>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <h4 className="text-xs font-black text-slate-900 truncate">Always Updated</h4>
+                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 shrink-0">Live</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 font-medium truncate">Menu updates in mins</p>
                   </div>
                 </div>
 
-                <div className="bg-emerald-50/70 border border-emerald-100 p-3.5 rounded-2xl flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="h-4 w-4" />
+                {/* Card 3: Indigo (Fully Managed) */}
+                <div className="bg-linear-to-br from-indigo-50/90 via-indigo-100/30 to-white border border-indigo-200/90 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xs hover:shadow-sm transition-all group">
+                  <div className="h-10 w-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                    <ShieldCheck className="h-5 w-5" />
                   </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">100% Managed</h4>
-                    <p className="text-[10px] text-slate-500 font-medium">We handle everything</p>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <h4 className="text-xs font-black text-slate-900 truncate">100% Managed</h4>
+                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 shrink-0">VIP</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 font-medium truncate">We design & format all</p>
                   </div>
                 </div>
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
                 <Link
                   href="/onboard"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f623f] hover:bg-[#0c4e32] px-7 py-4 text-sm font-extrabold text-white shadow-md hover:shadow-lg transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f623f] hover:bg-[#0c4e32] px-7 py-3.5 text-sm font-extrabold text-white shadow-md hover:shadow-lg transition-all"
                 >
                   <span>Get My Free Custom Setup</span>
                   <ArrowRight className="h-4 w-4" />
@@ -213,7 +259,7 @@ export default function HomePage() {
                   href="https://wa.me/918005737183?text=Hi,%20I%20am%20interested%20in%20your%20product%20BookMyDine%20QR.%20Can%20we%20talk%3F"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 px-7 py-4 text-sm font-bold text-emerald-900 transition-all shadow-xs group"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 px-7 py-3.5 text-sm font-bold text-emerald-900 transition-all shadow-xs group"
                 >
                   <MessageCircle className="h-4 w-4 text-emerald-600 group-hover:scale-110 transition-transform" />
                   <span>Chat on WhatsApp</span>
@@ -221,7 +267,7 @@ export default function HomePage() {
               </div>
 
               {/* Honest Service Guarantee */}
-              <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
+              <div className="flex items-center justify-center lg:justify-start gap-3 pt-1">
                 <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-900 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-xl">
                   <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />
                   <span>Managed Service: Free Custom Setup • Pay Only After Approval</span>
@@ -229,8 +275,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Hero Right Column (Seamlessly Merged with Background) */}
-            <div className="lg:col-span-5 flex justify-center relative">
+            {/* Desktop Hero Right Column */}
+            <div className="hidden lg:flex lg:col-span-5 justify-center relative">
               <div className="absolute -top-4 right-0 sm:right-4 z-20 bg-white/95 backdrop-blur-md border border-stone-200/90 shadow-md rounded-2xl px-4 py-2.5 flex items-center gap-3">
                 <div className="h-7 w-7 rounded-full bg-emerald-800 text-white flex items-center justify-center shrink-0 font-bold">
                   <CheckCircle2 className="h-4 w-4 text-white" />
@@ -271,11 +317,16 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Advantage 1 */}
-            <div className="bg-white p-7 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4">
-              <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold">
-                <Printer className="h-6 w-6" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Advantage 1: Emerald (ROI) */}
+            <div className="bg-linear-to-br from-emerald-50/70 via-white to-white p-7 rounded-3xl border border-emerald-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4 group">
+              <div className="flex items-center justify-between">
+                <div className="h-12 w-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Printer className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-md border border-emerald-200/80">
+                  Cost Saver
+                </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Save 100% on Printing Costs</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -283,10 +334,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Advantage 2 */}
-            <div className="bg-white p-7 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4">
-              <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold">
-                <Sparkles className="h-6 w-6" />
+            {/* Advantage 2: Violet (Aesthetics) */}
+            <div className="bg-linear-to-br from-purple-50/70 via-white to-white p-7 rounded-3xl border border-purple-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4 group">
+              <div className="flex items-center justify-between">
+                <div className="h-12 w-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Sparkles className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-purple-800 bg-purple-100/90 px-2.5 py-0.5 rounded-md border border-purple-200/80">
+                  6 Themes
+                </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Beautiful Custom Designs</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -294,10 +350,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Advantage 3 */}
-            <div className="bg-white p-7 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4">
-              <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold">
-                <RefreshCw className="h-6 w-6" />
+            {/* Advantage 3: Amber (Speed) */}
+            <div className="bg-linear-to-br from-amber-50/70 via-white to-white p-7 rounded-3xl border border-amber-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4 group">
+              <div className="flex items-center justify-between">
+                <div className="h-12 w-12 bg-amber-500 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <RefreshCw className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-amber-900 bg-amber-100/90 px-2.5 py-0.5 rounded-md border border-amber-200/80">
+                  WhatsApp Support
+                </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Zero-Hassle Menu Updates</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -305,10 +366,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Advantage 4 */}
-            <div className="bg-white p-7 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4">
-              <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold">
-                <Clock className="h-6 w-6" />
+            {/* Advantage 4: Teal (Turnaround) */}
+            <div className="bg-linear-to-br from-teal-50/70 via-white to-white p-7 rounded-3xl border border-teal-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4 group">
+              <div className="flex items-center justify-between">
+                <div className="h-12 w-12 bg-teal-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Clock className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-teal-900 bg-teal-100/90 px-2.5 py-0.5 rounded-md border border-teal-200/80">
+                  24-48 Hours
+                </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Live in 24 to 48 Hours</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -316,10 +382,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Advantage 5 */}
-            <div className="bg-white p-7 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4">
-              <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold">
-                <ShieldCheck className="h-6 w-6" />
+            {/* Advantage 5: Rose (Diners) */}
+            <div className="bg-linear-to-br from-rose-50/70 via-white to-white p-7 rounded-3xl border border-rose-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4 group">
+              <div className="flex items-center justify-between">
+                <div className="h-12 w-12 bg-rose-500 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Smartphone className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-rose-900 bg-rose-100/90 px-2.5 py-0.5 rounded-md border border-rose-200/80">
+                  Guest Delight
+                </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Elevate Guest Experience</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -327,10 +398,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Advantage 6 */}
-            <div className="bg-white p-7 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4">
-              <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold">
-                <Zap className="h-6 w-6" />
+            {/* Advantage 6: Blue (Hardware) */}
+            <div className="bg-linear-to-br from-sky-50/70 via-white to-white p-7 rounded-3xl border border-sky-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 space-y-4 group">
+              <div className="flex items-center justify-between">
+                <div className="h-12 w-12 bg-sky-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <QrCode className="h-6 w-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-sky-900 bg-sky-100/90 px-2.5 py-0.5 rounded-md border border-sky-200/80">
+                  Print Ready
+                </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Printable QR Stand Graphics</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -350,63 +426,99 @@ export default function HomePage() {
             <p className="text-slate-600 text-sm">Everything you need to deliver an effortless digital menu experience to your guests.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#fafaf8] p-6 rounded-2xl border border-stone-200/80 space-y-3 hover:border-emerald-500 transition-all hover:shadow-md">
-              <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold text-sm">
-                <Zap className="h-5 w-5 text-emerald-700" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Feature 1: Amber (Speed) */}
+            <div className="bg-linear-to-br from-amber-50/70 via-white to-white p-6 rounded-3xl border border-amber-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3.5 group">
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 bg-amber-500 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-amber-900 bg-amber-100/90 px-2.5 py-0.5 rounded-md border border-amber-200/80">
+                  ~0.8s Load
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Instant Load & Lightning Fast</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <h3 className="text-base font-extrabold text-slate-900">Instant Load & Lightning Fast</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 No app download or registration required. Pages load in under 1 second on any mobile connection.
               </p>
             </div>
 
-            <div className="bg-[#fafaf8] p-6 rounded-2xl border border-stone-200/80 space-y-3 hover:border-emerald-500 transition-all hover:shadow-md">
-              <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold text-sm">
-                <RefreshCw className="h-5 w-5 text-emerald-700" />
+            {/* Feature 2: Emerald (Managed Updates) */}
+            <div className="bg-linear-to-br from-emerald-50/70 via-white to-white p-6 rounded-3xl border border-emerald-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3.5 group">
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <RefreshCw className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-emerald-900 bg-emerald-100/90 px-2.5 py-0.5 rounded-md border border-emerald-200/80">
+                  WhatsApp Service
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Done-For-You Updates</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <h3 className="text-base font-extrabold text-slate-900">Done-For-You Updates</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 Changed prices or added seasonal dishes? Simply WhatsApp us and our team handles all menu updates for you.
               </p>
             </div>
 
-            <div className="bg-[#fafaf8] p-6 rounded-2xl border border-stone-200/80 space-y-3 hover:border-emerald-500 transition-all hover:shadow-md">
-              <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold text-sm">
-                <Printer className="h-5 w-5 text-emerald-700" />
+            {/* Feature 3: Sky Blue (Print Graphic) */}
+            <div className="bg-linear-to-br from-sky-50/70 via-white to-white p-6 rounded-3xl border border-sky-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3.5 group">
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 bg-sky-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Printer className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-sky-900 bg-sky-100/90 px-2.5 py-0.5 rounded-md border border-sky-200/80">
+                  Print Vector PDF
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Custom Printable QR Stands</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <h3 className="text-base font-extrabold text-slate-900">Custom Printable QR Stands</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 Receive high-resolution table tent and banner QR graphics customized with your brand logo and table numbers.
               </p>
             </div>
 
-            <div className="bg-[#fafaf8] p-6 rounded-2xl border border-stone-200/80 space-y-3 hover:border-emerald-500 transition-all hover:shadow-md">
-              <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold text-sm">
-                <Smartphone className="h-5 w-5 text-emerald-700" />
+            {/* Feature 4: Rose (Mobile UX) */}
+            <div className="bg-linear-to-br from-rose-50/70 via-white to-white p-6 rounded-3xl border border-rose-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3.5 group">
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 bg-rose-500 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Smartphone className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-rose-900 bg-rose-100/90 px-2.5 py-0.5 rounded-md border border-rose-200/80">
+                  iOS & Android
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">100% Mobile Optimized</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <h3 className="text-base font-extrabold text-slate-900">100% Mobile Optimized</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 Responsive layout with smooth category filtering, search bar, and veg/non-veg indicator tags.
               </p>
             </div>
 
-            <div className="bg-[#fafaf8] p-6 rounded-2xl border border-stone-200/80 space-y-3 hover:border-emerald-500 transition-all hover:shadow-md">
-              <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold text-sm">
-                <Sparkles className="h-5 w-5 text-emerald-700" />
+            {/* Feature 5: Purple (Themes) */}
+            <div className="bg-linear-to-br from-purple-50/70 via-white to-white p-6 rounded-3xl border border-purple-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3.5 group">
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 bg-purple-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <Sparkles className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-purple-900 bg-purple-100/90 px-2.5 py-0.5 rounded-md border border-purple-200/80">
+                  Brand Aligned
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">6 Curated Design Themes</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <h3 className="text-base font-extrabold text-slate-900">6 Curated Design Themes</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 From Minimalist Cafe to Luxury Fine Dining & Street Food Express, pick a template matched to your vibe.
               </p>
             </div>
 
-            <div className="bg-[#fafaf8] p-6 rounded-2xl border border-stone-200/80 space-y-3 hover:border-emerald-500 transition-all hover:shadow-md">
-              <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold text-sm">
-                <ShieldCheck className="h-5 w-5 text-emerald-700" />
+            {/* Feature 6: Teal (Risk-Free) */}
+            <div className="bg-linear-to-br from-teal-50/70 via-white to-white p-6 rounded-3xl border border-teal-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3.5 group">
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 bg-teal-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-teal-900 bg-teal-100/90 px-2.5 py-0.5 rounded-md border border-teal-200/80">
+                  Pay On Approval
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Zero Lock-in & Free Setup</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <h3 className="text-base font-extrabold text-slate-900">Zero Lock-in & Free Setup</h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 Pay only after your menu is live and approved. No credit card required, cancel anytime.
               </p>
             </div>
@@ -1019,14 +1131,14 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Industry 1: Restaurants & Cafes */}
-            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            {/* Industry 1: Restaurants & Cafes (Emerald Theme) */}
+            <div className="bg-linear-to-br from-emerald-50/70 via-white to-white p-7 rounded-3xl border border-emerald-200/90 shadow-2xs hover:shadow-xl hover:border-emerald-500 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
-                    <UtensilsCrossed className="h-6 w-6 text-emerald-700" />
+                  <div className="h-12 w-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                    <UtensilsCrossed className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200/80">
                     Food & Dining
                   </span>
                 </div>
@@ -1037,7 +1149,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Sample items preview */}
-                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                <div className="bg-emerald-50/50 p-3.5 rounded-2xl border border-emerald-100 space-y-2 text-xs">
                   <div className="flex justify-between items-center text-slate-700 font-medium">
                     <span className="flex items-center gap-1.5 font-bold">
                       <span className="h-2 w-2 rounded-full bg-emerald-600"></span>
@@ -1060,7 +1172,7 @@ export default function HomePage() {
                     <span className="font-extrabold text-slate-900">₹360</span>
                   </div>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-emerald-100">
                   <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Veg, Non-Veg, Spicy & Bestseller Tags</li>
                   <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Fast Search & Real-Time Price Changes</li>
                 </ul>
@@ -1068,21 +1180,21 @@ export default function HomePage() {
               <div className="pt-6">
                 <Link
                   href="/onboard?plan=pro"
-                  className="block w-full text-center py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-700 hover:text-white font-bold text-xs text-emerald-800 transition-colors"
+                  className="block w-full text-center py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Create Restaurant Menu →
                 </Link>
               </div>
             </div>
 
-            {/* Industry 2: Salons & Spas */}
-            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            {/* Industry 2: Salons & Spas (Purple Theme) */}
+            <div className="bg-linear-to-br from-purple-50/70 via-white to-white p-7 rounded-3xl border border-purple-200/90 shadow-2xs hover:shadow-xl hover:border-purple-500 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold">
-                    <Scissors className="h-6 w-6 text-purple-700" />
+                  <div className="h-12 w-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                    <Scissors className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-purple-100 text-purple-800">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-100 text-purple-900 border border-purple-200/80">
                     Beauty & Spa
                   </span>
                 </div>
@@ -1093,7 +1205,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Sample items preview */}
-                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                <div className="bg-purple-50/50 p-3.5 rounded-2xl border border-purple-100 space-y-2 text-xs">
                   <div className="flex justify-between items-center text-slate-700 font-medium">
                     <span className="font-bold">Advanced Keratin Treatment (60m)</span>
                     <span className="font-extrabold text-slate-900">₹3,499</span>
@@ -1107,29 +1219,29 @@ export default function HomePage() {
                     <span className="font-extrabold text-slate-900">₹8,999</span>
                   </div>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Service duration & procedure highlights</li>
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> 1-Click WhatsApp appointment booking</li>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-purple-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-purple-600 shrink-0" /> Service duration & procedure highlights</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-purple-600 shrink-0" /> 1-Click WhatsApp appointment booking</li>
                 </ul>
               </div>
               <div className="pt-6">
                 <Link
                   href="/onboard?plan=pro"
-                  className="block w-full text-center py-2.5 rounded-xl bg-purple-50 hover:bg-purple-700 hover:text-white font-bold text-xs text-purple-800 transition-colors"
+                  className="block w-full text-center py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Create Salon Rate Card →
                 </Link>
               </div>
             </div>
 
-            {/* Industry 3: Hotels & Resorts */}
-            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            {/* Industry 3: Hotels & Resorts (Amber Theme) */}
+            <div className="bg-linear-to-br from-amber-50/70 via-white to-white p-7 rounded-3xl border border-amber-200/90 shadow-2xs hover:shadow-xl hover:border-amber-500 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
-                    <Hotel className="h-6 w-6 text-amber-700" />
+                  <div className="h-12 w-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                    <Hotel className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-100 text-amber-950 border border-amber-200/80">
                     Hospitality
                   </span>
                 </div>
@@ -1140,7 +1252,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Sample items preview */}
-                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                <div className="bg-amber-50/50 p-3.5 rounded-2xl border border-amber-100 space-y-2 text-xs">
                   <div className="flex justify-between items-center text-slate-700 font-medium">
                     <span className="font-bold">In-Room Dining Gourmet Dinner</span>
                     <span className="font-extrabold text-slate-900">₹650</span>
@@ -1154,29 +1266,29 @@ export default function HomePage() {
                     <span className="font-extrabold text-slate-900">₹1,200</span>
                   </div>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> 24/7 Room service & laundry rate card</li>
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> WiFi login & front-desk WhatsApp link</li>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-amber-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-amber-600 shrink-0" /> 24/7 Room service & laundry rate card</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-amber-600 shrink-0" /> WiFi login & front-desk WhatsApp link</li>
                 </ul>
               </div>
               <div className="pt-6">
                 <Link
                   href="/onboard?plan=pro"
-                  className="block w-full text-center py-2.5 rounded-xl bg-amber-50 hover:bg-amber-700 hover:text-white font-bold text-xs text-amber-900 transition-colors"
+                  className="block w-full text-center py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Create Hotel Room Card →
                 </Link>
               </div>
             </div>
 
-            {/* Industry 4: Clinics & Healthcare */}
-            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            {/* Industry 4: Clinics & Healthcare (Blue Theme) */}
+            <div className="bg-linear-to-br from-blue-50/70 via-white to-white p-7 rounded-3xl border border-blue-200/90 shadow-2xs hover:shadow-xl hover:border-blue-500 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold">
-                    <HeartPulse className="h-6 w-6 text-blue-700" />
+                  <div className="h-12 w-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                    <HeartPulse className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 border border-blue-200/80">
                     Healthcare
                   </span>
                 </div>
@@ -1187,7 +1299,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Sample items preview */}
-                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                <div className="bg-blue-50/50 p-3.5 rounded-2xl border border-blue-100 space-y-2 text-xs">
                   <div className="flex justify-between items-center text-slate-700 font-medium">
                     <span className="font-bold">Specialist Doctor Consultation</span>
                     <span className="font-extrabold text-slate-900">₹600</span>
@@ -1201,29 +1313,29 @@ export default function HomePage() {
                     <span className="font-extrabold text-slate-900">₹2,499</span>
                   </div>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Transparent pricing builds patient trust</li>
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> WhatsApp slot booking & OPD hours</li>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-blue-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-blue-600 shrink-0" /> Transparent pricing builds patient trust</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-blue-600 shrink-0" /> WhatsApp slot booking & OPD hours</li>
                 </ul>
               </div>
               <div className="pt-6">
                 <Link
                   href="/onboard?plan=pro"
-                  className="block w-full text-center py-2.5 rounded-xl bg-blue-50 hover:bg-blue-700 hover:text-white font-bold text-xs text-blue-800 transition-colors"
+                  className="block w-full text-center py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Create Clinic Rate Card →
                 </Link>
               </div>
             </div>
 
-            {/* Industry 5: Car Detailing & Garages */}
-            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            {/* Industry 5: Car Detailing & Garages (Rose Theme) */}
+            <div className="bg-linear-to-br from-rose-50/70 via-white to-white p-7 rounded-3xl border border-rose-200/90 shadow-2xs hover:shadow-xl hover:border-rose-500 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center font-bold">
-                    <Car className="h-6 w-6 text-rose-700" />
+                  <div className="h-12 w-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                    <Car className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-rose-100 text-rose-800">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-rose-100 text-rose-900 border border-rose-200/80">
                     Automotive
                   </span>
                 </div>
@@ -1234,7 +1346,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Sample items preview */}
-                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                <div className="bg-rose-50/50 p-3.5 rounded-2xl border border-rose-100 space-y-2 text-xs">
                   <div className="flex justify-between items-center text-slate-700 font-medium">
                     <span className="font-bold">Deep Snow Foam Wash & Wax</span>
                     <span className="font-extrabold text-slate-900">₹499</span>
@@ -1248,29 +1360,29 @@ export default function HomePage() {
                     <span className="font-extrabold text-slate-900">₹1,499</span>
                   </div>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Hatchback/Sedan/SUV tier pricing</li>
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Service package checklist inclusions</li>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-rose-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-rose-600 shrink-0" /> Hatchback/Sedan/SUV tier pricing</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-rose-600 shrink-0" /> Service package checklist inclusions</li>
                 </ul>
               </div>
               <div className="pt-6">
                 <Link
                   href="/onboard?plan=pro"
-                  className="block w-full text-center py-2.5 rounded-xl bg-rose-50 hover:bg-rose-700 hover:text-white font-bold text-xs text-rose-800 transition-colors"
+                  className="block w-full text-center py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Create Auto Service Menu →
                 </Link>
               </div>
             </div>
 
-            {/* Industry 6: Gyms, Fitness & Yoga */}
-            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            {/* Industry 6: Gyms, Fitness & Yoga (Teal Theme) */}
+            <div className="bg-linear-to-br from-teal-50/70 via-white to-white p-7 rounded-3xl border border-teal-200/90 shadow-2xs hover:shadow-xl hover:border-teal-500 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
-                    <Dumbbell className="h-6 w-6 text-emerald-700" />
+                  <div className="h-12 w-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+                    <Dumbbell className="h-6 w-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-teal-100 text-teal-900 border border-teal-200/80">
                     Fitness & Yoga
                   </span>
                 </div>
@@ -1281,7 +1393,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Sample items preview */}
-                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                <div className="bg-teal-50/50 p-3.5 rounded-2xl border border-teal-100 space-y-2 text-xs">
                   <div className="flex justify-between items-center text-slate-700 font-medium">
                     <span className="font-bold">Monthly Unlimited Gym Access</span>
                     <span className="font-extrabold text-slate-900">₹1,800</span>
@@ -1295,15 +1407,15 @@ export default function HomePage() {
                     <span className="font-extrabold text-slate-900">₹2,200</span>
                   </div>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Plan duration comparison & benefits</li>
-                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Free trial class booking link</li>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-teal-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-teal-600 shrink-0" /> Plan duration comparison & benefits</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-teal-600 shrink-0" /> Free trial class booking link</li>
                 </ul>
               </div>
               <div className="pt-6">
                 <Link
                   href="/onboard?plan=pro"
-                  className="block w-full text-center py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-700 hover:text-white font-bold text-xs text-emerald-800 transition-colors"
+                  className="block w-full text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Create Gym Tariff Card →
                 </Link>
