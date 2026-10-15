@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { generateCSS, generateJS } from '../../admin_components/lib/htmlGenerator';
+import { generateCSS, generateJS } from '@/lib/htmlGenerator';
 
 // Inline SVG icons (same as htmlGenerator.ts)
 const SVG = {

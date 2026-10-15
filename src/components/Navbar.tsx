@@ -57,6 +57,9 @@ export default function Navbar() {
               <Home className="h-4 w-4 text-emerald-600" />
               <span>Home</span>
             </Link>
+            <Link href="/#industries" className="hover:text-emerald-700 transition-colors">
+              Industries
+            </Link>
             <Link href="/#features" className="hover:text-emerald-700 transition-colors">
               Features
             </Link>
@@ -146,6 +149,13 @@ export default function Navbar() {
               <span>6 Theme Demos</span>
             </Link>
             <Link
+              href="/#industries"
+              onClick={() => setIsOpen(false)}
+              className="block rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
+            >
+              Multi-Industry Service Cards
+            </Link>
+            <Link
               href="/#how-it-works"
               onClick={() => setIsOpen(false)}
               className="block rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
@@ -157,7 +167,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="block rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
             >
-              Pricing (Starts ₹99/mo)
+              Pricing (Starts ₹199/mo)
             </Link>
             <Link
               href="/#faq"

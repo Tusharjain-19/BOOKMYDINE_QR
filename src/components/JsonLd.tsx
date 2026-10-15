@@ -28,19 +28,23 @@ export const homepageFaqs = [
   },
   {
     q: "Is there a free plan or free trial?",
-    a: "We offer a completely free custom setup: our team designs your full digital menu at no cost before you pay anything. You review the live preview, and only subscribe if you're satisfied. Plans start at just ₹99 per month."
+    a: "We offer a completely free custom setup: our team designs your full digital menu or service rate card at no cost before you pay anything. You review the live preview on your phone, and only subscribe if you're satisfied. Plans start at just ₹199 per month."
   },
   {
     q: "How much does BookMyDine QR cost?",
-    a: "BookMyDine QR offers three plans: Starter at ₹99/month (basic digital menu + QR code), Growth at ₹199/month (photos, tags, 5 updates/month), and Premium at ₹499/month (unlimited updates, custom theme, dedicated manager). Annual billing saves 2 months free."
+    a: "BookMyDine QR offers two standard plans: Starter at ₹199/month and Pro at ₹499/month (both using our curated standard themes with no custom design), plus an Enterprise plan with 100% bespoke custom design, custom domain mapping, and multi-location management. Annual billing saves 2 months free (₹1,990/year for Starter and ₹4,990/year for Pro)."
   },
   {
-    q: "What types of restaurants can use BookMyDine QR?",
-    a: "BookMyDine QR works for all food service businesses including restaurants, cafes, coffee shops, hotels, resorts, bars, pubs, night clubs, cloud kitchens, bakeries, sweet shops, food courts, juice bars, ice cream parlours, fine dining, fast food outlets, and food trucks."
+    q: "Can BookMyDine QR make menus and service rate cards for different industries?",
+    a: "Yes! BookMyDine QR creates interactive digital QR cards for diverse industries including Salons & Spas (haircuts, facial treatments, bridal packages), Hotels & Resorts (in-room dining & room service amenities), Clinics & Dentists (consultation rates & health packages), Car Detailing & Garages (wash menus & detailing packages), Gyms & Yoga Studios (membership tiers), and Restaurants & Cloud Kitchens."
   },
   {
-    q: "Do my customers need to download an app to view the menu?",
-    a: "No app download is required. Customers simply scan the QR code with their phone camera, and the digital menu opens instantly in their mobile browser. It works on all smartphones: iPhone, Android, and tablets."
+    q: "What types of restaurants and businesses can use BookMyDine QR?",
+    a: "BookMyDine QR works for all food and service businesses including restaurants, cafes, coffee shops, hotels, resorts, bars, pubs, cloud kitchens, bakeries, sweet shops, salons, spas, dental clinics, auto detailing shops, and fitness centers."
+  },
+  {
+    q: "Do my customers need to download an app to view the menu or rate card?",
+    a: "No app download is required. Customers simply scan the QR code with their phone camera, and the digital menu or service card opens instantly in their mobile browser. It works on all smartphones: iPhone, Android, and tablets."
   },
   {
     q: "How do I get started with BookMyDine QR?",
@@ -180,32 +184,32 @@ export function SoftwareApplicationSchema() {
       {
         "@type": "Offer",
         name: "Starter Plan",
-        price: "99",
-        priceCurrency: "INR",
-        priceValidUntil: "2027-12-31",
-        availability: "https://schema.org/InStock",
-        description:
-          "Digital menu hosting, printable QR code, 1 menu update per month.",
-      },
-      {
-        "@type": "Offer",
-        name: "Growth Plan",
         price: "199",
         priceCurrency: "INR",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         description:
-          "Everything in Starter plus dish photos, veg/non-veg tags, up to 5 updates per month, priority WhatsApp support.",
+          "Standard themes (no custom design). Digital menu or service rate card hosting, printable QR code graphic, up to 100 items, 2 monthly WhatsApp updates.",
       },
       {
         "@type": "Offer",
-        name: "Premium Plan",
+        name: "Pro Plan",
         price: "499",
         priceCurrency: "INR",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         description:
-          "Everything in Growth plus unlimited updates, 100% custom theme design, dedicated account manager.",
+          "Standard themes (no custom design). Unlimited items, high-res photos, veg/non-veg tags, spice levels, instant search & filter, unlimited WhatsApp updates, priority support.",
+      },
+      {
+        "@type": "Offer",
+        name: "Enterprise Plan",
+        price: "Custom",
+        priceCurrency: "INR",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        description:
+          "100% bespoke custom design crafted to brand specifications, custom domain mapping (menu.yourbrand.com), multi-branch dashboard, dedicated VIP account manager, custom quote.",
       },
     ],
     aggregateRating: {
@@ -285,30 +289,14 @@ export function ServiceSchema() {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "BookMyDine QR Plans",
+      name: "BookMyDine QR Plans & Services",
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
             name: "Starter Plan",
-            description: "Digital menu hosting with printable QR code and 1 monthly update.",
-          },
-          price: "99",
-          priceCurrency: "INR",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: "99",
-            priceCurrency: "INR",
-            billingDuration: "P1M",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Growth Plan",
-            description: "Branded QR menu with dish photos, veg/non-veg tags, and 5 monthly updates.",
+            description: "Digital menu and service rate card hosting with printable QR code, standard themes (no custom design), and up to 100 items.",
           },
           price: "199",
           priceCurrency: "INR",
@@ -323,8 +311,8 @@ export function ServiceSchema() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Premium Plan",
-            description: "Unlimited updates with custom theme design and dedicated account manager.",
+            name: "Pro Plan",
+            description: "Unlimited items, high-res photos, veg/non-veg badges, spice indicators, and unlimited updates. Standard themes (no custom design).",
           },
           price: "499",
           priceCurrency: "INR",
@@ -334,6 +322,16 @@ export function ServiceSchema() {
             priceCurrency: "INR",
             billingDuration: "P1M",
           },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Enterprise Plan",
+            description: "100% bespoke custom design, custom domain mapping (menu.yourbrand.com), multi-branch centralized dashboard, and dedicated VIP account manager.",
+          },
+          price: "Custom",
+          priceCurrency: "INR",
         },
       ],
     },

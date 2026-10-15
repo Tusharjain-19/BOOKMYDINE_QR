@@ -12,6 +12,7 @@ import {
   Coffee,
   Flame,
   Wine,
+  Beer,
   Utensils
 } from "lucide-react";
 
@@ -1639,10 +1640,12 @@ export default function DigitalMenuPage() {
               </h1>
               <div className="flex flex-wrap justify-center gap-2 mt-6">
                 <span className="glass-card px-4 py-2 rounded-full flex items-center gap-2 font-label-caps text-[10px]">
-                  <span className="text-primary">🍺</span> Craft Brews
+                  <Beer className="h-3.5 w-3.5 text-primary shrink-0" />
+                  <span>Craft Brews</span>
                 </span>
                 <span className="glass-card px-4 py-2 rounded-full flex items-center gap-2 font-label-caps text-[10px]">
-                  <span className="text-primary">🍸</span> Cocktails
+                  <Wine className="h-3.5 w-3.5 text-primary shrink-0" />
+                  <span>Cocktails</span>
                 </span>
               </div>
             </div>

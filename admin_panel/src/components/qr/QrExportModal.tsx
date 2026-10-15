@@ -10,7 +10,8 @@ import {
   FileJson, 
   ShieldCheck,
   RefreshCw,
-  FileCode
+  FileCode,
+  Lock
 } from 'lucide-react';
 import type { MenuData } from '../../types/menu';
 import { generateSignedToken, getSignedMenuUrl } from '../../lib/tokenGenerator';
@@ -210,8 +211,9 @@ export const QrExportModal: React.FC<QrExportModalProps> = ({
                 <p className="text-[10px] font-mono bg-white p-2 rounded-lg border border-emerald-200 break-all text-slate-800">
                   {activeToken}
                 </p>
-                <p className="text-[10px] text-emerald-800">
-                  🔒 Direct URL access without this token returns <code className="font-bold">403 Forbidden</code>.
+                <p className="text-[10px] text-emerald-800 flex items-center gap-1">
+                  <Lock className="w-3 h-3 text-emerald-800 shrink-0" />
+                  <span>Direct URL access without this token returns <code className="font-bold">403 Forbidden</code>.</span>
                 </p>
               </div>
 

@@ -40,9 +40,9 @@ function IntakeFormContent() {
     address: "",
     mapsLink: "",
     instagramLink: "",
-    plan: "growth",
+    plan: "pro",
     billingCycle: "monthly",
-    planPrice: "₹199/month",
+    planPrice: "₹499/month",
     offerApplied: "Standard Monthly",
     theme: "minimal",
     brandColor: "#5d181b",
@@ -55,6 +55,10 @@ function IntakeFormContent() {
   });
 
   useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.title = "Free Setup Request | Digital Menus & Service Cards | BookMyDine QR";
+    }
+
     const plan = searchParams.get("plan");
     const cycle = searchParams.get("cycle");
     
@@ -62,7 +66,9 @@ function IntakeFormContent() {
     setBillingCycle(activeCycle);
 
     if (plan) {
-      const cleanPlan = plan.replace("_yearly", "");
+      let cleanPlan = plan.replace("_yearly", "").toLowerCase();
+      if (cleanPlan === "growth") cleanPlan = "pro";
+      if (cleanPlan === "premium") cleanPlan = "enterprise";
       setFormData(prev => ({ 
         ...prev, 
         plan: cleanPlan,
@@ -74,16 +80,17 @@ function IntakeFormContent() {
   }, [searchParams]);
 
   const getPlanPrice = (planName: string, cycle: string) => {
-    if (cycle === "yearly") {
-      if (planName === "starter") return "₹990/year (2 Months FREE - Save ₹198)";
-      if (planName === "growth") return "₹1,990/year (2 Months FREE - Save ₹398)";
-      if (planName === "premium") return "₹4,990/year (2 Months FREE - Save ₹998)";
-    } else {
-      if (planName === "starter") return "₹99/month";
-      if (planName === "growth") return "₹199/month";
-      if (planName === "premium") return "₹499/month";
+    if (planName === "enterprise") {
+      return "Custom Quote (100% Bespoke Custom Design)";
     }
-    return "₹199/month";
+    if (cycle === "yearly") {
+      if (planName === "starter") return "₹1,990/year (2 Months FREE - Save ₹398)";
+      if (planName === "pro" || planName === "growth") return "₹4,990/year (2 Months FREE - Save ₹998)";
+    } else {
+      if (planName === "starter") return "₹199/month";
+      if (planName === "pro" || planName === "growth") return "₹499/month";
+    }
+    return "₹499/month";
   };
 
   const handleCycleChange = (cycle: "monthly" | "yearly") => {
@@ -256,8 +263,8 @@ function IntakeFormContent() {
           <div className="bg-white rounded-3xl shadow-xl border border-stone-200/90 overflow-hidden">
             {/* Form Header Banner (Emerald SaaS Theme) */}
             <div className="bg-linear-to-r from-emerald-800 via-emerald-900 to-slate-900 p-8 text-white">
-              <h1 className="text-2xl font-extrabold">Restaurant Intake Form</h1>
-              <p className="text-emerald-100 text-sm mt-1">Let&apos;s build your premium digital menu together</p>
+              <h1 className="text-2xl font-extrabold">Digital Menu & Service Card Intake Form</h1>
+              <p className="text-emerald-100 text-sm mt-1">Let&apos;s build your contactless QR menu or interactive service rate card together</p>
 
               {/* Progress Stepper */}
               <div className="flex items-center justify-between mt-8 relative">
@@ -418,74 +425,69 @@ function IntakeFormContent() {
                               {formData.plan === "starter" && <CheckCircle2 className="h-4 w-4 text-emerald-700" />}
                             </div>
                             <span className="text-xl font-black text-slate-900">
-                              {billingCycle === "monthly" ? "₹99" : "₹990"}
+                              {billingCycle === "monthly" ? "₹199" : "₹1,990"}
                               <span className="text-xs font-semibold text-slate-400">
                                 {billingCycle === "monthly" ? "/mo" : "/yr"}
                               </span>
                             </span>
                             {billingCycle === "yearly" ? (
-                              <p className="text-[10px] font-bold text-emerald-700 mt-1">2 Months FREE (Save ₹198)</p>
+                              <p className="text-[10px] font-bold text-emerald-700 mt-1">2 Months FREE (Save ₹398)</p>
                             ) : (
-                              <p className="text-[11px] text-slate-500 mt-2 leading-tight">Digital menu + standard QR code.</p>
+                              <p className="text-[11px] text-slate-500 mt-2 leading-tight">Digital menu + QR code. Standard themes (no custom design).</p>
                             )}
                           </div>
                         </button>
 
-                        {/* Growth Card */}
+                        {/* Pro Card */}
                         <button
                           type="button"
-                          onClick={() => handlePlanSelect("growth")}
+                          onClick={() => handlePlanSelect("pro")}
                           className={`p-4 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
-                            formData.plan === "growth"
+                            formData.plan === "pro" || formData.plan === "growth"
                               ? "bg-emerald-700 border-emerald-700 text-white shadow-md ring-2 ring-emerald-600/30"
                               : "bg-white border-stone-200 text-slate-600 hover:border-stone-300"
                           }`}
                         >
                           <div>
                             <div className="flex justify-between items-center mb-1">
-                              <span className="font-bold text-sm">Growth</span>
-                              <span className={`text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full ${formData.plan === "growth" ? "bg-white text-emerald-900" : "bg-emerald-100 text-emerald-800"}`}>Popular</span>
+                              <span className="font-bold text-sm">Pro</span>
+                              <span className={`text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full ${formData.plan === "pro" || formData.plan === "growth" ? "bg-white text-emerald-900" : "bg-emerald-100 text-emerald-800"}`}>Popular</span>
                             </div>
-                            <span className={`text-xl font-black ${formData.plan === "growth" ? "text-white" : "text-slate-900"}`}>
-                              {billingCycle === "monthly" ? "₹199" : "₹1,990"}
-                              <span className={`text-xs font-semibold ${formData.plan === "growth" ? "text-emerald-100" : "text-slate-400"}`}>
+                            <span className={`text-xl font-black ${formData.plan === "pro" || formData.plan === "growth" ? "text-white" : "text-slate-900"}`}>
+                              {billingCycle === "monthly" ? "₹499" : "₹4,990"}
+                              <span className={`text-xs font-semibold ${formData.plan === "pro" || formData.plan === "growth" ? "text-emerald-100" : "text-slate-400"}`}>
                                 {billingCycle === "monthly" ? "/mo" : "/yr"}
                               </span>
                             </span>
                             {billingCycle === "yearly" ? (
-                              <p className={`text-[10px] font-bold mt-1 ${formData.plan === "growth" ? "text-amber-300" : "text-emerald-700"}`}>2 Months FREE (Save ₹398)</p>
+                              <p className={`text-[10px] font-bold mt-1 ${formData.plan === "pro" || formData.plan === "growth" ? "text-amber-300" : "text-emerald-700"}`}>2 Months FREE (Save ₹998)</p>
                             ) : (
-                              <p className={`text-[11px] mt-2 leading-tight ${formData.plan === "growth" ? "text-emerald-100" : "text-slate-500"}`}>Branded QR + up to 5 updates + photos.</p>
+                              <p className={`text-[11px] mt-2 leading-tight ${formData.plan === "pro" || formData.plan === "growth" ? "text-emerald-100" : "text-slate-500"}`}>Unlimited updates + photos + tags. Standard themes (no custom design).</p>
                             )}
                           </div>
                         </button>
 
-                        {/* Premium Card */}
+                        {/* Enterprise Card */}
                         <button
                           type="button"
-                          onClick={() => handlePlanSelect("premium")}
+                          onClick={() => handlePlanSelect("enterprise")}
                           className={`p-4 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
-                            formData.plan === "premium"
+                            formData.plan === "enterprise" || formData.plan === "premium"
                               ? "bg-slate-950 border-slate-900 text-white shadow-md ring-2 ring-slate-900/30"
                               : "bg-white border-stone-200 text-slate-600 hover:border-stone-300"
                           }`}
                         >
                           <div>
                             <div className="flex justify-between items-center mb-1">
-                              <span className="font-bold text-sm">Premium</span>
-                              {formData.plan === "premium" && <CheckCircle2 className="h-4 w-4 text-amber-400" />}
+                              <span className="font-bold text-sm">Enterprise</span>
+                              <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-400 text-slate-950">Bespoke</span>
                             </div>
-                            <span className={`text-xl font-black ${formData.plan === "premium" ? "text-white" : "text-slate-900"}`}>
-                              {billingCycle === "monthly" ? "₹499" : "₹4,990"}
-                              <span className={`text-xs font-semibold ${formData.plan === "premium" ? "text-slate-400" : "text-slate-400"}`}>
-                                {billingCycle === "monthly" ? "/mo" : "/yr"}
-                              </span>
+                            <span className={`text-xl font-black ${formData.plan === "enterprise" || formData.plan === "premium" ? "text-white" : "text-slate-900"}`}>
+                              Custom Quote
                             </span>
-                            {billingCycle === "yearly" ? (
-                              <p className="text-[10px] font-bold text-amber-400 mt-1">2 Months FREE (Save ₹998)</p>
-                            ) : (
-                              <p className={`text-[11px] mt-2 leading-tight ${formData.plan === "premium" ? "text-slate-300" : "text-slate-500"}`}>Unlimited updates + custom theme + manager.</p>
-                            )}
+                            <p className={`text-[11px] mt-2 leading-tight ${formData.plan === "enterprise" || formData.plan === "premium" ? "text-slate-300" : "text-slate-500"}`}>
+                              100% custom theme design, custom domain & multi-branch manager.
+                            </p>
                           </div>
                         </button>
                       </div>
@@ -498,13 +500,13 @@ function IntakeFormContent() {
                 <div className="space-y-6 animate-fadeIn">
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2 border-b border-stone-100 pb-2">
                     <Building2 className="h-5 w-5 text-emerald-700" />
-                    <span>Step 2: Restaurant Identity</span>
+                    <span>Step 2: Business & Venue Details</span>
                   </h2>
 
                   <div className="grid grid-cols-1 gap-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">Restaurant Name *</label>
+                        <label className="block text-sm font-semibold text-slate-700 mb-2">Business / Restaurant Name *</label>
                         <input
                           type="text"
                           name="restaurantName"
@@ -512,12 +514,12 @@ function IntakeFormContent() {
                           value={formData.restaurantName}
                           onChange={handleChange}
                           className="w-full rounded-xl border border-stone-200 px-4 py-3 text-slate-800 placeholder-slate-400 focus:border-emerald-600 focus:outline-none transition-colors"
-                          placeholder="e.g. Cafe Cozy"
+                          placeholder="e.g. Cafe Cozy or Glow Spa & Salon"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">Restaurant Type *</label>
+                        <label className="block text-sm font-semibold text-slate-700 mb-2">Industry / Category *</label>
                         <select
                           name="restaurantType"
                           value={formData.restaurantType}
@@ -525,10 +527,16 @@ function IntakeFormContent() {
                           className="w-full rounded-xl border border-stone-200 px-4 py-3 text-slate-800 focus:border-emerald-600 focus:outline-none transition-colors bg-white text-sm"
                         >
                           <option value="Cafe">Cafe & Bakery</option>
-                          <option value="QSR">Quick Service Restaurant (QSR)</option>
-                          <option value="Fine Dining">Fine Dining Restaurant</option>
-                          <option value="Street Food">Street Food / Stall</option>
-                          <option value="Cloud Kitchen">Cloud Kitchen</option>
+                          <option value="Restaurant">Restaurant & Dine-in</option>
+                          <option value="QSR">Quick Service Restaurant (QSR) / Food Stall</option>
+                          <option value="Fine Dining">Fine Dining, Bar & Lounge</option>
+                          <option value="Cloud Kitchen">Cloud Kitchen / Delivery Kitchen</option>
+                          <option value="Salon & Spa">Salon, Spa & Beauty Care (Service Rate Cards)</option>
+                          <option value="Hotel & Resort">Hotel, Resort & Homestay (In-Room Dining & Amenities)</option>
+                          <option value="Clinic & Healthcare">Clinic, Dental & Healthcare (Consultation Rate Cards)</option>
+                          <option value="Car Care & Garage">Car Detailing, Auto Care & Garage (Service Menus)</option>
+                          <option value="Gym & Fitness">Gym, Fitness Studio & Yoga (Membership Tariffs)</option>
+                          <option value="Retail & Events">Retail, Boutique & Event Exhibition (Catalog)</option>
                         </select>
                       </div>
                     </div>

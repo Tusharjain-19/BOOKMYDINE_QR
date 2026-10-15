@@ -165,7 +165,7 @@ export const cities: CityData[] = [
       },
       {
         q: "Is BookMyDine QR affordable for small Hyderabad eateries?",
-        a: "Our Starter plan at ₹99/month is designed for small restaurants, street food joints, and family eateries. That's less than the cost of printing 50 paper menus, and the digital menu never goes out of date.",
+        a: "Our Starter plan at ₹199/month is designed for small restaurants, street food joints, and family eateries. That's less than the cost of printing 50 paper menus, and the digital menu never goes out of date.",
       },
     ],
   },
@@ -193,7 +193,7 @@ export const cities: CityData[] = [
       },
       {
         q: "Can Pune's street food vendors use BookMyDine QR?",
-        a: "Yes! Even small food stalls and misal pav joints benefit from QR menus. Customers can view the full menu and pricing on their phones, reducing order confusion during busy hours. Our Starter plan at ₹99/month is perfect for budget-conscious vendors.",
+        a: "Yes! Even small food stalls and misal pav joints benefit from QR menus. Customers can view the full menu and pricing on their phones, reducing order confusion during busy hours. Our Starter plan at ₹199/month is perfect for budget-conscious vendors.",
       },
       {
         q: "Does BookMyDine QR serve the entire Pune metropolitan area?",
@@ -293,7 +293,7 @@ export const cities: CityData[] = [
       },
       {
         q: "How affordable is BookMyDine QR for small Ahmedabad food stalls?",
-        a: "Our Starter plan at ₹99/month is designed for small businesses. That's less than what most fafda-jalebi stalls spend on a single batch of printed menu cards. And the digital menu never needs reprinting.",
+        a: "Our Starter plan at ₹199/month is designed for small businesses. That's less than what most fafda-jalebi stalls spend on a single batch of printed menu cards. And the digital menu never needs reprinting.",
       },
     ],
   },

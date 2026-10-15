@@ -32,8 +32,8 @@ export const SmartInputModal: React.FC<SmartInputModalProps> = ({
   const [rawText, setRawText] = useState<string>(`OM SWEETS
 Authentic Taste of Gaya, Bihar
 
-📍 Tekari Road, Gaya, Bihar
-📞 +91 98765 43210
+Address: Tekari Road, Gaya, Bihar
+Phone: +91 98765 43210
 
 [SWEETS & DESSERTS]
 Gulab Jamun (2 pcs) ... ₹60 (Veg)
@@ -176,7 +176,7 @@ Raj Kachori ... ₹120 (Veg) (Chef Special)`);
         return;
       }
 
-      setExtractSuccess(`✓ Valid JSON! ${categories.length} Categories & ${totalDishes} Dishes loaded. Applying...`);
+      setExtractSuccess(`Valid JSON! ${categories.length} Categories & ${totalDishes} Dishes loaded. Applying...`);
 
       setTimeout(() => {
         onApplyImportedMenu(categories, themeDetails, restaurantDetails);

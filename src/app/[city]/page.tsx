@@ -38,12 +38,14 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   }
 
   return {
-    title: `Restaurant QR Menu in ${city.name} | #1 Digital Menu Software for ${city.name} Restaurants`,
-    description: `Get a professional contactless QR code menu for your restaurant in ${city.name}, ${city.state}. BookMyDine QR designs, hosts & manages digital menus for cafes, hotels & cloud kitchens. Free setup, live in 24h, starting ₹99/mo.`,
+    title: `${city.name} QR Menu & Rate Card Maker | BookMyDine QR`,
+    description: `Get a professional contactless QR code menu and service rate card for your restaurant or business in ${city.name}, ${city.state}. BookMyDine QR designs, hosts & manages digital menus for cafes, hotels, salons & local businesses. Free setup, live in 24h, starting ₹199/mo.`,
     keywords: [
       `restaurant QR menu ${city.name}`,
       `digital menu ${city.name}`,
       `QR code menu ${city.name}`,
+      `service rate card ${city.name}`,
+      `salon rate card QR ${city.name}`,
       `cafe QR menu ${city.name}`,
       `hotel menu software ${city.name}`,
       `food menu QR code ${city.name}`,
@@ -67,8 +69,8 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       canonical: `${SITE_URL}/${city.slug}`,
     },
     openGraph: {
-      title: `Restaurant QR Menu in ${city.name} | BookMyDine QR`,
-      description: `Done-for-you digital menu platform for restaurants in ${city.name}. 6 premium themes, free custom setup, starting at ₹99/month. Join restaurants in ${city.name} using BookMyDine QR.`,
+      title: `${city.name} QR Menu & Rate Card Maker | BookMyDine QR`,
+      description: `Done-for-you digital menu and rate card platform for restaurants and businesses in ${city.name}. 6 premium themes, free custom setup, starting at ₹199/month. Join establishments in ${city.name} using BookMyDine QR.`,
       url: `${SITE_URL}/${city.slug}`,
       siteName: "BookMyDine QR",
       locale: "en_IN",
@@ -114,25 +116,28 @@ export default async function CityPage({ params }: CityPageProps) {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: `QR Menu Plans for ${city.name} Restaurants`,
+      name: `QR Menu & Rate Card Plans for ${city.name} Establishments`,
       itemListElement: [
         {
           "@type": "Offer",
           name: "Starter Plan",
-          price: "99",
-          priceCurrency: "INR",
-        },
-        {
-          "@type": "Offer",
-          name: "Growth Plan",
           price: "199",
           priceCurrency: "INR",
+          description: "Standard themes (no custom design). Digital menu or rate card, printable QR code.",
         },
         {
           "@type": "Offer",
-          name: "Premium Plan",
+          name: "Pro Plan",
           price: "499",
           priceCurrency: "INR",
+          description: "Standard themes (no custom design). Unlimited items, photos, WhatsApp updates.",
+        },
+        {
+          "@type": "Offer",
+          name: "Enterprise Plan",
+          price: "Custom",
+          priceCurrency: "INR",
+          description: "100% bespoke custom design, custom domain, multi-branch support.",
         },
       ],
     },
@@ -317,7 +322,7 @@ export default async function CityPage({ params }: CityPageProps) {
               <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center">
                 <ShieldCheck className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-extrabold text-slate-900">Starting at ₹99/month</h3>
+              <h3 className="text-lg font-extrabold text-slate-900">Starting at ₹199/month</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 Affordable plans for every budget. Free setup, no lock-in contracts, cancel anytime. Pay only after you approve your digital menu.
               </p>

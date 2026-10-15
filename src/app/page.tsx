@@ -35,7 +35,14 @@ import {
   Wine,
   Store,
   ExternalLink,
-  Phone
+  Phone,
+  Scissors,
+  HeartPulse,
+  Car,
+  Dumbbell,
+  ShoppingBag,
+  Hotel,
+  X
 } from "lucide-react";
 
 export default function HomePage() {
@@ -44,7 +51,9 @@ export default function HomePage() {
   const [previewDevice, setPreviewDevice] = useState<"mobile" | "tablet">("tablet");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [iframeScrollPercent, setIframeScrollPercent] = useState(0);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const mobileIframeRef = useRef<HTMLIFrameElement>(null);
+  const desktopIframeRef = useRef<HTMLIFrameElement>(null);
+  const iframeRef = desktopIframeRef;
   const previewRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,14 +71,15 @@ export default function HomePage() {
 
   const handleSelectTheme = (themeId: string) => {
     setSelectedTheme(themeId);
-    if (typeof window !== "undefined" && window.innerWidth < 1024) {
-      previewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
   };
 
   const scrollIframe = (direction: "up" | "down") => {
-    if (iframeRef.current && iframeRef.current.contentWindow) {
-      iframeRef.current.contentWindow.postMessage({ type: "scroll", direction }, "*");
+    const isMobileScreen = typeof window !== "undefined" && window.innerWidth < 1024;
+    const targetWin = isMobileScreen
+      ? (mobileIframeRef.current?.contentWindow || desktopIframeRef.current?.contentWindow)
+      : (desktopIframeRef.current?.contentWindow || mobileIframeRef.current?.contentWindow);
+    if (targetWin) {
+      targetWin.postMessage({ type: "scroll", direction }, "*");
     }
   };
 
@@ -124,6 +134,7 @@ export default function HomePage() {
     }
   ];
 
+  const currentTheme = themesList.find((t) => t.id === selectedTheme) || themesList[0];
   const faqs = homepageFaqs;
 
   return (
@@ -466,137 +477,129 @@ export default function HomePage() {
             <p className="text-slate-600 text-sm">Every template is designed for maximum legibility and smartphone speed.</p>
           </div>
 
-          {/* Mobile-First Theme Deck (Designed exclusively for smartphones) */}
-          <div className="lg:hidden space-y-5">
-            {/* Horizontal Theme Selector Pills */}
-            <div className="flex overflow-x-auto gap-2 pb-1 no-scrollbar scroll-smooth">
-              {themesList.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  onClick={() => handleSelectTheme(t.id)}
-                  className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-extrabold transition-all shrink-0 flex items-center gap-2 border ${
-                    selectedTheme === t.id
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                      : "bg-white text-slate-700 border-stone-200 hover:bg-stone-50"
-                  }`}
-                >
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: t.colors[1] }}></span>
-                  <span>{t.name}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Selected Theme Feature Card */}
-            {(() => {
-              const currentTheme = themesList.find((t) => t.id === selectedTheme) || themesList[0];
-              return (
-                <div className="bg-white border-2 border-slate-900 rounded-3xl p-5 shadow-xl space-y-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <span className="inline-block text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-md mb-1.5 border border-emerald-300">
-                        {currentTheme.badge}
-                      </span>
-                      <h3 className="text-xl font-black text-slate-900">{currentTheme.name}</h3>
-                    </div>
-                    <div className="flex items-center gap-1.5 pt-1">
-                      {currentTheme.colors.map((hex, cIdx) => (
-                        <span 
-                          key={cIdx} 
-                          className="h-4 w-4 rounded-full border border-black/10 shadow-xs" 
-                          style={{ backgroundColor: hex }}
-                          title={hex}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    {currentTheme.description}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-2 pt-1 text-[11px] text-slate-600 bg-stone-50 p-3 rounded-2xl border border-stone-200/70">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                      <span>Veg/Non-Veg Badges</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                      <span>Bestseller Tags</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                      <span>Category Navigation</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                      <span>Instant 1s Phone Load</span>
-                    </div>
-                  </div>
-
-                  {/* Actions for Mobile */}
-                  <div className="space-y-2 pt-1">
-                    <Link
-                      href={`/menu/${currentTheme.slug}`}
-                      target="_blank"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm shadow-md transition-all active:scale-98"
-                    >
-                      <Smartphone className="h-4 w-4 text-emerald-400" />
-                      <span>Open Live {currentTheme.name} Demo</span>
-                      <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-                    </Link>
-                    <Link
-                      href={`/onboard?theme=${currentTheme.id}`}
-                      className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold text-xs transition-all text-center"
-                    >
-                      <span>Choose This Theme for My Menu</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* Quick 2-Column Theme Switch Grid on Mobile */}
-            <div className="space-y-2 pt-1">
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 block">
-                Tap Any Theme to Switch Preview:
-              </span>
+          {/* ============================================================== */}
+          {/* MOBILE VIEW (Exclusively for Mobile / Small Screens < lg)     */}
+          {/* Real Interactive Phone Preview with 2-in-1-line Theme Switcher*/}
+          {/* ============================================================== */}
+          <div className="lg:hidden flex flex-col items-center gap-5">
+            {/* Theme Switcher Nav Grid: 2 per line, 3 lines total. NO horizontal scroll! */}
+            <div className="w-full space-y-2">
+              <div className="flex items-center justify-between px-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+                  Tap Theme to Preview Live:
+                </span>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 border border-emerald-300">
+                  {currentTheme.badge}
+                </span>
+              </div>
               <div className="grid grid-cols-2 gap-2">
-                {themesList.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => handleSelectTheme(t.id)}
-                    className={`p-3 rounded-2xl text-left border transition-all ${
-                      selectedTheme === t.id
-                        ? "bg-slate-900 text-white border-slate-900 shadow-sm"
-                        : "bg-white text-slate-800 border-stone-200 hover:bg-stone-50"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className={`text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded ${
-                        selectedTheme === t.id ? "bg-emerald-500 text-slate-950 font-black" : "bg-stone-100 text-slate-600"
-                      }`}>
-                        {t.badge}
-                      </span>
-                    </div>
-                    <div className="text-xs font-black truncate">{t.name}</div>
-                  </button>
-                ))}
+                {themesList.map((t) => {
+                  const isSelected = selectedTheme === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => setSelectedTheme(t.id)}
+                      className={`p-2.5 sm:p-3 rounded-2xl text-left border transition-all flex items-center justify-between gap-1.5 active:scale-[0.98] ${
+                        isSelected
+                          ? "bg-slate-900 text-white border-slate-900 shadow-md ring-2 ring-emerald-500/50"
+                          : "bg-white text-slate-800 border-stone-200/90 hover:bg-stone-50"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span
+                          className="h-2.5 w-2.5 rounded-full shrink-0 border border-black/10 shadow-xs"
+                          style={{ backgroundColor: t.colors[1] }}
+                        />
+                        <span className="text-xs font-black truncate">{t.name}</span>
+                      </div>
+                      {isSelected && (
+                        <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0 stroke-[3]" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
+
+            {/* Real Interactive Phone Preview Frame */}
+            <div className="w-full flex flex-col items-center gap-3.5 p-4 bg-[#fafaf8] border border-stone-200/80 rounded-3xl shadow-xs">
+              {/* Toolbar: Scroll Up/Down & Fullscreen Link */}
+              <div className="flex items-center justify-between w-full max-w-[320px]">
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => scrollIframe("up")}
+                    className="p-2 bg-white border border-stone-200 rounded-xl hover:bg-stone-50 active:scale-95 shadow-2xs text-slate-700 flex items-center justify-center transition-all"
+                    title="Scroll Up"
+                  >
+                    <ChevronUp className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollIframe("down")}
+                    className="p-2 bg-white border border-stone-200 rounded-xl hover:bg-stone-50 active:scale-95 shadow-2xs text-slate-700 flex items-center justify-center transition-all"
+                    title="Scroll Down"
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                  </button>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider pl-1">
+                    Live Phone Demo
+                  </span>
+                </div>
+
+                <Link
+                  href={`/menu/${currentTheme.slug}`}
+                  target="_blank"
+                  className="inline-flex items-center gap-1 text-[11px] font-extrabold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 px-2.5 py-1.5 rounded-xl transition-all"
+                >
+                  <span>Open Full</span>
+                  <ExternalLink className="h-3 w-3" />
+                </Link>
+              </div>
+
+              {/* Phone Frame Mockup with Live Iframe */}
+              <div className="relative w-full max-w-[320px] aspect-9/18.5 rounded-[40px] border-10 border-slate-900 bg-white shadow-2xl overflow-hidden shrink-0">
+                {/* Speaker Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-900 rounded-b-2xl z-50 flex items-center justify-center pointer-events-none">
+                  <div className="w-10 h-1 bg-zinc-800 rounded-full mb-1" />
+                </div>
+                
+                <iframe
+                  ref={mobileIframeRef}
+                  src={`/menu/${currentTheme.slug}`}
+                  loading="lazy"
+                  className="w-full h-full border-none pt-6"
+                  title="Live Digital Menu Real Mobile Preview"
+                />
+              </div>
+
+              {/* Action Button: Choose This Theme */}
+              <div className="w-full max-w-[320px] pt-1">
+                <Link
+                  href={`/onboard?theme=${selectedTheme}`}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-md transition-all active:scale-98"
+                >
+                  <span>Select {currentTheme.name}</span>
+                  <ArrowRight className="h-3.5 w-3.5 text-emerald-400" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Note: All other duplicate theme cards/lists are strictly omitted from mobile */}
           </div>
 
-          {/* Desktop Studio Mockup Workbench (Designed for Laptops & Desktops) */}
+          {/* ============================================================== */}
+          {/* DESKTOP STUDIO WORKBENCH (Exclusively for lg+ screens)         */}
+          {/* ============================================================== */}
           <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
-            {/* Detailed Theme Selection Cards (Desktop List) */}
+            {/* Left 5 cols: Detailed Theme Selection Cards */}
             <div className="lg:col-span-5 space-y-3 w-full">
-              <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2 hidden">All 6 Available Themes</h3>
+              <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">Select Theme to Preview</h3>
               {themesList.map((t) => (
                 <div
                   key={t.id}
-                  onClick={() => handleSelectTheme(t.id)}
+                  onClick={() => setSelectedTheme(t.id)}
                   className={`w-full text-left p-4 sm:p-5 rounded-2xl border-2 transition-all flex flex-col justify-between gap-3 group relative cursor-pointer ${
                     selectedTheme === t.id
                       ? "bg-slate-900 text-white border-slate-900 shadow-xl ring-4 ring-slate-900/10"
@@ -663,32 +666,9 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Display Mockup Frame (With Quick Mobile Selector Bar) */}
+            {/* Right 7 cols: Sticky Display Mockup Workbench */}
             <div ref={previewRef} className="lg:col-span-7 flex flex-col items-center gap-4 p-4 sm:p-6 bg-[#fafaf8] border border-stone-200/80 rounded-3xl w-full lg:sticky lg:top-24">
-              
-              {/* Quick Horizontal Mobile Theme Picker Bar */}
-              <div className="w-full lg:hidden space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 block text-center">Tap Theme to Preview Live</span>
-                <div className="flex overflow-x-auto gap-2 pb-2 no-scrollbar scroll-smooth">
-                  {themesList.map((t) => (
-                    <button
-                      key={t.id}
-                      type="button"
-                      onClick={() => handleSelectTheme(t.id)}
-                      className={`whitespace-nowrap px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all shrink-0 flex items-center gap-2 border ${
-                        selectedTheme === t.id
-                          ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                          : "bg-white text-slate-700 border-stone-200 hover:bg-stone-50"
-                      }`}
-                    >
-                      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: t.colors[1] }}></span>
-                      <span>{t.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* View Switcher Controls */}
+              {/* View Switcher Controls (Desktop) */}
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <div className="flex gap-2 bg-stone-100 p-1 rounded-xl border border-stone-200 shadow-inner">
                   <button
@@ -718,12 +698,12 @@ export default function HomePage() {
                 </div>
 
                 <Link
-                  href={`/menu/${(themesList.find((t) => t.id === selectedTheme) || themesList[0]).slug}`}
+                  href={`/menu/${currentTheme.slug}`}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 transition-all shadow-2xs"
                 >
                   <ExternalLink className="h-3.5 w-3.5" />
-                  <span>Open {(themesList.find((t) => t.id === selectedTheme) || themesList[0]).name} Demo</span>
+                  <span>Open {currentTheme.name} Demo</span>
                 </Link>
               </div>
 
@@ -761,18 +741,11 @@ export default function HomePage() {
                   )}
                   
                   <iframe 
-                    ref={iframeRef}
-                    src={`/menu/${
-                      selectedTheme === "minimal" ? "cafe-cozy" :
-                      selectedTheme === "luxury" ? "l-orangerie" :
-                      selectedTheme === "traditional" ? "tandoori-palace" :
-                      selectedTheme === "modern" ? "komorebi-bistro" :
-                      selectedTheme === "street" ? "street-express" :
-                      "neon-taproom"
-                    }`}
+                    ref={desktopIframeRef}
+                    src={`/menu/${currentTheme.slug}`}
                     loading="lazy"
                     className={`w-full h-full border-none ${previewDevice === "mobile" ? "pt-6" : "pt-0"}`}
-                    title="Live Digital Menu Preview"
+                    title="Live Digital Menu Desktop Workbench Preview"
                   />
                 </div>
 
@@ -788,7 +761,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* All 6 Themes Direct Interactive Crawlable Links */}
+              {/* Direct Crawlable Links for All 6 Themes */}
               <div className="w-full pt-4 border-t border-stone-200/80 text-center space-y-2">
                 <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 block">
                   Browse All Live Menu Theme Demos
@@ -856,7 +829,7 @@ export default function HomePage() {
             {billingCycle === "yearly" && (
               <div className="inline-flex items-center gap-2 text-xs font-extrabold text-emerald-950 bg-emerald-100 border border-emerald-300/90 px-4 py-2 rounded-full shadow-xs animate-fadeIn">
                 <Sparkles className="h-4 w-4 text-emerald-600 shrink-0" />
-                <span>🎉 Annual Offer Unlocked: Pay for 10 Months & Get 12 Months Access (2 Months FREE)!</span>
+                <span>Annual Offer Unlocked: Pay for 10 Months & Get 12 Months Access (2 Months FREE)!</span>
               </div>
             )}
           </div>
@@ -868,48 +841,10 @@ export default function HomePage() {
               className="bg-white border border-stone-200 hover:border-emerald-500 p-8 rounded-3xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all text-left"
             >
               <div className="space-y-4">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Starter</span>
-                <div className="space-y-1">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-black text-slate-900">
-                      {billingCycle === "monthly" ? "₹99" : "₹990"}
-                    </span>
-                    <span className="text-xs font-semibold text-slate-500">
-                      {billingCycle === "monthly" ? "/month" : "/year"}
-                    </span>
-                  </div>
-                  {billingCycle === "yearly" ? (
-                    <p className="text-[11px] font-bold text-emerald-700">
-                      Equivalent to ~₹82/month • <span className="underline">Save ₹198/year</span>
-                    </p>
-                  ) : (
-                    <p className="text-[11px] text-slate-400">Billed monthly • Cancel anytime</p>
-                  )}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Starter Plan</span>
+                  <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-stone-100 text-stone-600">Standard Theme</span>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed pt-2">Perfect for small cafes, juice centers, and food stalls.</p>
-                <ul className="space-y-2.5 text-xs text-slate-700 pt-4 border-t border-stone-100">
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Digital menu hosting</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Printable custom QR code</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> 1 Menu update per month</li>
-                </ul>
-              </div>
-              <div className="pt-6">
-                <span className="block w-full text-center py-3 rounded-xl bg-stone-100 hover:bg-emerald-600 hover:text-white font-bold text-xs text-slate-800 transition-colors">
-                  Choose Starter ({billingCycle === "yearly" ? "2 Months Free" : "Monthly"})
-                </span>
-              </div>
-            </Link>
-
-            {/* Growth Plan */}
-            <Link
-              href={`/onboard?plan=growth&cycle=${billingCycle}`}
-              className="bg-white border-2 border-emerald-600 p-8 rounded-3xl flex flex-col justify-between shadow-md relative text-left"
-            >
-              <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-emerald-600 text-white text-[10px] font-extrabold uppercase px-3 py-0.5 rounded-full">
-                Most Popular
-              </div>
-              <div className="space-y-4">
-                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Growth</span>
                 <div className="space-y-1">
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-black text-slate-900">
@@ -927,31 +862,37 @@ export default function HomePage() {
                     <p className="text-[11px] text-slate-400">Billed monthly • Cancel anytime</p>
                   )}
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed pt-2">For active restaurants and busy diners.</p>
-                <ul className="space-y-2.5 text-xs text-slate-700 pt-4 border-t border-stone-100">
-                  <li className="flex items-center gap-2 font-bold text-slate-900"><Check className="h-4 w-4 text-emerald-600" /> Everything in Starter</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Up to 5 updates per month</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Dish photos & veg/non-veg tags</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Priority WhatsApp support</li>
+                <p className="text-xs text-slate-600 leading-relaxed pt-2">
+                  Perfect for cafes, food stalls, juice bars & small local service shops.
+                </p>
+                <ul className="space-y-2.5 text-xs text-slate-700 pt-3 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Digital menu / service card hosting</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Printable custom QR stand graphic</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Up to 100 items & categories</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> 2 Menu updates per month via WhatsApp</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Fast mobile browser load (no app needed)</li>
                 </ul>
               </div>
               <div className="pt-6">
-                <span className="block w-full text-center py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 font-bold text-xs text-white shadow-sm transition-colors">
-                  Choose Growth ({billingCycle === "yearly" ? "2 Months Free" : "Monthly"})
+                <span className="block w-full text-center py-3 rounded-xl bg-stone-100 hover:bg-emerald-600 hover:text-white font-bold text-xs text-slate-800 transition-colors">
+                  Choose Starter ({billingCycle === "yearly" ? "2 Months Free" : "Monthly"})
                 </span>
               </div>
             </Link>
 
-            {/* Premium Plan */}
+            {/* Pro Plan */}
             <Link
-              href={`/onboard?plan=premium&cycle=${billingCycle}`}
-              className="bg-white border-2 border-slate-900 p-8 rounded-3xl flex flex-col justify-between shadow-md hover:shadow-lg transition-all text-left relative"
+              href={`/onboard?plan=pro&cycle=${billingCycle}`}
+              className="bg-white border-2 border-emerald-600 p-8 rounded-3xl flex flex-col justify-between shadow-md relative text-left"
             >
-              <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-slate-900 text-amber-300 text-[10px] font-extrabold uppercase px-3 py-0.5 rounded-full shadow-xs flex items-center gap-1">
-                <Sparkles className="h-3 w-3 text-amber-400" /> VIP All-Inclusive
+              <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-emerald-600 text-white text-[10px] font-extrabold uppercase px-3 py-0.5 rounded-full shadow-xs">
+                Most Popular
               </div>
               <div className="space-y-4">
-                <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Premium</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Pro Plan</span>
+                  <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800">All Themes</span>
+                </div>
                 <div className="space-y-1">
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-black text-slate-900">
@@ -969,17 +910,66 @@ export default function HomePage() {
                     <p className="text-[11px] text-slate-400">Billed monthly • Cancel anytime</p>
                   )}
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed pt-2">For fine dining brands needing bespoke layouts.</p>
-                <ul className="space-y-2.5 text-xs text-slate-700 pt-4 border-t border-stone-100">
-                  <li className="flex items-center gap-2 font-bold text-slate-900"><Check className="h-4 w-4 text-emerald-600" /> Everything in Growth</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Unlimited menu updates</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> 100% custom theme design</li>
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600" /> Dedicated account manager</li>
+                <p className="text-xs text-slate-600 leading-relaxed pt-2">
+                  For busy restaurants, salons, clinics & active service businesses.
+                </p>
+                <ul className="space-y-2.5 text-xs text-slate-700 pt-3 border-t border-stone-100">
+                  <li className="flex items-center gap-2 font-bold text-slate-900"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Everything in Starter</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Unlimited items & categories</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> High-res dish & service photos</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Veg/non-veg, spice & bestseller badges</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Instant live search & category filtering</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Unlimited menu updates via WhatsApp</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Priority WhatsApp VIP support</li>
                 </ul>
               </div>
               <div className="pt-6">
-                <span className="block w-full text-center py-3 rounded-xl bg-slate-900 hover:bg-slate-800 font-bold text-xs text-white shadow-sm transition-colors">
-                  Choose Premium ({billingCycle === "yearly" ? "2 Months Free" : "Monthly"})
+                <span className="block w-full text-center py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 font-bold text-xs text-white shadow-sm transition-colors">
+                  Choose Pro ({billingCycle === "yearly" ? "2 Months Free" : "Monthly"})
+                </span>
+              </div>
+            </Link>
+
+            {/* Enterprise Plan (Custom & Bespoke) */}
+            <Link
+              href="/onboard?plan=enterprise"
+              className="bg-white border-2 border-slate-950 p-8 rounded-3xl flex flex-col justify-between shadow-md hover:shadow-xl transition-all text-left relative"
+            >
+              <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-slate-950 text-amber-300 text-[10px] font-extrabold uppercase px-3 py-0.5 rounded-full shadow-xs flex items-center gap-1">
+                <Sparkles className="h-3 w-3 text-amber-400" /> 100% Bespoke Design
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Enterprise Plan</span>
+                  <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-amber-100 text-amber-900">Custom Quote</span>
+                </div>
+                <div className="space-y-1">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-black text-slate-900">Custom</span>
+                    <span className="text-xs font-semibold text-slate-500">Quote</span>
+                  </div>
+                  <p className="text-[11px] font-bold text-emerald-700">Volume & Multi-Branch Discount Available</p>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed pt-2">
+                  For hotel chains, luxury salon & spa franchises, multi-branch hospitals & enterprises.
+                </p>
+                <div className="py-2 px-3 rounded-xl bg-emerald-50 border border-emerald-300 text-[11px] font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <Sparkles className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                  <span>100% Bespoke Custom Design & Tailored UI</span>
+                </div>
+                <ul className="space-y-2.5 text-xs text-slate-700 pt-3 border-t border-stone-100">
+                  <li className="flex items-center gap-2 font-bold text-slate-900"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> 100% Tailored UI to your brand guide</li>
+                  <li className="flex items-center gap-2 font-bold text-slate-900"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Custom Domain (menu.yourbrand.com)</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Multi-branch centralized management</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Multi-industry rate cards & service cards</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Acrylic table stand print deliverables</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> Dedicated Senior Account Manager</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600 shrink-0" /> 24/7 VIP Phone Support & 99.99% SLA</li>
+                </ul>
+              </div>
+              <div className="pt-6">
+                <span className="block w-full text-center py-3 rounded-xl bg-slate-950 hover:bg-slate-800 font-bold text-xs text-white shadow-sm transition-colors">
+                  Get Enterprise Custom Quote
                 </span>
               </div>
             </Link>
@@ -1007,44 +997,349 @@ export default function HomePage() {
               The platform is designed for restaurants, cafes, hotels, resorts, bars, pubs, cloud kitchens, bakeries, sweet shops, food courts, juice bars, ice cream parlours, fine dining establishments, fast food outlets, and food trucks. Each digital menu is hosted on our high-speed CDN, loads in under 1 second, and requires zero app downloads for your guests; they simply scan a QR code with their phone camera and view your menu instantly.
             </p>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              BookMyDine QR includes 6 professionally designed themes, printable QR table stand graphics, veg and non-veg indicator badges, bestseller tags, search and category filtering, and WhatsApp-based menu update support. Plans start at ₹99 per month with free custom setup and no lock-in contracts.
+              BookMyDine QR includes 6 professionally designed themes, printable QR table stand graphics, veg and non-veg indicator badges, bestseller tags, search and category filtering, and WhatsApp-based menu update support. Plans start at ₹199 per month with free custom setup and no lock-in contracts.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Who Should Use BookMyDine QR? | Industry Grid */}
-      <section className="py-16 sm:py-20 bg-linear-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
+      {/* Multi-Industry Showcase: Menus & Service Cards for Different Companies & Industries */}
+      <section id="industries" className="py-16 sm:py-24 bg-linear-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
             <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200">
-              <Utensils className="h-3.5 w-3.5 text-emerald-600" /> Industries We Serve
+              <Sparkles className="h-3.5 w-3.5 text-emerald-600" /> Multi-Industry QR Solutions
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Who Should Use BookMyDine QR?</h2>
-            <p className="text-slate-600 text-sm">Our platform serves every type of food establishment in India</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
+              Digital Menus & Interactive Service Cards for Every Industry
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Not just for food! We craft mobile-optimized digital menus, interactive service rate cards, and product catalogs tailored to the exact workflow of your company or business.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[
-              { name: "Restaurants", desc: "Family, casual, and multi-cuisine dining", icon: UtensilsCrossed },
-              { name: "Cafes & Bakeries", desc: "Coffee shops, patisseries, and tea lounges", icon: Coffee },
-              { name: "Hotels & Resorts", desc: "In-room dining, poolside, and lobby menus", icon: Building2 },
-              { name: "Bars & Pubs", desc: "Cocktail menus, drinks lists, and night lounges", icon: Wine },
-              { name: "Cloud Kitchens", desc: "Virtual restaurants and delivery-only brands", icon: Store },
-              { name: "Fine Dining", desc: "Upscale tasting menus and wine pairings", icon: Sparkles },
-              { name: "Fast Food & QSR", desc: "Quick service, burgers, pizza, and wraps", icon: Zap },
-              { name: "Food Trucks", desc: "Mobile vendors, pop-ups, and street food", icon: Truck },
-              { name: "Sweet Shops", desc: "Mithai, desserts, and bakery outlets", icon: IceCreamCone },
-              { name: "Food Courts", desc: "Multi-vendor spaces and mall food zones", icon: Utensils },
-            ].map((industry) => (
-              <div key={industry.name} className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200/80 text-center hover:border-emerald-500 transition-all hover:shadow-md hover:-translate-y-1 space-y-2">
-                <div className="h-10 w-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mx-auto">
-                  <industry.icon className="h-5 w-5 text-emerald-700" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Industry 1: Restaurants & Cafes */}
+            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="h-12 w-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                    <UtensilsCrossed className="h-6 w-6 text-emerald-700" />
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                    Food & Dining
+                  </span>
                 </div>
-                <h3 className="text-xs sm:text-sm font-bold text-slate-900">{industry.name}</h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 leading-tight">{industry.desc}</p>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Restaurants, Cafes & Cloud Kitchens</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Interactive digital food & drink menus with dietary badges, ingredient notes, and live category filters.
+                  </p>
+                </div>
+                {/* Sample items preview */}
+                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="flex items-center gap-1.5 font-bold">
+                      <span className="h-2 w-2 rounded-full bg-emerald-600"></span>
+                      Paneer Butter Masala
+                    </span>
+                    <span className="font-extrabold text-slate-900">₹320</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="flex items-center gap-1.5 font-bold">
+                      <span className="h-2 w-2 rounded-full bg-amber-500"></span>
+                      Artisanal Cold Brew
+                    </span>
+                    <span className="font-extrabold text-slate-900">₹180</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="flex items-center gap-1.5 font-bold">
+                      <span className="h-2 w-2 rounded-full bg-red-600"></span>
+                      Dum Biryani Combo
+                    </span>
+                    <span className="font-extrabold text-slate-900">₹360</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Veg, Non-Veg, Spicy & Bestseller Tags</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Fast Search & Real-Time Price Changes</li>
+                </ul>
               </div>
-            ))}
+              <div className="pt-6">
+                <Link
+                  href="/onboard?plan=pro"
+                  className="block w-full text-center py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-700 hover:text-white font-bold text-xs text-emerald-800 transition-colors"
+                >
+                  Create Restaurant Menu →
+                </Link>
+              </div>
+            </div>
+
+            {/* Industry 2: Salons & Spas */}
+            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="h-12 w-12 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold">
+                    <Scissors className="h-6 w-6 text-purple-700" />
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-purple-100 text-purple-800">
+                    Beauty & Spa
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Salons, Spas & Beauty Parlours</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Digital service rate cards displaying haircut packages, skin therapies, bridal tariffs, and treatment durations.
+                  </p>
+                </div>
+                {/* Sample items preview */}
+                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Advanced Keratin Treatment (60m)</span>
+                    <span className="font-extrabold text-slate-900">₹3,499</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Hydra-Glow Facial (45m)</span>
+                    <span className="font-extrabold text-slate-900">₹1,899</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Royal Bridal Package</span>
+                    <span className="font-extrabold text-slate-900">₹8,999</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Service duration & procedure highlights</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> 1-Click WhatsApp appointment booking</li>
+                </ul>
+              </div>
+              <div className="pt-6">
+                <Link
+                  href="/onboard?plan=pro"
+                  className="block w-full text-center py-2.5 rounded-xl bg-purple-50 hover:bg-purple-700 hover:text-white font-bold text-xs text-purple-800 transition-colors"
+                >
+                  Create Salon Rate Card →
+                </Link>
+              </div>
+            </div>
+
+            {/* Industry 3: Hotels & Resorts */}
+            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="h-12 w-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+                    <Hotel className="h-6 w-6 text-amber-700" />
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">
+                    Hospitality
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Hotels, Resorts & Homestays</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Bedside QR stands for in-room dining, room service amenities, spa appointments, and local excursion tariffs.
+                  </p>
+                </div>
+                {/* Sample items preview */}
+                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">In-Room Dining Gourmet Dinner</span>
+                    <span className="font-extrabold text-slate-900">₹650</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Ayurvedic Full-Body Therapy (60m)</span>
+                    <span className="font-extrabold text-slate-900">₹2,200</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Airport Transfer (Sedan)</span>
+                    <span className="font-extrabold text-slate-900">₹1,200</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> 24/7 Room service & laundry rate card</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> WiFi login & front-desk WhatsApp link</li>
+                </ul>
+              </div>
+              <div className="pt-6">
+                <Link
+                  href="/onboard?plan=pro"
+                  className="block w-full text-center py-2.5 rounded-xl bg-amber-50 hover:bg-amber-700 hover:text-white font-bold text-xs text-amber-900 transition-colors"
+                >
+                  Create Hotel Room Card →
+                </Link>
+              </div>
+            </div>
+
+            {/* Industry 4: Clinics & Healthcare */}
+            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="h-12 w-12 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold">
+                    <HeartPulse className="h-6 w-6 text-blue-700" />
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">
+                    Healthcare
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Clinics, Dentists & Healthcare</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Transparent consultation rate cards, diagnostic checkup packages, dental procedures, and treatment costs.
+                  </p>
+                </div>
+                {/* Sample items preview */}
+                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Specialist Doctor Consultation</span>
+                    <span className="font-extrabold text-slate-900">₹600</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Ultrasonic Teeth Cleaning & Polish</span>
+                    <span className="font-extrabold text-slate-900">₹1,200</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Executive Full Body Health Package</span>
+                    <span className="font-extrabold text-slate-900">₹2,499</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Transparent pricing builds patient trust</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> WhatsApp slot booking & OPD hours</li>
+                </ul>
+              </div>
+              <div className="pt-6">
+                <Link
+                  href="/onboard?plan=pro"
+                  className="block w-full text-center py-2.5 rounded-xl bg-blue-50 hover:bg-blue-700 hover:text-white font-bold text-xs text-blue-800 transition-colors"
+                >
+                  Create Clinic Rate Card →
+                </Link>
+              </div>
+            </div>
+
+            {/* Industry 5: Car Detailing & Garages */}
+            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="h-12 w-12 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center font-bold">
+                    <Car className="h-6 w-6 text-rose-700" />
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-rose-100 text-rose-800">
+                    Automotive
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Car Detailing, Auto Care & Garages</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Wash menus, ceramic coating tiers, interior detailing packages, and periodic maintenance checklists.
+                  </p>
+                </div>
+                {/* Sample items preview */}
+                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Deep Snow Foam Wash & Wax</span>
+                    <span className="font-extrabold text-slate-900">₹499</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">9H Ceramic Shield (3-Year Warranty)</span>
+                    <span className="font-extrabold text-slate-900">₹12,999</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Complete AC Disinfection & Service</span>
+                    <span className="font-extrabold text-slate-900">₹1,499</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Hatchback/Sedan/SUV tier pricing</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Service package checklist inclusions</li>
+                </ul>
+              </div>
+              <div className="pt-6">
+                <Link
+                  href="/onboard?plan=pro"
+                  className="block w-full text-center py-2.5 rounded-xl bg-rose-50 hover:bg-rose-700 hover:text-white font-bold text-xs text-rose-800 transition-colors"
+                >
+                  Create Auto Service Menu →
+                </Link>
+              </div>
+            </div>
+
+            {/* Industry 6: Gyms, Fitness & Yoga */}
+            <div className="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="h-12 w-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                    <Dumbbell className="h-6 w-6 text-emerald-700" />
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                    Fitness & Yoga
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Gyms, Fitness Studios & CrossFit</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Membership tier comparisons, personal trainer fees, Zumba/Yoga batch schedules, and seasonal gym offers.
+                  </p>
+                </div>
+                {/* Sample items preview */}
+                <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 space-y-2 text-xs">
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Monthly Unlimited Gym Access</span>
+                    <span className="font-extrabold text-slate-900">₹1,800</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">1-on-1 Personal Trainer (12 Sessions)</span>
+                    <span className="font-extrabold text-slate-900">₹6,000</span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-700 font-medium">
+                    <span className="font-bold">Weekend Ashtanga Yoga Batch</span>
+                    <span className="font-extrabold text-slate-900">₹2,200</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-stone-100">
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Plan duration comparison & benefits</li>
+                  <li className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" /> Free trial class booking link</li>
+                </ul>
+              </div>
+              <div className="pt-6">
+                <Link
+                  href="/onboard?plan=pro"
+                  className="block w-full text-center py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-700 hover:text-white font-bold text-xs text-emerald-800 transition-colors"
+                >
+                  Create Gym Tariff Card →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Custom Industry Callout Banner */}
+          <div className="mt-12 bg-linear-to-r from-emerald-900 via-slate-900 to-emerald-950 p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-300/30 px-3 py-1 rounded-full">
+                <Sparkles className="h-3.5 w-3.5 text-amber-400" /> Custom Industry or Company?
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black">Need a Bespoke QR Card for Your Industry?</h3>
+              <p className="text-emerald-100 text-xs sm:text-sm max-w-xl">
+                Whether you run an event management firm, jewellery boutique, pet grooming center, or healthcare chain, our team will custom design and host your interactive digital rate card within 24 hours.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <Link
+                href="/onboard?plan=enterprise"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 hover:bg-amber-300 px-6 py-3.5 text-xs font-black text-slate-950 shadow-md transition-all"
+              >
+                <span>Get Bespoke Custom Setup</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a
+                href="https://wa.me/918005737183?text=Hi,%20I%20need%20a%20digital%20menu%20or%20service%20rate%20card%20for%20my%20company."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-3.5 text-xs font-bold text-white transition-all"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>Talk to Designer</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -1069,7 +1364,7 @@ export default function HomePage() {
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>WhatsApp-based support and menu updates</span></li>
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>6 professionally designed themes to match your brand</span></li>
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Free custom setup (pay only after you approve)</span></li>
-                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Starting at just ₹99/month (built for India)</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Starting at just ₹199/month (built for India)</span></li>
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Printable QR stand graphics with your branding</span></li>
               </ul>
             </div>
@@ -1079,13 +1374,13 @@ export default function HomePage() {
                 Traditional Alternatives
               </h3>
               <ul className="space-y-2.5 text-xs text-slate-500">
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Paper menus: expensive reprinting, outdated info, unhygienic</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>DIY QR tools: complex dashboards, you do all the work</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>PDF menus: slow to load, not mobile-optimized, no interactivity</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Aggregator listings: limited menu control, competitor ads</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>International tools: expensive, not localized for India)</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>No veg/non-veg badges, no Indian pricing support</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Hidden fees, annual contracts, no WhatsApp support</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>Paper menus: expensive reprinting, outdated info, unhygienic</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>DIY QR tools: complex dashboards, you do all the work</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>PDF menus: slow to load, not mobile-optimized, no interactivity</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>Aggregator listings: limited menu control, competitor ads</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>International tools: expensive, not localized for India)</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>No veg/non-veg badges, no Indian pricing support</span></li>
+                <li className="flex items-start gap-2"><X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" /> <span>Hidden fees, annual contracts, no WhatsApp support</span></li>
               </ul>
             </div>
           </div>
@@ -1130,10 +1425,10 @@ export default function HomePage() {
           <div className="mt-10 bg-white p-6 sm:p-8 rounded-3xl border border-emerald-100 shadow-sm max-w-3xl mx-auto">
             <div className="flex items-center gap-3 mb-4">
               <IndianRupee className="h-6 w-6 text-emerald-700" />
-              <h3 className="text-lg font-extrabold text-slate-900">Affordable Pricing for Every Restaurant</h3>
+              <h3 className="text-lg font-extrabold text-slate-900">Affordable Pricing for Every Business</h3>
             </div>
             <p className="text-slate-600 text-sm leading-relaxed">
-              BookMyDine QR plans start at just <strong className="text-slate-900">₹99 per month</strong> for the Starter plan (digital menu + QR code), <strong className="text-slate-900">₹199 per month</strong> for the Growth plan (dish photos, tags, 5 updates), and <strong className="text-slate-900">₹499 per month</strong> for Premium (unlimited updates, custom theme, dedicated manager). Annual billing saves you 2 months free. Every plan includes free custom setup with no credit card required upfront.
+              BookMyDine QR plans start at just <strong className="text-slate-900">₹199 per month</strong> for the Starter plan (up to 100 items, standard themes, no custom design), <strong className="text-slate-900">₹499 per month</strong> for the Pro plan (unlimited items, photos, WhatsApp updates, standard themes, no custom design), and an Enterprise plan offering 100% bespoke custom design, custom domain mapping (menu.yourbrand.com), and multi-branch management. Annual billing saves you 2 months free. Every plan includes free custom setup with no credit card required upfront.
             </p>
           </div>
         </div>
