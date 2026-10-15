@@ -255,7 +255,7 @@ function IntakeFormContent() {
         ) : (
           <div className="bg-white rounded-3xl shadow-xl border border-stone-200/90 overflow-hidden">
             {/* Form Header Banner (Emerald SaaS Theme) */}
-            <div className="bg-gradient-to-r from-emerald-800 via-emerald-900 to-slate-900 p-8 text-white">
+            <div className="bg-linear-to-r from-emerald-800 via-emerald-900 to-slate-900 p-8 text-white">
               <h1 className="text-2xl font-extrabold">Restaurant Intake Form</h1>
               <p className="text-emerald-100 text-sm mt-1">Let&apos;s build your premium digital menu together</p>
 
@@ -707,7 +707,7 @@ function IntakeFormContent() {
                         {formData.foodImages.length > 0 && (
                           <div className="flex flex-wrap gap-2 mt-3">
                             {formData.foodImages.map((img, i) => (
-                              <div key={i} className="text-[9px] bg-stone-100 border border-stone-200 px-2 py-1 rounded-md text-slate-600 max-w-[120px] truncate">
+                              <div key={i} className="text-[9px] bg-stone-100 border border-stone-200 px-2 py-1 rounded-md text-slate-600 max-w-30 truncate">
                                 {img.name}
                               </div>
                             ))}

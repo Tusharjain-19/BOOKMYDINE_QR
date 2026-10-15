@@ -49,8 +49,11 @@ export default function HomePage() {
 
   useEffect(() => {
     const handleIframeMessage = (e: MessageEvent) => {
-      if (e.data && e.data.type === "scrollPercent") {
-        setIframeScrollPercent(e.data.percent);
+      if (e.data && e.data.type === "scrollPercent" && typeof e.data.percent === "number") {
+        setIframeScrollPercent((prev) => {
+          if (Math.abs(prev - e.data.percent) < 1.5) return prev;
+          return e.data.percent;
+        });
       }
     };
     window.addEventListener("message", handleIframeMessage);
@@ -767,6 +770,7 @@ export default function HomePage() {
                       selectedTheme === "street" ? "street-express" :
                       "neon-taproom"
                     }`}
+                    loading="lazy"
                     className={`w-full h-full border-none ${previewDevice === "mobile" ? "pt-6" : "pt-0"}`}
                     title="Live Digital Menu Preview"
                   />

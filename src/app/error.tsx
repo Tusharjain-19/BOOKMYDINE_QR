@@ -37,7 +37,7 @@ export default function ErrorPage({
           </div>
 
           {error?.message && (
-            <div className="p-3 bg-stone-50 border border-stone-200 rounded-xl text-left text-xs text-stone-600 font-mono break-words max-h-32 overflow-y-auto">
+            <div className="p-3 bg-stone-50 border border-stone-200 rounded-xl text-left text-xs text-stone-600 font-mono wrap-break-word max-h-32 overflow-y-auto">
               {error.message}
             </div>
           )}

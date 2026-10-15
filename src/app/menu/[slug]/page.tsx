@@ -62,6 +62,9 @@ export default function DigitalMenuPage() {
   }, [slug]);
 
   useEffect(() => {
+    // Only register iframe listeners if loaded inside an iframe parent
+    if (typeof window === "undefined" || !window.parent || window.parent === window) return;
+
     const handleMessage = (e: MessageEvent) => {
       if (e.data && e.data.type === "scroll") {
         const amount = e.data.direction === "down" ? 250 : -250;
@@ -69,23 +72,28 @@ export default function DigitalMenuPage() {
       }
     };
 
+    let ticking = false;
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      window.parent.postMessage({ type: "scrollPercent", percent: scrollPercent }, "*");
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({ type: "scrollPercent", percent: Math.round(scrollPercent) }, "*");
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("message", handleMessage);
-    window.addEventListener("scroll", handleScroll);
-
-    // Initial delay trigger to report position after load
-    const timer = setTimeout(handleScroll, 800);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("message", handleMessage);
       window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timer);
     };
   }, []);
 
