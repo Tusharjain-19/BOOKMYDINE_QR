@@ -366,7 +366,7 @@ export const CanvaInspector: React.FC<CanvaInspectorProps> = ({
             </div>
 
             {/* Restaurant Logo & Header Photo File Selectors */}
-            <div className="space-y-4 pt-2 border-t border-stone-200 bg-emerald-50/40 p-2.5 rounded-xl border border-emerald-200/60">
+            <div className="space-y-4 pt-2 bg-emerald-50/40 p-2.5 rounded-xl border border-emerald-200/60">
               
               {/* Logo Uploader */}
               <div>

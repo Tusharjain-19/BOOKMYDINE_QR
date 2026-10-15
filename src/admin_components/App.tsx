@@ -526,7 +526,7 @@ export function App() {
 
       {/* Global In-App Toast/Modal UI */}
       {toastMessage && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn">
+        <div className="fixed inset-0 z-999 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white border border-stone-200 rounded-2xl w-full max-w-md shadow-2xl p-6 relative flex flex-col items-center text-center">
             <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${toastMessage.type === 'success' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
               {toastMessage.type === 'success' ? <Check className="w-6 h-6" /> : <X className="w-6 h-6" />}

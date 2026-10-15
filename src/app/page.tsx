@@ -242,7 +242,7 @@ export default function HomePage() {
       </section>
 
       {/* Expanded & Detailed Section: Why Restaurants Choose BookMyDineQR */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
+      <section className="py-16 sm:py-24 bg-linear-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
             <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200">
@@ -400,7 +400,7 @@ export default function HomePage() {
       </section>
 
       {/* How It Works (Enhanced Animated 3 Steps) */}
-      <section id="how-it-works" className="py-16 sm:py-24 bg-gradient-to-b from-[#fafaf8] to-white relative overflow-hidden">
+      <section id="how-it-works" className="py-16 sm:py-24 bg-linear-to-b from-[#fafaf8] to-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 px-3.5 py-1 rounded-full border border-emerald-200">
@@ -494,7 +494,7 @@ export default function HomePage() {
                         : "border-slate-300 bg-stone-50 group-hover:border-emerald-500"
                     }`}>
                       {selectedTheme === t.id ? (
-                        <Check className="h-3.5 w-3.5 stroke-[3]" />
+                        <Check className="h-3.5 w-3.5 stroke-3" />
                       ) : (
                         <div className="h-2 w-2 rounded-full bg-transparent group-hover:bg-emerald-500/50"></div>
                       )}
@@ -623,8 +623,8 @@ export default function HomePage() {
                 <div 
                   className={`relative transition-all duration-500 bg-white flex flex-col shadow-2xl border-slate-900 overflow-hidden shrink-0 ${
                     previewDevice === "mobile"
-                      ? "w-full max-w-[320px] aspect-[9/18.5] rounded-[40px] border-[10px]"
-                      : "w-full max-w-[680px] min-h-[440px] sm:min-h-[540px] aspect-[4/3] rounded-[24px] border-[12px]"
+                      ? "w-full max-w-[320px] aspect-9/18.5 rounded-[40px] border-10"
+                      : "w-full max-w-170 min-h-110 sm:min-h-135 aspect-4/3 rounded-3xl border-12"
                   }`}
                 >
                   {previewDevice === "mobile" && (
@@ -886,7 +886,7 @@ export default function HomePage() {
       </section>
 
       {/* Who Should Use BookMyDine QR? — Industry Grid */}
-      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
+      <section className="py-16 sm:py-20 bg-linear-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200">

@@ -274,7 +274,7 @@ export default function DigitalMenuPage() {
         ? "bg-emerald-50 border-emerald-300 text-emerald-800" 
         : "bg-red-50 border-red-300 text-red-800"
     }`}>
-      <span className={`h-2 w-2 border flex items-center justify-center p-[1px] ${isVeg ? "border-emerald-600" : "border-red-600"}`}>
+      <span className={`h-2 w-2 border flex items-center justify-center p-px ${isVeg ? "border-emerald-600" : "border-red-600"}`}>
         <span className={`h-1 w-1 rounded-full ${isVeg ? "bg-emerald-600" : "bg-red-600"}`}></span>
       </span>
       <span>{isVeg ? "VEG" : "NON-VEG"}</span>
@@ -415,9 +415,9 @@ export default function DigitalMenuPage() {
         <header className="bg-background sticky top-0 z-50 flex justify-between items-center px-container-margin py-3 w-full border-b border-outline-variant/30">
           <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
             {menu.logoUrl && (
-              <img src={menu.logoUrl} alt="Logo" className="h-7 w-auto max-w-[60px] object-contain shrink-0 rounded" />
+              <img src={menu.logoUrl} alt="Logo" className="h-7 w-auto max-w-15 object-contain shrink-0 rounded" />
             )}
-            <h1 className="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider line-clamp-2 leading-tight break-words">{menu.name}</h1>
+            <h1 className="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider line-clamp-2 leading-tight wrap-break-word">{menu.name}</h1>
           </div>
           <div className="flex flex-col items-end shrink-0">
             <span className="font-label-sm text-label-sm text-primary font-bold">{menu.type || "Cafe"}</span>
@@ -426,12 +426,12 @@ export default function DigitalMenuPage() {
 
         {/* Hero Section */}
         <section className="fade-up">
-          <div className="relative h-[380px] w-full overflow-hidden">
+          <div className="relative h-95 w-full overflow-hidden">
             <div 
               className="bg-cover bg-center w-full h-full transform scale-105" 
               style={{ backgroundImage: `url('${menu.categories[0]?.items[0]?.imageUrl || "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop"}')` }}
             ></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-background/90 to-transparent"></div>
             <div className="absolute bottom-6 left-container-margin right-container-margin">
               <p className="font-label-sm text-label-sm tracking-[0.2em] uppercase text-on-surface-variant mb-2">{menu.tagline}</p>
               <h2 className="font-headline-xl text-headline-xl mb-4 leading-tight">{menu.name}</h2>
@@ -445,7 +445,7 @@ export default function DigitalMenuPage() {
                 {menu.address && (
                   <div className="flex items-center gap-1">
                     <span className="material-symbols-outlined text-[18px]">location_on</span>
-                    <span className="font-label-sm text-label-sm truncate max-w-[200px]">{menu.address}</span>
+                    <span className="font-label-sm text-label-sm truncate max-w-50">{menu.address}</span>
                   </div>
                 )}
               </div>
@@ -454,7 +454,7 @@ export default function DigitalMenuPage() {
         </section>
 
         {/* Sticky Category Nav */}
-        <nav className="sticky top-[65px] z-40 bg-background/95 backdrop-blur-sm py-4 border-b border-outline-variant/10">
+        <nav className="sticky top-16.25 z-40 bg-background/95 backdrop-blur-sm py-4 border-b border-outline-variant/10">
           <div className="flex gap-4 px-container-margin overflow-x-auto no-scrollbar">
             {menu.categories.map((cat) => (
               <button
@@ -507,7 +507,7 @@ export default function DigitalMenuPage() {
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-start gap-2 mb-2">
-                        <h4 className="font-headline-md text-headline-md min-w-0 break-words flex-1">{item.name}</h4>
+                        <h4 className="font-headline-md text-headline-md min-w-0 wrap-break-word flex-1">{item.name}</h4>
                         <span className="font-price-md text-price-md shrink-0">₹{item.price}</span>
                       </div>
                       <p className="font-body-md text-on-surface-variant text-sm mb-4 leading-relaxed line-clamp-3">{item.description}</p>
@@ -540,15 +540,15 @@ export default function DigitalMenuPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-stack-lg gap-x-8">
               {cat.items.map((item, idx) => (
                 <div key={idx} className="flex gap-4 items-center min-w-0">
-                  <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100 border border-outline-variant/10">
+                  <div className="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-stone-100 border border-outline-variant/10">
                     <div 
                       className="bg-cover bg-center w-full h-full" 
                       style={{ backgroundImage: `url('${item.imageUrl || "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=300&auto=format&fit=crop"}')` }}
                     ></div>
                   </div>
-                  <div className="flex-grow min-w-0">
+                  <div className="grow min-w-0">
                     <div className="flex justify-between items-baseline gap-2">
-                      <h5 className="font-headline-md text-[18px] min-w-0 break-words flex-1">{item.name}</h5>
+                      <h5 className="font-headline-md text-[18px] min-w-0 wrap-break-word flex-1">{item.name}</h5>
                       <span className="font-price-md text-price-md shrink-0">₹{item.price}</span>
                     </div>
                     <p className="font-body-md text-[13px] text-on-surface-variant line-clamp-2 mt-0.5 leading-relaxed">{item.description}</p>
@@ -571,7 +571,7 @@ export default function DigitalMenuPage() {
         {/* Footer */}
         <footer className="bg-surface-container py-section-gap px-container-margin text-center flex flex-col items-center gap-stack-lg border-t border-outline-variant/20 mt-16 max-w-md sm:max-w-2xl mx-auto">
           <h2 className="font-headline-md text-headline-md tracking-widest uppercase">{menu.name}</h2>
-          <p className="font-label-sm text-label-sm tracking-[0.1em] text-on-surface-variant max-w-[280px]">SLOW LIVING THROUGH FINE BREWS. QUALITY OVER QUANTITY, ALWAYS.</p>
+          <p className="font-label-sm text-label-sm tracking-widest text-on-surface-variant max-w-70">SLOW LIVING THROUGH FINE BREWS. QUALITY OVER QUANTITY, ALWAYS.</p>
           <div className="flex flex-col gap-4 w-full pt-4 border-t border-outline-variant/10">
             {menu.address && (
               <span className="flex items-center justify-center gap-2 font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">
@@ -716,17 +716,17 @@ export default function DigitalMenuPage() {
         {/* Top AppBar */}
         <header className="flex justify-between items-center w-full px-4 py-3 sticky top-0 z-50 bg-[#131313]/90 backdrop-blur-sm border-b border-outline-variant max-w-md sm:max-w-2xl mx-auto">
           <span className="material-symbols-outlined text-primary cursor-pointer shrink-0">menu</span>
-          <h1 className="text-xs sm:text-base font-serif uppercase tracking-widest text-primary text-center px-2 line-clamp-2 leading-tight flex-1 break-words">{menu.name}</h1>
+          <h1 className="text-xs sm:text-base font-serif uppercase tracking-widest text-primary text-center px-2 line-clamp-2 leading-tight flex-1 wrap-break-word">{menu.name}</h1>
           <span className="material-symbols-outlined text-primary cursor-pointer shrink-0">shopping_bag</span>
         </header>
 
         {/* Hero Section */}
-        <section className="relative h-[600px] flex flex-col items-center justify-center text-center px-8 overflow-hidden">
+        <section className="relative h-150 flex flex-col items-center justify-center text-center px-8 overflow-hidden">
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ backgroundImage: `url('${menu.categories[0]?.items[0]?.imageUrl || "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200"}')` }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#131313] z-10"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/20 to-[#131313] z-10"></div>
           <div className="relative z-20 flex flex-col items-center">
             <div className="mb-4 py-1 px-3 border border-[#e5c276]/40 rounded-full flex items-center gap-2 bg-[#131313]/40 backdrop-blur-md">
               <span className="material-symbols-outlined text-[14px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
@@ -746,11 +746,11 @@ export default function DigitalMenuPage() {
           <p className="font-display-lg-mobile text-[24px] leading-relaxed text-[#e5e2e1] font-light">
             Every dish is handcrafted using seasonal ingredients sourced from <span className="italic text-primary">carefully selected farms</span> and artisan producers.
           </p>
-          <div className="mt-8 w-12 h-[1px] bg-stone-700 mx-auto"></div>
+          <div className="mt-8 w-12 h-px bg-stone-700 mx-auto"></div>
         </section>
 
         {/* Sticky Navigation */}
-        <nav className="sticky top-[72px] z-40 bg-[#131313]/95 backdrop-blur-md border-b border-outline-variant max-w-md sm:max-w-2xl mx-auto">
+        <nav className="sticky top-18 z-40 bg-[#131313]/95 backdrop-blur-md border-b border-outline-variant max-w-md sm:max-w-2xl mx-auto">
           <div className="flex overflow-x-auto no-scrollbar px-6 gap-8 py-4">
             {menu.categories.map((cat) => (
               <button
@@ -776,7 +776,7 @@ export default function DigitalMenuPage() {
               {featuredItems.map((item, idx) => (
                 <div key={idx} className="group relative overflow-hidden rounded-lg bg-surface-container-low border border-outline-variant flex flex-col justify-between">
                   {item.imageUrl && (
-                    <div className="aspect-[4/5] overflow-hidden">
+                    <div className="aspect-4/5 overflow-hidden">
                       <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src={item.imageUrl} alt={item.name} />
                     </div>
                   )}
@@ -785,7 +785,7 @@ export default function DigitalMenuPage() {
                       <div className="flex justify-between items-start gap-2 mb-4">
                         <div className="min-w-0">
                           <span className="inline-block px-2 py-1 mb-2 bg-[#e5c276]/10 border border-[#e5c276]/30 rounded text-[10px] font-label-caps text-primary uppercase shrink-0">Chef Recommends</span>
-                          <h4 className="font-headline-md text-headline-md text-[#e5e2e1] min-w-0 break-words">{item.name}</h4>
+                          <h4 className="font-headline-md text-headline-md text-[#e5e2e1] min-w-0 wrap-break-word">{item.name}</h4>
                         </div>
                         <span className="font-price-display text-price-display text-primary shrink-0">₹{item.price}</span>
                       </div>
@@ -814,8 +814,8 @@ export default function DigitalMenuPage() {
               {cat.items.map((item, idx) => (
                 <div key={idx} className="flex flex-col gap-2 min-w-0">
                   <div className="flex justify-between items-baseline gap-2">
-                    <h4 className="font-headline-sm text-headline-sm text-[#e5e2e1] min-w-0 break-words flex-1 pr-2">{item.name}</h4>
-                    <div className="flex-grow border-b border-dotted border-outline-variant mb-1 hidden sm:block"></div>
+                    <h4 className="font-headline-sm text-headline-sm text-[#e5e2e1] min-w-0 wrap-break-word flex-1 pr-2">{item.name}</h4>
+                    <div className="grow border-b border-dotted border-outline-variant mb-1 hidden sm:block"></div>
                     <span className="font-price-display text-price-display text-primary shrink-0">₹{item.price}</span>
                   </div>
                   <p className="font-body-md text-stone-400 pr-8">{item.description}</p>
@@ -954,7 +954,7 @@ export default function DigitalMenuPage() {
             <span className="material-symbols-outlined">menu</span>
           </button>
           <div className="flex items-center gap-2 min-w-0 flex-1 justify-center px-2">
-            <h1 className="font-section-label text-xs sm:text-sm font-bold text-primary tracking-widest text-center line-clamp-2 leading-tight break-words">{menu.name.toUpperCase()}</h1>
+            <h1 className="font-section-label text-xs sm:text-sm font-bold text-primary tracking-widest text-center line-clamp-2 leading-tight wrap-break-word">{menu.name.toUpperCase()}</h1>
           </div>
           <button className="text-primary active:opacity-80 active:scale-95 transition-all shrink-0">
             <span className="material-symbols-outlined">info</span>
@@ -962,7 +962,7 @@ export default function DigitalMenuPage() {
         </header>
 
         {/* Hero Section */}
-        <section className="relative h-[500px] w-full flex flex-col justify-center items-center text-center px-6 overflow-hidden mt-16">
+        <section className="relative h-125 w-full flex flex-col justify-center items-center text-center px-6 overflow-hidden mt-16">
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ backgroundImage: `url('${menu.categories[0]?.items[0]?.imageUrl || "https://images.unsplash.com/photo-1585938338392-50a59970d8ee?q=80&w=800"}')` }}
@@ -970,9 +970,9 @@ export default function DigitalMenuPage() {
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="relative z-10 text-white max-w-4xl">
             <div className="flex justify-center items-center gap-4 mb-4">
-              <div className="h-[1px] w-12 bg-[#ffdeaa]"></div>
+              <div className="h-px w-12 bg-[#ffdeaa]"></div>
               <span className="font-section-label text-xs tracking-[0.3em] text-[#ffdeaa] uppercase">Established</span>
-              <div className="h-[1px] w-12 bg-[#ffdeaa]"></div>
+              <div className="h-px w-12 bg-[#ffdeaa]"></div>
             </div>
             <h2 className="font-display-lg text-3xl mb-6 leading-tight">Celebrating the Timeless<br/>Flavours of India</h2>
             <div className="flex gap-4 items-center justify-center font-section-label text-[10px] tracking-widest opacity-90 uppercase">
@@ -1031,7 +1031,7 @@ export default function DigitalMenuPage() {
                       <div className={`${item.isVeg ? "badge-veg" : "badge-nonveg"} font-caption text-xs uppercase mb-3 shrink-0`}>
                         {item.isVeg ? "VEGETARIAN" : "NON-VEGETARIAN"}
                       </div>
-                      <h4 className="font-headline-md text-primary mb-2 text-xl min-w-0 break-words">{item.name}</h4>
+                      <h4 className="font-headline-md text-primary mb-2 text-xl min-w-0 wrap-break-word">{item.name}</h4>
                       <p className="font-body-md text-[#544242] mb-4 line-clamp-3">{item.description}</p>
                     </div>
                   </div>
@@ -1051,7 +1051,7 @@ export default function DigitalMenuPage() {
           >
             <div className="flex items-baseline gap-4 mb-6">
               <h3 className="font-display-lg text-primary text-2xl shrink-0">{cat.name}</h3>
-              <div className="flex-grow border-b border-outline-variant/30"></div>
+              <div className="grow border-b border-outline-variant/30"></div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
               {cat.items.map((item, idx) => (
@@ -1059,7 +1059,7 @@ export default function DigitalMenuPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1 min-w-0">
                       <span className={`${item.isVeg ? "badge-veg" : "badge-nonveg"} shrink-0`}></span>
-                      <h4 className="font-body-lg font-bold text-[#221a19] group-hover:text-primary transition-colors uppercase text-sm sm:text-base min-w-0 break-words flex-1">{item.name}</h4>
+                      <h4 className="font-body-lg font-bold text-[#221a19] group-hover:text-primary transition-colors uppercase text-sm sm:text-base min-w-0 wrap-break-word flex-1">{item.name}</h4>
                     </div>
                     <p className="text-xs text-[#544242] italic">{item.description}</p>
                   </div>
@@ -1173,13 +1173,13 @@ export default function DigitalMenuPage() {
         <header className="fixed top-0 left-0 w-full max-w-md sm:max-w-2xl z-50 bg-[#fbf9f5] border-b border-[#c4c7c7]/30 mx-auto right-0">
           <nav className="px-4 py-3 flex justify-between items-center w-full gap-2">
             <span className="material-symbols-outlined text-primary cursor-pointer shrink-0">menu</span>
-            <h1 className="text-xs sm:text-sm font-bold tracking-widest text-primary text-center px-1 line-clamp-2 leading-tight flex-1 break-words">{menu.name.toUpperCase()}</h1>
+            <h1 className="text-xs sm:text-sm font-bold tracking-widest text-primary text-center px-1 line-clamp-2 leading-tight flex-1 wrap-break-word">{menu.name.toUpperCase()}</h1>
             <span className="font-label-sm text-label-sm text-[#4b6549] font-bold uppercase tracking-wider shrink-0">Open</span>
           </nav>
         </header>
 
         {/* Hero Section */}
-        <section className="relative h-[480px] w-full overflow-hidden flex items-center justify-center mt-14">
+        <section className="relative h-120 w-full overflow-hidden flex items-center justify-center mt-14">
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${menu.categories[0]?.items[0]?.imageUrl || "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800"}')` }}
@@ -1241,7 +1241,7 @@ export default function DigitalMenuPage() {
                     <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex justify-between items-start gap-2">
-                          <h4 className="font-headline-sm text-headline-sm min-w-0 break-words flex-1">{item.name}</h4>
+                          <h4 className="font-headline-sm text-headline-sm min-w-0 wrap-break-word flex-1">{item.name}</h4>
                           <span className="font-price-md text-price-md text-primary shrink-0">₹{item.price}</span>
                         </div>
                         <p className="text-stone-500 text-xs sm:text-sm line-clamp-3">{item.description}</p>
@@ -1270,7 +1270,7 @@ export default function DigitalMenuPage() {
               {cat.items.map((item, idx) => (
                 <div key={idx} className="flex flex-col min-w-0">
                   <div className="flex items-end gap-2">
-                    <span className="font-headline-sm text-base text-[#1b1c1a] min-w-0 break-words flex-1">{item.name}</span>
+                    <span className="font-headline-sm text-base text-[#1b1c1a] min-w-0 wrap-break-word flex-1">{item.name}</span>
                     <div className="menu-leader hidden sm:block"></div>
                     <span className="font-price-md text-price-md text-primary shrink-0">₹{item.price}</span>
                   </div>
@@ -1393,18 +1393,18 @@ export default function DigitalMenuPage() {
         <header className="fixed top-0 z-50 flex justify-between items-center px-4 py-3 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 w-full max-w-md sm:max-w-2xl mx-auto left-0 right-0">
           <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
             <span className="material-symbols-outlined text-primary cursor-pointer shrink-0">local_fire_department</span>
-            <span className="font-bold text-xs sm:text-sm uppercase tracking-tight text-primary line-clamp-2 leading-tight flex-1 break-words">{menu.name}</span>
+            <span className="font-bold text-xs sm:text-sm uppercase tracking-tight text-primary line-clamp-2 leading-tight flex-1 wrap-break-word">{menu.name}</span>
           </div>
           <button className="bg-primary text-on-primary px-3.5 py-1.5 rounded-lg font-label-sm text-[11px] hover:opacity-80 transition-opacity active:scale-95 shrink-0">OPEN</button>
         </header>
 
         {/* Hero Section */}
-        <section className="relative w-full h-[400px] flex items-end overflow-hidden mt-16">
+        <section className="relative w-full h-100 flex items-end overflow-hidden mt-16">
           <div 
             className="absolute inset-0 bg-cover bg-center" 
             style={{ backgroundImage: `url('${menu.categories[0]?.items[0]?.imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800"}')` }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
           <div className="relative w-full px-6 pb-6 mx-auto z-10 text-white">
             <span className="inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-xs mb-3">EST. 2024</span>
             <h1 className="font-headline-xl text-3xl mb-2 leading-tight text-white">{menu.name}</h1>
@@ -1452,7 +1452,7 @@ export default function DigitalMenuPage() {
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-start gap-2 mb-2">
-                        <h3 className="font-headline-md text-lg text-stone-900 min-w-0 break-words flex-1">{item.name}</h3>
+                        <h3 className="font-headline-md text-lg text-stone-900 min-w-0 wrap-break-word flex-1">{item.name}</h3>
                         <span className="font-price-display text-primary shrink-0">₹{item.price}</span>
                       </div>
                       <p className="text-stone-500 font-body-md text-xs sm:text-sm mb-4 line-clamp-3">{item.description}</p>
@@ -1480,10 +1480,10 @@ export default function DigitalMenuPage() {
               {cat.items.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-stone-100 min-w-0">
                   {item.imageUrl && (
-                    <div className="w-20 h-20 rounded-lg bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url('${item.imageUrl}')` }}></div>
+                    <div className="w-20 h-20 rounded-lg bg-cover bg-center shrink-0" style={{ backgroundImage: `url('${item.imageUrl}')` }}></div>
                   )}
-                  <div className="flex-grow min-w-0">
-                    <h4 className="font-headline-md text-base text-stone-900 mb-1 min-w-0 break-words flex-1 pr-2">{item.name}</h4>
+                  <div className="grow min-w-0">
+                    <h4 className="font-headline-md text-base text-stone-900 mb-1 min-w-0 wrap-break-word flex-1 pr-2">{item.name}</h4>
                     <p className="text-stone-500 text-xs line-clamp-2">{item.description}</p>
                     <div className="flex items-center gap-2 mt-2 flex-wrap">
                       <span className="font-price-display text-primary text-sm font-black shrink-0">₹{item.price}</span>
@@ -1607,7 +1607,7 @@ export default function DigitalMenuPage() {
           <div className="flex justify-between items-center px-4 py-3 w-full">
             <div className="flex items-center gap-2.5 min-w-0 flex-1 pr-2">
               <span className="material-symbols-outlined text-primary cursor-pointer text-[24px] shrink-0">menu</span>
-              <h1 className="font-bold text-xs sm:text-base text-primary tracking-wider uppercase line-clamp-2 leading-tight flex-1 break-words">{menu.name}</h1>
+              <h1 className="font-bold text-xs sm:text-base text-primary tracking-wider uppercase line-clamp-2 leading-tight flex-1 wrap-break-word">{menu.name}</h1>
             </div>
             <div className="flex items-center gap-2 shrink-0">
               <span className="text-primary font-label-caps text-[9px] border border-[#ffc574]/50 px-2.5 py-1 rounded tracking-widest shrink-0">OPEN NOW</span>
@@ -1615,11 +1615,11 @@ export default function DigitalMenuPage() {
           </div>
         </header>
 
-        <main className="relative z-10 pt-[88px]">
+        <main className="relative z-10 pt-22">
           {/* Hero Section */}
           <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden px-6">
             <div className="absolute inset-0 z-0">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111317] via-transparent to-[#111317]/50 z-10"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-[#111317] via-transparent to-[#111317]/50 z-10"></div>
               <div 
                 className="w-full h-full bg-cover bg-center" 
                 style={{ backgroundImage: `url('${menu.categories[0]?.items[0]?.imageUrl || "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800"}')` }}
@@ -1652,7 +1652,7 @@ export default function DigitalMenuPage() {
           </section>
 
           {/* Menu Categories Horizontal Nav */}
-          <nav className="sticky top-[72px] z-40 bg-[#111317]/90 backdrop-blur-md border-y border-outline-variant/20 py-2 overflow-x-auto no-scrollbar max-w-md sm:max-w-2xl mx-auto">
+          <nav className="sticky top-18 z-40 bg-[#111317]/90 backdrop-blur-md border-y border-outline-variant/20 py-2 overflow-x-auto no-scrollbar max-w-md sm:max-w-2xl mx-auto">
             <div className="px-6 flex items-center gap-6 whitespace-nowrap">
               {menu.categories.map((cat) => (
                 <button
@@ -1683,13 +1683,13 @@ export default function DigitalMenuPage() {
                     {item.imageUrl && (
                       <div className="h-64 relative overflow-hidden">
                         <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={item.imageUrl} alt={item.name} />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#111317] to-transparent"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-[#111317] to-transparent"></div>
                       </div>
                     )}
                     <div className="p-6 relative flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex justify-between items-start gap-2 mb-2">
-                          <h3 className="font-headline-sm text-on-surface text-base min-w-0 break-words flex-1">{item.name}</h3>
+                          <h3 className="font-headline-sm text-on-surface text-base min-w-0 wrap-break-word flex-1">{item.name}</h3>
                           <span className="font-price text-primary text-base shrink-0">₹{item.price}</span>
                         </div>
                         <p className="text-stone-400 font-body-md text-xs sm:text-sm mb-4 line-clamp-3">{item.description}</p>
@@ -1716,7 +1716,7 @@ export default function DigitalMenuPage() {
                   <div key={idx} className="bg-zinc-900/50 backdrop-blur border border-zinc-800/80 p-4 rounded-xl flex justify-between items-start group min-w-0 gap-4">
                     <div className="flex-1 min-w-0 space-y-1">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <h4 className="font-headline-sm text-[#e2e2e8] group-hover:text-primary transition-colors text-sm sm:text-base min-w-0 break-words flex-1">{item.name}</h4>
+                        <h4 className="font-headline-sm text-[#e2e2e8] group-hover:text-primary transition-colors text-sm sm:text-base min-w-0 wrap-break-word flex-1">{item.name}</h4>
                         <VegBadge isVeg={item.isVeg} />
                       </div>
                       <p className="text-stone-400 text-xs">{item.description}</p>

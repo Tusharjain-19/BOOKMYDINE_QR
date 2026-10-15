@@ -67,7 +67,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   const currentPresetName = PRESET_THEMES[currentThemeId as ThemePresetId]?.name || 'Custom Theme';
 
   return (
-    <header className="bg-white border-b border-stone-200 text-slate-900 px-4 sm:px-6 py-2.5 min-h-[64px] flex flex-wrap xl:flex-nowrap items-center justify-between gap-3 z-50 shrink-0 shadow-xs overflow-x-auto no-scrollbar">
+    <header className="bg-white border-b border-stone-200 text-slate-900 px-4 sm:px-6 py-2.5 min-h-16 flex flex-wrap xl:flex-nowrap items-center justify-between gap-3 z-50 shrink-0 shadow-xs overflow-x-auto no-scrollbar">
       
       {/* Left: Brand Logo & Current Restaurant Title */}
       <div className="flex items-center gap-3 shrink-0">
@@ -89,7 +89,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
               Studio
             </span>
           </div>
-          <p className="text-xs text-slate-500 truncate max-w-[180px]">
+          <p className="text-xs text-slate-500 truncate max-w-45">
             Editing: <span className="text-emerald-700 font-bold">{restaurantName || 'My Restaurant'}</span>
           </p>
         </div>
