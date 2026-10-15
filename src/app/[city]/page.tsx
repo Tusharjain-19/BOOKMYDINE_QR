@@ -36,18 +36,45 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   }
 
   return {
-    title: `Restaurant QR Menu in ${city.name} — Digital Menu Software for ${city.name} Restaurants`,
-    description: `Get a professional QR code menu for your restaurant in ${city.name}, ${city.state}. BookMyDine QR designs, hosts & manages beautiful digital menus for cafes, hotels, bars and cloud kitchens in ${city.name}. Free setup, live in 24 hours.`,
+    title: `Restaurant QR Menu in ${city.name} — #1 Digital Menu Software for ${city.name} Restaurants`,
+    description: `Get a professional contactless QR code menu for your restaurant in ${city.name}, ${city.state}. BookMyDine QR designs, hosts & manages digital menus for cafes, hotels & cloud kitchens. Free setup, live in 24h, starting ₹99/mo.`,
+    keywords: [
+      `restaurant QR menu ${city.name}`,
+      `digital menu ${city.name}`,
+      `QR code menu ${city.name}`,
+      `cafe QR menu ${city.name}`,
+      `hotel menu software ${city.name}`,
+      `food menu QR code ${city.name}`,
+      `restaurant menu builder ${city.name}`,
+      `QR standee design ${city.name}`,
+      `best digital menu ${city.name}`,
+      `contactless dining ${city.name}`
+    ],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     alternates: {
       canonical: `${SITE_URL}/${city.slug}`,
     },
     openGraph: {
       title: `Restaurant QR Menu in ${city.name} | BookMyDine QR`,
-      description: `Done-for-you digital menu platform for restaurants in ${city.name}. 6 premium themes, free setup, starting at ₹99/month. Join hundreds of ${city.name} restaurants using BookMyDine QR.`,
+      description: `Done-for-you digital menu platform for restaurants in ${city.name}. 6 premium themes, free custom setup, starting at ₹99/month. Join restaurants in ${city.name} using BookMyDine QR.`,
       url: `${SITE_URL}/${city.slug}`,
       siteName: "BookMyDine QR",
       locale: "en_IN",
       type: "website",
+    },
+    other: {
+      "geo.placename": `${city.name}, ${city.state}, India`,
+      "geo.region": "IN",
     },
   };
 }

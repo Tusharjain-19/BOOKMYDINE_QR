@@ -228,7 +228,7 @@ export default function HomePage() {
 
               <div className="relative w-full max-w-lg overflow-hidden flex justify-center items-center">
                 <Image
-                  src="/hero_artistic_showcase.png"
+                  src="/hero_artistic_showcase.webp"
                   alt="BookMyDine QR Digital Menu Platform — 6 Premium Restaurant Menu Themes with QR Code Table Stands for Cafes, Fine Dining and Cloud Kitchens in India"
                   width={600}
                   height={600}

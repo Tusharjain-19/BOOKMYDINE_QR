@@ -128,10 +128,21 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <Phone className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
                 <div>
-                  <span className="block font-bold text-white">Call / WhatsApp Support</span>
-                  <a href="https://wa.me/918005737183" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
-                    +91 8005737183
-                  </a>
+                  <span className="block font-bold text-white">Call & WhatsApp Support</span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a href="tel:+918005737183" className="hover:text-emerald-400 transition-colors font-medium">
+                      +91 8005737183
+                    </a>
+                    <span className="text-slate-600">·</span>
+                    <a 
+                      href="https://wa.me/918005737183" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-emerald-300 transition-colors text-emerald-400 font-medium"
+                    >
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
@@ -218,7 +229,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-slate-800/80 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} BookMySlot & BookMyDine QR. All rights reserved.</p>
+          <p suppressHydrationWarning>&copy; {new Date().getFullYear()} BookMySlot & BookMyDine QR. All rights reserved.</p>
           <div className="flex gap-6">
             <button type="button" onClick={() => setActiveModal("refund")} className="hover:text-slate-300 transition-colors">
               Refund Policy
@@ -260,7 +271,7 @@ export default function Footer() {
                     <strong>2. Free Setup Verification:</strong> We provide live previews of digital menus before any billing commitment. Customers pay only after approving their custom menu design.
                   </p>
                   <p>
-                    <strong>3. Cancellation Terms:</strong> You may cancel your subscription at any time by messaging our support on WhatsApp at <strong>+91 8005737183</strong> or emailing <strong>teambookmydine@gmail.com</strong>. Cancellation takes effect at the end of your current monthly billing period.
+                    <strong>3. Cancellation Terms:</strong> You may cancel your subscription at any time by messaging our support on WhatsApp at <a href="tel:+918005737183" className="underline font-bold text-amber-300 hover:text-white">+91 8005737183</a> or emailing <a href="mailto:teambookmydine@gmail.com" className="underline font-bold text-amber-300 hover:text-white">teambookmydine@gmail.com</a>. Cancellation takes effect at the end of your current monthly billing period.
                   </p>
                   <p>
                     <strong>4. Service Continuation:</strong> Upon cancellation, your digital QR menu link will remain active until the last paid date of your billing cycle.

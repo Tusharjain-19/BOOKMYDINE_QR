@@ -593,7 +593,12 @@ export default function DigitalMenuPage() {
 
         {/* Bottom Navigation */}
         <nav className="fixed bottom-0 left-0 right-0 max-w-md sm:max-w-2xl mx-auto flex justify-around items-center px-4 py-3 bg-surface/95 backdrop-blur-md z-50 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.03)] border-t border-outline-variant/10">
-          <button className="flex flex-col items-center justify-center text-tertiary font-semibold scale-90">
+          <button 
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex flex-col items-center justify-center text-tertiary font-semibold scale-90 cursor-pointer active:scale-95 transition-transform"
+            aria-label="Scroll to top of menu"
+          >
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>restaurant_menu</span>
             <span className="font-label-sm text-label-sm mt-1">Menu</span>
           </button>

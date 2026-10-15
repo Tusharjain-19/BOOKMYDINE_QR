@@ -14,7 +14,10 @@ import {
   ArrowRight, 
   ArrowLeft, 
   Loader2,
-  Sparkles
+  Sparkles,
+  AlertCircle,
+  X,
+  MessageCircle
 } from "lucide-react";
 
 function IntakeFormContent() {
@@ -24,6 +27,7 @@ function IntakeFormContent() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const [assignedMenuSlug, setAssignedMenuSlug] = useState("");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
@@ -140,26 +144,31 @@ function IntakeFormContent() {
   };
 
   const nextStep = () => {
+    setFormError(null);
     if (step === 1) {
-      if (!formData.ownerName || !formData.phone || !formData.email) {
-        alert("Please fill in all owner contact fields.");
+      if (!formData.ownerName.trim() || !formData.phone.trim() || !formData.email.trim()) {
+        setFormError("Please fill in your owner name, phone number, and email address to continue.");
         return;
       }
     } else if (step === 2) {
-      if (!formData.restaurantName || !formData.address) {
-        alert("Please fill in your restaurant name and physical address.");
+      if (!formData.restaurantName.trim() || !formData.address.trim()) {
+        setFormError("Please enter your restaurant name and physical address.");
         return;
       }
     }
     setStep(prev => prev + 1);
   };
 
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => {
+    setFormError(null);
+    setStep(prev => prev - 1);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormError(null);
     if (!formData.pdfBase64 && !formData.logoBase64) {
-      alert("Please upload at least your menu document or logo.");
+      setFormError("Please upload at least your menu document (PDF or Photo) or restaurant logo.");
       return;
     }
 
@@ -175,11 +184,11 @@ function IntakeFormContent() {
         setSubmitted(true);
         setAssignedMenuSlug(data.assignedMenuSlug || "cafe-cozy");
       } else {
-        alert("Submission error: " + data.message);
+        setFormError(data.message || "Submission error. Please check your inputs.");
       }
     } catch (err) {
       console.error(err);
-      alert("Failed to submit intake. Please try again.");
+      setFormError("Failed to submit intake. Please verify your connection or chat directly with us on WhatsApp.");
     } finally {
       setLoading(false);
     }
@@ -224,11 +233,20 @@ function IntakeFormContent() {
               </ul>
             </div>
 
-            <div className="pt-4 flex justify-center">
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={`https://wa.me/918005737183?text=Hi%2C%20I%20just%20submitted%20my%20restaurant%20intake%20form%20for%20${encodeURIComponent(formData.restaurantName || "my restaurant")}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 px-6 py-3.5 text-sm font-bold text-white shadow-md hover:shadow-lg transition-all"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>Chat with Designer on WhatsApp</span>
+              </a>
               <button
                 type="button"
                 onClick={() => router.push("/")}
-                className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-8 py-3.5 text-base font-bold text-white shadow-md hover:bg-emerald-800 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-stone-100 hover:bg-stone-200 px-6 py-3.5 text-sm font-bold text-slate-800 transition-colors"
               >
                 Return to Home
               </button>
@@ -275,6 +293,22 @@ function IntakeFormContent() {
             </div>
 
             <form onSubmit={handleSubmit} className="p-8 space-y-6">
+              {/* Form Error Banner */}
+              {formError && (
+                <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold flex items-center justify-between gap-3 animate-fadeIn">
+                  <div className="flex items-center gap-2.5">
+                    <AlertCircle className="h-5 w-5 text-rose-600 shrink-0" />
+                    <span>{formError}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setFormError(null)}
+                    className="p-1 rounded-md text-rose-500 hover:text-rose-800 hover:bg-rose-100 transition-colors"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              )}
               {step === 1 && (
                 <div className="space-y-6 animate-fadeIn">
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2 border-b border-stone-100 pb-2">
