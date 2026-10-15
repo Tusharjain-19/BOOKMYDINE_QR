@@ -28,7 +28,14 @@ export async function GET(request: Request) {
       return NextResponse.json([...firebaseMenus, ...seedMenuList]);
     }
 
-    // 2. Try fetching from Firebase if db is initialized
+    // 2. Instant check for seed preset demo menus (0ms latency, no Firestore timeout)
+    const seedMenus = (seedData.menus as Record<string, any>) || {};
+    const cleanSlug = slug.replace(/^menu-/, '').toLowerCase();
+    if (seedMenus[slug] || seedMenus[cleanSlug]) {
+      return NextResponse.json(seedMenus[slug] || seedMenus[cleanSlug]);
+    }
+
+    // 3. Try fetching custom restaurant from Firebase if db is initialized
     let rawData: any = null;
 
     if (db) {
@@ -55,19 +62,6 @@ export async function GET(request: Request) {
         }
       } catch (e) {
         console.error("Firestore lookup error for slug:", slug, e);
-      }
-    }
-
-    // 3. Fallback to seed.json if not found in Firebase
-    if (!rawData) {
-      const seedMenus = (seedData.menus as Record<string, any>) || {};
-      if (seedMenus[slug]) {
-        return NextResponse.json(seedMenus[slug]);
-      }
-      // Check if slug matches any seed menu by lowercasing or stripping menu- prefix
-      const cleanSlug = slug.replace(/^menu-/, '').toLowerCase();
-      if (seedMenus[cleanSlug]) {
-        return NextResponse.json(seedMenus[cleanSlug]);
       }
     }
 
