@@ -29,6 +29,17 @@ const menuMeta: Record<string, { title: string; description: string }> = {
   },
 };
 
+export function generateStaticParams() {
+  return [
+    { slug: "cafe-cozy" },
+    { slug: "l-orangerie" },
+    { slug: "tandoori-palace" },
+    { slug: "komorebi-bistro" },
+    { slug: "street-express" },
+    { slug: "neon-taproom" },
+  ];
+}
+
 interface MenuLayoutProps {
   children: React.ReactNode;
   params: Promise<{ slug: string }>;

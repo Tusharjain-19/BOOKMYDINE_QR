@@ -33,7 +33,8 @@ import {
   Truck,
   IceCreamCone,
   Wine,
-  Store
+  Store,
+  ExternalLink
 } from "lucide-react";
 
 export default function HomePage() {
@@ -71,6 +72,7 @@ export default function HomePage() {
   const themesList = [
     { 
       id: "minimal", 
+      slug: "cafe-cozy",
       name: "Minimalist Cafe", 
       description: "Clean typography & warm neutral tones designed for artisanal coffee shops and cozy bakeries.",
       badge: "Cafe & Bakery",
@@ -78,6 +80,7 @@ export default function HomePage() {
     },
     { 
       id: "luxury", 
+      slug: "l-orangerie",
       name: "Executive Fine Dining", 
       description: "Deep obsidian theme with refined metallic gold accents for upscale fine dining establishments.",
       badge: "Fine Dining",
@@ -85,6 +88,7 @@ export default function HomePage() {
     },
     { 
       id: "traditional", 
+      slug: "tandoori-palace",
       name: "Heritage Indian", 
       description: "Terracotta & warm amber aesthetic crafted for authentic Indian thali & tandoori restaurants.",
       badge: "Traditional",
@@ -92,6 +96,7 @@ export default function HomePage() {
     },
     { 
       id: "modern", 
+      slug: "komorebi-bistro",
       name: "Modern Bistro", 
       description: "Sleek crisp white layout with forest green highlights for contemporary bistros and grills.",
       badge: "Modern Bistro",
@@ -99,6 +104,7 @@ export default function HomePage() {
     },
     { 
       id: "street", 
+      slug: "street-express",
       name: "Street Food Express", 
       description: "Vibrant energetic design with bold red accents engineered for fast food outlets & food trucks.",
       badge: "Street & QSR",
@@ -106,6 +112,7 @@ export default function HomePage() {
     },
     { 
       id: "dark", 
+      slug: "neon-taproom",
       name: "Premium Dark Lounge", 
       description: "Futuristic dark mode with ambient WebGL shader motion for night bars, lounges & pubs.",
       badge: "Bar & Lounge",
@@ -460,11 +467,10 @@ export default function HomePage() {
             <div className="lg:col-span-5 space-y-3 w-full">
               <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2 lg:hidden">All 6 Available Themes</h3>
               {themesList.map((t) => (
-                <button
+                <div
                   key={t.id}
-                  type="button"
                   onClick={() => handleSelectTheme(t.id)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border-2 transition-all flex flex-col justify-between gap-3 group relative ${
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border-2 transition-all flex flex-col justify-between gap-3 group relative cursor-pointer ${
                     selectedTheme === t.id
                       ? "bg-slate-900 text-white border-slate-900 shadow-xl ring-4 ring-slate-900/10"
                       : "bg-white text-slate-800 border-stone-200/90 hover:border-emerald-500/60 hover:shadow-md"
@@ -499,9 +505,9 @@ export default function HomePage() {
                     {t.description}
                   </p>
 
-                  <div className="flex items-center gap-2 pt-1 border-t border-slate-100/10">
-                    <span className={`text-[10px] font-semibold uppercase tracking-wider ${selectedTheme === t.id ? "text-slate-400" : "text-slate-400"}`}>Palette:</span>
+                  <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100/10">
                     <div className="flex items-center gap-1.5">
+                      <span className={`text-[10px] font-semibold uppercase tracking-wider ${selectedTheme === t.id ? "text-slate-400" : "text-slate-400"}`}>Palette:</span>
                       {t.colors.map((hex, cIdx) => (
                         <span 
                           key={cIdx} 
@@ -511,8 +517,22 @@ export default function HomePage() {
                         />
                       ))}
                     </div>
+
+                    <Link
+                      href={`/menu/${t.slug}`}
+                      target="_blank"
+                      onClick={(e) => e.stopPropagation()}
+                      className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-md transition-colors ${
+                        selectedTheme === t.id
+                          ? "text-emerald-300 hover:text-white bg-white/10 hover:bg-white/20"
+                          : "text-emerald-700 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100"
+                      }`}
+                    >
+                      <span>Live Menu</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </Link>
                   </div>
-                </button>
+                </div>
               ))}
             </div>
 
@@ -542,31 +562,42 @@ export default function HomePage() {
               </div>
 
               {/* View Switcher Controls */}
-              <div className="flex gap-2 bg-stone-100 p-1 rounded-xl border border-stone-200 shadow-inner">
-                <button
-                  type="button"
-                  onClick={() => setPreviewDevice("mobile")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                    previewDevice === "mobile"
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-500 hover:text-slate-900"
-                  }`}
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <div className="flex gap-2 bg-stone-100 p-1 rounded-xl border border-stone-200 shadow-inner">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewDevice("mobile")}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                      previewDevice === "mobile"
+                        ? "bg-white text-slate-900 shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
+                  >
+                    <Smartphone className="h-4 w-4" />
+                    <span>Mobile View</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewDevice("tablet")}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                      previewDevice === "tablet"
+                        ? "bg-white text-slate-900 shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
+                  >
+                    <Tablet className="h-4 w-4" />
+                    <span>Tablet View</span>
+                  </button>
+                </div>
+
+                <Link
+                  href={`/menu/${(themesList.find((t) => t.id === selectedTheme) || themesList[0]).slug}`}
+                  target="_blank"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 transition-all shadow-2xs"
                 >
-                  <Smartphone className="h-4 w-4" />
-                  <span>Mobile View</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPreviewDevice("tablet")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                    previewDevice === "tablet"
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-500 hover:text-slate-900"
-                  }`}
-                >
-                  <Tablet className="h-4 w-4" />
-                  <span>Tablet View</span>
-                </button>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  <span>Open {(themesList.find((t) => t.id === selectedTheme) || themesList[0]).name} Demo</span>
+                </Link>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full justify-center">
@@ -626,6 +657,27 @@ export default function HomePage() {
                       transform: previewDevice === "mobile" ? "none" : `translateY(${(iframeScrollPercent / 100) * 160}px)`
                     }}
                   ></div>
+                </div>
+              </div>
+
+              {/* All 6 Themes Direct Interactive Crawlable Links */}
+              <div className="w-full pt-4 border-t border-stone-200/80 text-center space-y-2">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 block">
+                  Browse All Live Menu Theme Demos
+                </span>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {themesList.map((t) => (
+                    <Link
+                      key={t.slug}
+                      href={`/menu/${t.slug}`}
+                      target="_blank"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-emerald-700 bg-white hover:bg-stone-50 border border-stone-200/90 px-3 py-1.5 rounded-xl transition-all shadow-2xs"
+                    >
+                      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: t.colors[1] }}></span>
+                      <span>{t.name}</span>
+                      <ExternalLink className="h-3 w-3 text-slate-400" />
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>

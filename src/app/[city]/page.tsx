@@ -373,6 +373,62 @@ export default async function CityPage({ params }: CityPageProps) {
         </div>
       </section>
 
+      {/* Other Cities Cross-Linking */}
+      <section className="py-12 bg-white border-t border-stone-200/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+              Also Serving Restaurants Across Major Cities in India
+            </h3>
+            <p className="text-slate-600 text-xs sm:text-sm">
+              Discover localized QR digital menu software engineered for Indian dining establishments
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {cities
+              .filter((c) => c.slug !== city.slug)
+              .map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/${c.slug}`}
+                  className="inline-flex items-center gap-1.5 bg-stone-50 hover:bg-emerald-50 border border-stone-200 hover:border-emerald-300 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-emerald-900 transition-all shadow-2xs"
+                >
+                  <MapPin className="h-3 w-3 text-emerald-600" />
+                  <span>QR Menu in {c.name}</span>
+                </Link>
+              ))}
+          </div>
+
+          {/* Direct Menu Previews */}
+          <div className="pt-6 border-t border-stone-100 text-center space-y-3">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+              Explore Live Mobile Menu Themes
+            </span>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { name: "Minimalist Cafe", slug: "cafe-cozy" },
+                { name: "Fine Dining Luxury", slug: "l-orangerie" },
+                { name: "Heritage Indian Thali", slug: "tandoori-palace" },
+                { name: "Modern Bistro", slug: "komorebi-bistro" },
+                { name: "Street Food Express", slug: "street-express" },
+                { name: "Premium Dark Lounge", slug: "neon-taproom" },
+              ].map((theme) => (
+                <Link
+                  key={theme.slug}
+                  href={`/menu/${theme.slug}`}
+                  target="_blank"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:text-emerald-900 bg-emerald-50/70 hover:bg-emerald-100/70 border border-emerald-200/80 px-3 py-1.5 rounded-lg transition-all"
+                >
+                  <span>{theme.name}</span>
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

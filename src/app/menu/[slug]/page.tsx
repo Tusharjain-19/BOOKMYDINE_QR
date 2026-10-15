@@ -1785,7 +1785,13 @@ export default function DigitalMenuPage() {
 
           <div className="space-y-1">
             <span className="block">{menu.name} · {menu.address}</span>
-            <span className="block font-medium">Powered by BookMyDine QR</span>
+            <a 
+              href="https://bookmydineqr.vercel.app" 
+              title="BookMyDine QR — Free Restaurant QR Menu & Digital Menu Software"
+              className="inline-block font-medium text-slate-500 hover:text-emerald-700 transition-colors underline decoration-slate-300 underline-offset-2"
+            >
+              Powered by BookMyDine QR — Free Digital Menu Software
+            </a>
           </div>
         </div>
       </footer>

@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { cities } from "@/data/cities";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 const SITE_URL = "https://bookmydineqr.vercel.app";
 
 // Known menu slugs from the application

@@ -161,9 +161,62 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* SEO Internal Link Graph: Cities and Demo Menus */}
+        <div className="border-t border-slate-800/80 pt-8 space-y-6">
+          {/* Cities Section */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              Restaurant QR Menus by City (India)
+            </h4>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400">
+              {[
+                { name: "Mumbai", slug: "mumbai" },
+                { name: "Delhi", slug: "delhi" },
+                { name: "Bangalore", slug: "bangalore" },
+                { name: "Hyderabad", slug: "hyderabad" },
+                { name: "Pune", slug: "pune" },
+                { name: "Chennai", slug: "chennai" },
+                { name: "Kolkata", slug: "kolkata" },
+                { name: "Jaipur", slug: "jaipur" },
+                { name: "Ahmedabad", slug: "ahmedabad" },
+                { name: "Lucknow", slug: "lucknow" },
+              ].map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/${c.slug}`}
+                  className="hover:text-emerald-400 transition-colors"
+                >
+                  QR Menu in {c.name}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-
-        {/* Divider & Copyright */}
+          {/* Live Demo Menus Section */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              Live Digital Menu Theme Previews
+            </h4>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400">
+              {[
+                { name: "Minimalist Cafe Menu", slug: "cafe-cozy" },
+                { name: "Executive Fine Dining Menu", slug: "l-orangerie" },
+                { name: "Heritage Indian & Thali Menu", slug: "tandoori-palace" },
+                { name: "Modern Bistro Menu", slug: "komorebi-bistro" },
+                { name: "Street Food Express Menu", slug: "street-express" },
+                { name: "Premium Dark Lounge Menu", slug: "neon-taproom" },
+              ].map((m) => (
+                <Link
+                  key={m.slug}
+                  href={`/menu/${m.slug}`}
+                  className="hover:text-emerald-400 transition-colors"
+                >
+                  {m.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
         <div className="border-t border-slate-800/80 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} BookMySlot & BookMyDine QR. All rights reserved.</p>
           <div className="flex gap-6">
