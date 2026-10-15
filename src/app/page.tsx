@@ -34,7 +34,8 @@ import {
   IceCreamCone,
   Wine,
   Store,
-  ExternalLink
+  ExternalLink,
+  Phone
 } from "lucide-react";
 
 export default function HomePage() {
@@ -123,7 +124,7 @@ export default function HomePage() {
   const faqs = homepageFaqs;
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#fafaf8] text-slate-800 font-sans selection:bg-emerald-600 selection:text-white">
+    <div className="flex flex-col min-h-screen bg-[#fafaf8] text-slate-800 font-sans selection:bg-emerald-600 selection:text-white pb-16 md:pb-0">
       <Navbar />
 
       {/* Hero Section */}
@@ -229,7 +230,7 @@ export default function HomePage() {
               <div className="relative w-full max-w-lg overflow-hidden flex justify-center items-center">
                 <Image
                   src="/hero_artistic_showcase.webp"
-                  alt="BookMyDine QR Digital Menu Platform — 6 Premium Restaurant Menu Themes with QR Code Table Stands for Cafes, Fine Dining and Cloud Kitchens in India"
+                  alt="BookMyDine QR Digital Menu Platform | 6 Premium Restaurant Menu Themes with QR Code Table Stands for Cafes, Fine Dining and Cloud Kitchens in India"
                   width={600}
                   height={600}
                   priority
@@ -275,7 +276,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Beautiful Custom Designs</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Choose from 6 professionally crafted themes matched to your brand identity — from cozy cafes and fine dining to traditional Indian thali and night lounges.
+                Choose from 6 professionally crafted themes matched to your brand identity: from cozy cafes and fine dining to traditional Indian thali and night lounges.
               </p>
             </div>
 
@@ -462,10 +463,133 @@ export default function HomePage() {
             <p className="text-slate-600 text-sm">Every template is designed for maximum legibility and smartphone speed.</p>
           </div>
 
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 items-start">
-            {/* Detailed Theme Selection Cards (Desktop & Mobile List) */}
+          {/* Mobile-First Theme Deck (Designed exclusively for smartphones) */}
+          <div className="lg:hidden space-y-5">
+            {/* Horizontal Theme Selector Pills */}
+            <div className="flex overflow-x-auto gap-2 pb-1 no-scrollbar scroll-smooth">
+              {themesList.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => handleSelectTheme(t.id)}
+                  className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-extrabold transition-all shrink-0 flex items-center gap-2 border ${
+                    selectedTheme === t.id
+                      ? "bg-slate-900 text-white border-slate-900 shadow-md"
+                      : "bg-white text-slate-700 border-stone-200 hover:bg-stone-50"
+                  }`}
+                >
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: t.colors[1] }}></span>
+                  <span>{t.name}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Selected Theme Feature Card */}
+            {(() => {
+              const currentTheme = themesList.find((t) => t.id === selectedTheme) || themesList[0];
+              return (
+                <div className="bg-white border-2 border-slate-900 rounded-3xl p-5 shadow-xl space-y-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <span className="inline-block text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-md mb-1.5 border border-emerald-300">
+                        {currentTheme.badge}
+                      </span>
+                      <h3 className="text-xl font-black text-slate-900">{currentTheme.name}</h3>
+                    </div>
+                    <div className="flex items-center gap-1.5 pt-1">
+                      {currentTheme.colors.map((hex, cIdx) => (
+                        <span 
+                          key={cIdx} 
+                          className="h-4 w-4 rounded-full border border-black/10 shadow-xs" 
+                          style={{ backgroundColor: hex }}
+                          title={hex}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    {currentTheme.description}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-2 pt-1 text-[11px] text-slate-600 bg-stone-50 p-3 rounded-2xl border border-stone-200/70">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                      <span>Veg/Non-Veg Badges</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                      <span>Bestseller Tags</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                      <span>Category Navigation</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                      <span>Instant 1s Phone Load</span>
+                    </div>
+                  </div>
+
+                  {/* Actions for Mobile */}
+                  <div className="space-y-2 pt-1">
+                    <Link
+                      href={`/menu/${currentTheme.slug}`}
+                      target="_blank"
+                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm shadow-md transition-all active:scale-98"
+                    >
+                      <Smartphone className="h-4 w-4 text-emerald-400" />
+                      <span>Open Live {currentTheme.name} Demo</span>
+                      <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                    </Link>
+                    <Link
+                      href={`/onboard?theme=${currentTheme.id}`}
+                      className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold text-xs transition-all text-center"
+                    >
+                      <span>Choose This Theme for My Menu</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Quick 2-Column Theme Switch Grid on Mobile */}
+            <div className="space-y-2 pt-1">
+              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 block">
+                Tap Any Theme to Switch Preview:
+              </span>
+              <div className="grid grid-cols-2 gap-2">
+                {themesList.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => handleSelectTheme(t.id)}
+                    className={`p-3 rounded-2xl text-left border transition-all ${
+                      selectedTheme === t.id
+                        ? "bg-slate-900 text-white border-slate-900 shadow-sm"
+                        : "bg-white text-slate-800 border-stone-200 hover:bg-stone-50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded ${
+                        selectedTheme === t.id ? "bg-emerald-500 text-slate-950 font-black" : "bg-stone-100 text-slate-600"
+                      }`}>
+                        {t.badge}
+                      </span>
+                    </div>
+                    <div className="text-xs font-black truncate">{t.name}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Studio Mockup Workbench (Designed for Laptops & Desktops) */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
+            {/* Detailed Theme Selection Cards (Desktop List) */}
             <div className="lg:col-span-5 space-y-3 w-full">
-              <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2 lg:hidden">All 6 Available Themes</h3>
+              <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2 hidden">All 6 Available Themes</h3>
               {themesList.map((t) => (
                 <div
                   key={t.id}
@@ -861,7 +985,7 @@ export default function HomePage() {
 
       {/* ========== SEO CONTENT SECTIONS ========== */}
 
-      {/* What is BookMyDine QR? — GEO Optimized */}
+      {/* What is BookMyDine QR? | GEO Optimized */}
       <section className="py-16 sm:py-20 bg-white border-t border-stone-200/80">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
@@ -873,10 +997,10 @@ export default function HomePage() {
 
           <div className="bg-[#fafaf8] p-6 sm:p-8 rounded-3xl border border-stone-200/80 space-y-4">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              <strong className="text-slate-900">BookMyDine QR</strong> is a done-for-you digital menu platform built specifically for the Indian restaurant industry. Unlike self-serve tools that require you to learn complex dashboards, BookMyDine QR operates as a fully managed service — you send us your menu via WhatsApp, and our design team creates a beautiful, mobile-optimized QR code menu within 24 to 48 hours.
+              <strong className="text-slate-900">BookMyDine QR</strong> is a done-for-you digital menu platform built specifically for the Indian restaurant industry. Unlike self-serve tools that require you to learn complex dashboards, BookMyDine QR operates as a fully managed service: you send us your menu via WhatsApp, and our design team creates a beautiful, mobile-optimized QR code menu within 24 to 48 hours.
             </p>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              The platform is designed for restaurants, cafes, hotels, resorts, bars, pubs, cloud kitchens, bakeries, sweet shops, food courts, juice bars, ice cream parlours, fine dining establishments, fast food outlets, and food trucks. Each digital menu is hosted on our high-speed CDN, loads in under 1 second, and requires zero app downloads for your guests — they simply scan a QR code with their phone camera and view your menu instantly.
+              The platform is designed for restaurants, cafes, hotels, resorts, bars, pubs, cloud kitchens, bakeries, sweet shops, food courts, juice bars, ice cream parlours, fine dining establishments, fast food outlets, and food trucks. Each digital menu is hosted on our high-speed CDN, loads in under 1 second, and requires zero app downloads for your guests; they simply scan a QR code with their phone camera and view your menu instantly.
             </p>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               BookMyDine QR includes 6 professionally designed themes, printable QR table stand graphics, veg and non-veg indicator badges, bestseller tags, search and category filtering, and WhatsApp-based menu update support. Plans start at ₹99 per month with free custom setup and no lock-in contracts.
@@ -885,7 +1009,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Who Should Use BookMyDine QR? — Industry Grid */}
+      {/* Who Should Use BookMyDine QR? | Industry Grid */}
       <section className="py-16 sm:py-20 bg-linear-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
@@ -921,7 +1045,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose BookMyDine QR Over Competitors? — Comparison */}
+      {/* Why Choose BookMyDine QR Over Competitors? | Comparison */}
       <section className="py-16 sm:py-20 bg-white border-b border-stone-200/80">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
@@ -940,8 +1064,8 @@ export default function HomePage() {
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>No dashboard to learn, no technical skills needed</span></li>
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>WhatsApp-based support and menu updates</span></li>
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>6 professionally designed themes to match your brand</span></li>
-                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Free custom setup — pay only after you approve</span></li>
-                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Starting at just ₹99/month — built for India</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Free custom setup (pay only after you approve)</span></li>
+                <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Starting at just ₹99/month (built for India)</span></li>
                 <li className="flex items-start gap-2"><Check className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" /> <span>Printable QR stand graphics with your branding</span></li>
               </ul>
             </div>
@@ -955,7 +1079,7 @@ export default function HomePage() {
                 <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>DIY QR tools: complex dashboards, you do all the work</span></li>
                 <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>PDF menus: slow to load, not mobile-optimized, no interactivity</span></li>
                 <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Aggregator listings: limited menu control, competitor ads</span></li>
-                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>International tools: expensive, not localized for India</span></li>
+                <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>International tools: expensive, not localized for India)</span></li>
                 <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>No veg/non-veg badges, no Indian pricing support</span></li>
                 <li className="flex items-start gap-2"><span className="h-4 w-4 text-red-400 mt-0.5 shrink-0">✗</span> <span>Hidden fees, annual contracts, no WhatsApp support</span></li>
               </ul>
@@ -989,7 +1113,7 @@ export default function HomePage() {
             <div className="bg-white p-6 rounded-2xl border border-stone-200/80 text-center space-y-2 hover:shadow-md transition-all">
               <div className="text-3xl font-black text-emerald-700">24hr</div>
               <h3 className="text-sm font-bold text-slate-900">Setup Time</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">From menu submission to live digital menu and QR code — all done within 24-48 hours.</p>
+              <p className="text-xs text-slate-500 leading-relaxed">From menu submission to live digital menu and QR code: all done within 24-48 hours.</p>
             </div>
             <div className="bg-white p-6 rounded-2xl border border-stone-200/80 text-center space-y-2 hover:shadow-md transition-all">
               <div className="text-3xl font-black text-emerald-700">99.9%</div>
@@ -1011,7 +1135,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Cities We Serve — Internal Linking */}
+      {/* Cities We Serve | Internal Linking */}
       <section className="py-12 sm:py-16 bg-white border-b border-stone-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
@@ -1045,7 +1169,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ Accordion — Expanded 25 FAQs */}
+      {/* FAQ Accordion | Expanded 25 FAQs */}
       <section id="faq" className="py-16 sm:py-20 bg-[#fafaf8] border-t border-stone-200/80">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-3 mb-12">
@@ -1077,6 +1201,35 @@ export default function HomePage() {
       </section>
 
       <Footer />
+
+      {/* Floating Bottom Conversion Bar for Mobile Screens */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-emerald-100 px-3 py-2 flex items-center justify-between gap-2 shadow-2xl">
+        <a
+          href="tel:+918005737183"
+          className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 text-xs font-bold shrink-0 transition-colors"
+          aria-label="Call Support"
+        >
+          <Phone className="h-4 w-4 text-emerald-700" />
+          <span>Call</span>
+        </a>
+        <a
+          href="https://wa.me/918005737183?text=Hi,%20I%20am%20interested%20in%20your%20product%20BookMyDine%20QR.%20Can%20we%20talk%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 text-xs font-bold shrink-0 transition-colors"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle className="h-4 w-4 text-emerald-600" />
+          <span>WhatsApp</span>
+        </a>
+        <Link
+          href="/onboard"
+          className="flex-1 flex items-center justify-center gap-1 py-2.5 px-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-extrabold shadow-sm transition-all text-center"
+        >
+          <span>Free Setup</span>
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
+      </div>
     </div>
   );
 }

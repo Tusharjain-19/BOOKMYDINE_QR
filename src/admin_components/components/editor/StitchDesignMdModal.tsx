@@ -47,11 +47,11 @@ The design system is rooted in the intersection of Scandinavian functionality an
 - **Tactile Digitalism:** Surfaces that feel like premium uncoated paper through subtle depth and warm neutrals.
 
 ## Color Tokens & Palette
-- **Primary (Deep Espresso):** #170f0b — Essential interactive states and headings.
-- **Secondary (Muted Brown):** #695c52 — Descriptive text and secondary metadata.
-- **Accent (Muted Terracotta):** #ca7857 — Call-to-actions, category highlights, or "New" indicators.
-- **Background (Warm Ivory):** #fbf9f5 — Paper-like canvas reducing eye strain.
-- **Surface (Soft White):** #ffffff — Card containers and elevated elements.
+- **Primary (Deep Espresso):** #170f0b: Essential interactive states and headings.
+- **Secondary (Muted Brown):** #695c52: Descriptive text and secondary metadata.
+- **Accent (Muted Terracotta):** #ca7857: Call-to-actions, category highlights, or "New" indicators.
+- **Background (Warm Ivory):** #fbf9f5: Paper-like canvas reducing eye strain.
+- **Surface (Soft White):** #ffffff: Card containers and elevated elements.
 
 ## 6 Stitch Project Menu Screens Integrated:
 1. **The Minimalist Digital Menu** (Atelier Minimalist / Cream & Espresso)

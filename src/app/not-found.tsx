@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { ArrowLeft, Home, Sparkles, Phone, MapPin, Search } from "lucide-react";
 
 export const metadata = {
-  title: "404: Page Not Found — BookMyDine QR",
+  title: "404: Page Not Found | BookMyDine QR",
   description: "The page or restaurant menu you are looking for does not exist or may have been moved. Explore our live QR menus and city guides.",
   robots: {
     index: false,

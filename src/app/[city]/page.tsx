@@ -15,6 +15,8 @@ import {
   Sparkles,
   Utensils,
   Zap,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 
 const SITE_URL = "https://bookmydineqr.vercel.app";
@@ -36,7 +38,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   }
 
   return {
-    title: `Restaurant QR Menu in ${city.name} — #1 Digital Menu Software for ${city.name} Restaurants`,
+    title: `Restaurant QR Menu in ${city.name} | #1 Digital Menu Software for ${city.name} Restaurants`,
     description: `Get a professional contactless QR code menu for your restaurant in ${city.name}, ${city.state}. BookMyDine QR designs, hosts & manages digital menus for cafes, hotels & cloud kitchens. Free setup, live in 24h, starting ₹99/mo.`,
     keywords: [
       `restaurant QR menu ${city.name}`,
@@ -91,7 +93,7 @@ export default async function CityPage({ params }: CityPageProps) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: `BookMyDine QR — Restaurant QR Menu in ${city.name}`,
+    name: `BookMyDine QR: Restaurant QR Menu in ${city.name}`,
     description: `Professional QR code digital menu service for restaurants, cafes, and hotels in ${city.name}, ${city.state}. Done-for-you menu design, hosting, and updates.`,
     provider: {
       "@type": "Organization",
@@ -226,7 +228,7 @@ export default async function CityPage({ params }: CityPageProps) {
       </section>
 
       {/* About Dining in This City */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
+      <section className="py-12 sm:py-16 bg-linear-to-b from-[#f4f8f5] via-emerald-50/40 to-white border-b border-emerald-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center space-y-3">
@@ -297,7 +299,7 @@ export default async function CityPage({ params }: CityPageProps) {
               </div>
               <h3 className="text-lg font-extrabold text-slate-900">Live in 24 Hours</h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Submit your menu today and get a live preview within 24-48 hours. No technical skills required — we handle everything from design to hosting.
+                Submit your menu today and get a live preview within 24-48 hours. No technical skills required: we handle everything from design to hosting.
               </p>
             </div>
 
@@ -357,7 +359,7 @@ export default async function CityPage({ params }: CityPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-emerald-50 to-white">
+      <section className="py-12 sm:py-16 bg-linear-to-b from-emerald-50 to-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-900 bg-emerald-100 border border-emerald-200 px-4 py-2 rounded-xl">
             <Sparkles className="h-4 w-4 text-emerald-600" />
@@ -457,6 +459,35 @@ export default async function CityPage({ params }: CityPageProps) {
       </section>
 
       <Footer />
+
+      {/* Floating Bottom Conversion Bar for Mobile Screens */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-emerald-100 px-3 py-2 flex items-center justify-between gap-2 shadow-2xl">
+        <a
+          href="tel:+918005737183"
+          className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 text-xs font-bold shrink-0 transition-colors"
+          aria-label="Call Support"
+        >
+          <Phone className="h-4 w-4 text-emerald-700" />
+          <span>Call</span>
+        </a>
+        <a
+          href={`https://wa.me/918005737183?text=Hi,%20I%20am%20interested%20in%20BookMyDine%20QR%20for%20my%20restaurant%20in%20${encodeURIComponent(city.name)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 text-xs font-bold shrink-0 transition-colors"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle className="h-4 w-4 text-emerald-600" />
+          <span>WhatsApp</span>
+        </a>
+        <Link
+          href={`/onboard?city=${encodeURIComponent(city.name)}`}
+          className="flex-1 flex items-center justify-center gap-1 py-2.5 px-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-extrabold shadow-sm transition-all text-center"
+        >
+          <span>Free Setup</span>
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
+      </div>
     </div>
   );
 }

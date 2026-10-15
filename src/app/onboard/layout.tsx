@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const SITE_URL = "https://bookmydineqr.vercel.app";
 
 export const metadata: Metadata = {
-  title: "Get Your Free QR Menu Setup — Restaurant Intake Form | BookMyDine QR",
+  title: "Get Your Free QR Menu Setup | Restaurant Intake Form | BookMyDine QR",
   description:
     "Submit your restaurant details and menu to BookMyDine QR. Our team will design your custom digital QR menu for free within 24-48 hours. No credit card required. Plans start at ₹99/month.",
   alternates: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Get Your Free QR Menu Setup — Restaurant Intake Form | BookMyDine QR",
+    title: "Get Your Free QR Menu Setup | Restaurant Intake Form | BookMyDine QR",
     description:
       "Submit your restaurant details and menu to BookMyDine QR. We design your custom digital QR menu for free within 24-48 hours.",
     url: `${SITE_URL}/onboard`,

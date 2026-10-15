@@ -18,7 +18,7 @@ const SITE_URL = "https://bookmydineqr.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "BookMyDine QR — #1 Done-For-You Restaurant QR Menu & Digital Menu Software India",
+    default: "BookMyDine QR | #1 Done-For-You Restaurant QR Menu & Digital Menu Software India",
     template: "%s | BookMyDine QR",
   },
   description:
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: "BookMyDine QR",
-    title: "BookMyDine QR — Done-For-You Restaurant QR Menu Platform India",
+    title: "BookMyDine QR | Done-For-You Restaurant QR Menu Platform India",
     description:
       "Replace paper menus with beautiful digital QR menus. Done-for-you service: we design, host & manage everything. Free custom setup, 6 premium themes, live in 24 hours. Starting at ₹99/month.",
     images: [
@@ -87,14 +87,14 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/hero_artistic_showcase.png`,
         width: 1200,
         height: 630,
-        alt: "BookMyDine QR — Digital Menu Platform for Restaurants in India",
+        alt: "BookMyDine QR | Digital Menu Platform for Restaurants in India",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BookMyDine QR — Done-For-You Restaurant QR Menus India",
+    title: "BookMyDine QR | Done-For-You Restaurant QR Menus India",
     description:
       "Done-for-you digital menu service for restaurants, cafes & hotels. Free setup, 6 themes, live in 24 hours. Starting at ₹99/month.",
     images: [`${SITE_URL}/hero_artistic_showcase.png`],

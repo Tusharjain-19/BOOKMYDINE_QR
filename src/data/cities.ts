@@ -16,7 +16,7 @@ export const cities: CityData[] = [
     description:
       "Mumbai, India's financial capital, is home to over 80,000 restaurants, cafes, and street food stalls serving everything from iconic vada pav to Michelin-worthy fine dining. With one of the highest diner footfall rates in Asia, Mumbai's restaurant industry is rapidly adopting digital solutions to serve tech-savvy customers who expect instant access to menus on their smartphones.",
     diningCulture:
-      "From Colaba's upscale eateries to Juhu's beachside chaat stalls, Mumbai's dining scene thrives on speed and convenience. The city's fast-paced culture makes QR code menus a natural fit — diners want to scan, browse, and order without waiting for a server to bring a physical menu.",
+      "From Colaba's upscale eateries to Juhu's beachside chaat stalls, Mumbai's dining scene thrives on speed and convenience. The city's fast-paced culture makes QR code menus a natural fit: diners want to scan, browse, and order without waiting for a server to bring a physical menu.",
     popularTypes: [
       "Street Food Stalls",
       "Fine Dining",
@@ -33,11 +33,11 @@ export const cities: CityData[] = [
       },
       {
         q: "Does BookMyDine QR work for Mumbai street food stalls?",
-        a: "Yes! Our Street Food Express theme is specifically designed for fast food outlets, chaat stalls, and food trucks. Even small stalls can benefit from a digital menu that customers access via a simple QR code scan — no app needed.",
+        a: "Yes! Our Street Food Express theme is specifically designed for fast food outlets, chaat stalls, and food trucks. Even small stalls can benefit from a digital menu that customers access via a simple QR code scan (no app needed). needed.",
       },
       {
         q: "Can I get QR menu setup in Mumbai quickly?",
-        a: "Absolutely. Our team delivers a live preview within 24-48 hours. Since BookMyDine QR is a fully managed service, you just WhatsApp us your menu items and we handle the rest — no matter where you are in Mumbai.",
+        a: "Absolutely. Our team delivers a live preview within 24-48 hours. Since BookMyDine QR is a fully managed service, you just WhatsApp us your menu items and we handle the rest, no matter where you are in Mumbai.",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const cities: CityData[] = [
     description:
       "Delhi NCR, encompassing New Delhi, Gurgaon, Noida, and Faridabad, is one of India's largest restaurant markets with over 100,000 food establishments. From the legendary street food of Chandni Chowk to the fine dining corridors of Khan Market and Cyber Hub, Delhi's restaurant owners are increasingly turning to digital menus to reduce costs and enhance the guest experience.",
     diningCulture:
-      "Delhi's dining culture is a unique blend of Mughlai heritage, modern gastropubs, and international cuisine. Restaurant owners in Delhi face intense competition and need every advantage — a professional QR menu instantly elevates perceived quality while saving thousands on reprinting costs every season.",
+      "Delhi's dining culture is a unique blend of Mughlai heritage, modern gastropubs, and international cuisine. Restaurant owners in Delhi face intense competition and need every advantage: a professional QR menu instantly elevates perceived quality while saving thousands on reprinting costs every season.",
     popularTypes: [
       "Mughlai Restaurants",
       "North Indian Restaurants",
@@ -61,7 +61,7 @@ export const cities: CityData[] = [
     faqs: [
       {
         q: "Why should Delhi restaurants use BookMyDine QR?",
-        a: "Delhi's dining market is extremely competitive. A professional digital QR menu helps restaurants stand out, reduces printing costs by 100%, and lets owners update prices instantly when ingredient costs change — a common need in Delhi's dynamic food market.",
+        a: "Delhi's dining market is extremely competitive. A professional digital QR menu helps restaurants stand out, reduces printing costs by 100%, and lets owners update prices instantly when ingredient costs change, a common need in Delhi's dynamic food market.",
       },
       {
         q: "Is BookMyDine QR suitable for Mughlai and kebab restaurants in Delhi?",
@@ -69,7 +69,7 @@ export const cities: CityData[] = [
       },
       {
         q: "Can Delhi NCR restaurants in Gurgaon and Noida also use this service?",
-        a: "Yes, BookMyDine QR serves all of Delhi NCR including Gurgaon, Noida, Faridabad, and Ghaziabad. Our service is entirely remote — you WhatsApp your menu and we deliver your digital menu anywhere.",
+        a: "Yes, BookMyDine QR serves all of Delhi NCR including Gurgaon, Noida, Faridabad, and Ghaziabad. Our service is entirely remote: you WhatsApp your menu and we deliver your digital menu anywhere.",
       },
     ],
   },
@@ -161,7 +161,7 @@ export const cities: CityData[] = [
       },
       {
         q: "Do Hyderabad IT park restaurants use QR menus?",
-        a: "Yes, restaurants in HITEC City and Gachibowli are among the fastest adopters of QR menus. Tech-savvy diners in IT parks expect contactless, instant menu access — BookMyDine QR delivers exactly that with sub-second load times.",
+        a: "Yes, restaurants in HITEC City and Gachibowli are among the fastest adopters of QR menus. Tech-savvy diners in IT parks expect contactless, instant menu access: BookMyDine QR delivers exactly that with sub-second load times.",
       },
       {
         q: "Is BookMyDine QR affordable for small Hyderabad eateries?",
@@ -176,7 +176,7 @@ export const cities: CityData[] = [
     description:
       "Pune, Maharashtra's cultural capital, has a dynamic food scene driven by its large student population, growing IT sector, and rich Maharashtrian culinary traditions. With over 30,000 restaurants and cafes, Pune is one of India's fastest-growing dining markets where QR menus help establishments stay competitive and modern.",
     diningCulture:
-      "Pune's dining culture uniquely blends traditional Maharashtrian cuisine (misal pav, puran poli) with a booming cafe scene in areas like Koregaon Park and FC Road. The city's student-heavy demographics mean diners are tech-first and price-conscious — QR menus address both needs.",
+      "Pune's dining culture uniquely blends traditional Maharashtrian cuisine (misal pav, puran poli) with a booming cafe scene in areas like Koregaon Park and FC Road. The city's student-heavy demographics mean diners are tech-first and price-conscious: QR menus address both needs.",
     popularTypes: [
       "Maharashtrian Restaurants",
       "Cafes & Coffee Shops",
@@ -197,7 +197,7 @@ export const cities: CityData[] = [
       },
       {
         q: "Does BookMyDine QR serve the entire Pune metropolitan area?",
-        a: "Absolutely. We serve restaurants across Pune including Kothrud, Hinjewadi, Baner, Wakad, Hadapsar, and Pimpri-Chinchwad. Our service is fully remote — you just WhatsApp your menu details.",
+        a: "Absolutely. We serve restaurants across Pune including Kothrud, Hinjewadi, Baner, Wakad, Hadapsar, and Pimpri-Chinchwad. Our service is fully remote: you just WhatsApp your menu details.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const cities: CityData[] = [
     description:
       "Chennai, the gateway to South India, has a thriving food scene with over 35,000 restaurants specializing in authentic South Indian cuisine, Chettinad flavors, and an emerging modern dining segment. The city's restaurant industry is embracing digital transformation, with QR menus becoming increasingly common across all dining categories.",
     diningCulture:
-      "Chennai's food culture is deeply rooted in tradition — idli, dosa, filter coffee, and Chettinad cuisine define the city's culinary identity. However, neighborhoods like T. Nagar, Anna Nagar, and OMR Road also host modern cafes and international restaurants where digital menus are expected.",
+      "Chennai's food culture is deeply rooted in tradition: idli, dosa, filter coffee, and Chettinad cuisine define the city's culinary identity. However, neighborhoods like T. Nagar, Anna Nagar, and OMR Road also host modern cafes and international restaurants where digital menus are expected.",
     popularTypes: [
       "South Indian Restaurants",
       "Chettinad Restaurants",
@@ -229,7 +229,7 @@ export const cities: CityData[] = [
       },
       {
         q: "How does BookMyDine QR help Chennai cloud kitchens?",
-        a: "Chennai has a rapidly growing cloud kitchen segment along OMR and IT corridors. Our QR menus serve as direct ordering catalogs — customers browse the full menu with photos and prices before calling or messaging to order.",
+        a: "Chennai has a rapidly growing cloud kitchen segment along OMR and IT corridors. Our QR menus serve as direct ordering catalogs: customers browse the full menu with photos and prices before calling or messaging to order.",
       },
     ],
   },
@@ -240,7 +240,7 @@ export const cities: CityData[] = [
     description:
       "Kolkata, the City of Joy, is famous for its rich culinary heritage spanning Bengali cuisine, Chinese-Indian fusion, and legendary sweet shops. With over 25,000 food establishments, Kolkata's restaurant owners are recognizing the value of digital menus to modernize their service while preserving the city's beloved food traditions.",
     diningCulture:
-      "Kolkata's food culture is a celebration of flavor — from Park Street's iconic restaurants to College Street's adda-style cafes, food is central to the city's identity. The city's sweet shops (mishti dokan) and rolls joints are as famous as its fine dining, and all benefit from QR menu adoption.",
+      "Kolkata's food culture is a celebration of flavor: from Park Street's iconic restaurants to College Street's adda-style cafes, food is central to the city's identity. The city's sweet shops (mishti dokan) and rolls joints are as famous as its fine dining, and all benefit from QR menu adoption.",
     popularTypes: [
       "Bengali Restaurants",
       "Sweet Shops",
@@ -253,7 +253,7 @@ export const cities: CityData[] = [
     faqs: [
       {
         q: "Can Kolkata sweet shops use BookMyDine QR?",
-        a: "Absolutely! Kolkata's legendary sweet shops can showcase their full mishti catalog with high-resolution images, prices, and weight options on a beautiful digital menu. Customers browse on their phone before ordering at the counter — perfect for busy shops during festivals.",
+        a: "Absolutely! Kolkata's legendary sweet shops can showcase their full mishti catalog with high-resolution images, prices, and weight options on a beautiful digital menu. Customers browse on their phone before ordering at the counter, perfect for busy shops during festivals.",
       },
       {
         q: "Does BookMyDine QR support Bengali language menus?",
@@ -272,7 +272,7 @@ export const cities: CityData[] = [
     description:
       "Ahmedabad, Gujarat's commercial capital and India's first UNESCO World Heritage City, has a distinctive vegetarian-dominant food culture with over 20,000 restaurants, street food stalls, and cafes. The city's restaurant industry is modernizing rapidly, with QR menus becoming essential for establishments looking to serve Ahmedabad's increasingly digital-first customer base.",
     diningCulture:
-      "Ahmedabad is famous for its Gujarati thalis, Kathiawadi cuisine, and an unmatched street food culture (khakhra, fafda, dhokla). The city has a strong vegetarian food tradition, and restaurants here need menus that clearly highlight vegetarian options — exactly what BookMyDine QR's veg badges provide.",
+      "Ahmedabad is famous for its Gujarati thalis, Kathiawadi cuisine, and an unmatched street food culture (khakhra, fafda, dhokla). The city has a strong vegetarian food tradition, and restaurants here need menus that clearly highlight vegetarian options: exactly what BookMyDine QR's veg badges provide.",
     popularTypes: [
       "Gujarati Thali Restaurants",
       "Street Food Stalls",
@@ -304,7 +304,7 @@ export const cities: CityData[] = [
     description:
       "Lucknow, the City of Nawabs, is renowned for its legendary Awadhi cuisine, kebab culture, and refined culinary traditions. With over 15,000 food establishments ranging from heritage restaurants in Hazratganj to modern cafes near Gomti Nagar, Lucknow's dining scene beautifully blends centuries-old recipes with contemporary dining trends.",
     diningCulture:
-      "Lucknow's food heritage is unmatched — galawati kebabs, tunday kababi, biryani, and chaat define the city's culinary identity. Restaurants here take pride in tradition, and a QR menu helps showcase this heritage digitally without losing the authentic charm. Our Heritage Indian theme is especially popular among Lucknow's traditional restaurants.",
+      "Lucknow's food heritage is unmatched: galawati kebabs, tunday kababi, biryani, and chaat define the city's culinary identity. Restaurants here take pride in tradition, and a QR menu helps showcase this heritage digitally without losing the authentic charm. Our Heritage Indian theme is especially popular among Lucknow's traditional restaurants.",
     popularTypes: [
       "Awadhi Cuisine",
       "Kebab Restaurants",
@@ -325,7 +325,7 @@ export const cities: CityData[] = [
       },
       {
         q: "Does BookMyDine QR serve restaurants in Gomti Nagar and Hazratganj?",
-        a: "We serve restaurants across all of Lucknow including Gomti Nagar, Hazratganj, Aminabad, Chowk, and Aliganj. Our service is fully remote — just WhatsApp your menu and we handle the rest within 24-48 hours.",
+        a: "We serve restaurants across all of Lucknow including Gomti Nagar, Hazratganj, Aminabad, Chowk, and Aliganj. Our service is fully remote: just WhatsApp your menu and we handle the rest within 24-48 hours.",
       },
     ],
   },

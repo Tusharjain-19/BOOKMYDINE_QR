@@ -22,7 +22,7 @@ const SVG = {
 // ║                        BASE CSS (shared by all)                          ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function generateBaseCSS(theme: ThemeConfig): string {
-  return `/* QRSS Menu Engine — ${theme.name} */
+  return `/* QRSS Menu Engine | ${theme.name} */
 :root {
   --pr: ${theme.primaryColor || '#1b1c1a'};
   --sc: ${theme.secondaryColor || '#4b6549'};
@@ -132,7 +132,7 @@ button { font-family: inherit; }
 }
 
 // ╔════════════════════════════════════════════════════════════════════════════╗
-// ║            TEMPLATE 1 — MINIMAL CAFE (Airy, Clean, List-style)          ║
+// ║            TEMPLATE 1 | MINIMAL CAFE (Airy, Clean, List-style)          ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function cssMinimal(): string {
   return `
@@ -208,7 +208,7 @@ function cssMinimal(): string {
 }
 
 // ╔════════════════════════════════════════════════════════════════════════════╗
-// ║       TEMPLATE 2 — OBSIDIAN FINE DINING (Dark, Gold, Sophisticated)     ║
+// ║       TEMPLATE 2 | OBSIDIAN FINE DINING (Dark, Gold, Sophisticated)     ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function cssLuxury(): string {
   return `
@@ -303,7 +303,7 @@ function cssLuxury(): string {
 }
 
 // ╔════════════════════════════════════════════════════════════════════════════╗
-// ║     TEMPLATE 3 — HERITAGE RESERVE (Traditional, Ornate, Warm)           ║
+// ║     TEMPLATE 3 | HERITAGE RESERVE (Traditional, Ornate, Warm)           ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function cssTraditional(): string {
   return `
@@ -395,7 +395,7 @@ function cssTraditional(): string {
 }
 
 // ╔════════════════════════════════════════════════════════════════════════════╗
-// ║      TEMPLATE 4 — KOMOREBI BISTRO (Modern, Rounded, Nature-Inspired)    ║
+// ║      TEMPLATE 4 | KOMOREBI BISTRO (Modern, Rounded, Nature-Inspired)    ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function cssModern(): string {
   return `
@@ -483,7 +483,7 @@ function cssModern(): string {
 }
 
 // ╔════════════════════════════════════════════════════════════════════════════╗
-// ║       TEMPLATE 5 — STREET EATS (Bold, Energetic, Urban)                ║
+// ║       TEMPLATE 5 | STREET EATS (Bold, Energetic, Urban)                ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function cssStreet(): string {
   return `
@@ -571,7 +571,7 @@ function cssStreet(): string {
 }
 
 // ╔════════════════════════════════════════════════════════════════════════════╗
-// ║       TEMPLATE 6 — PREMIUM DARK GLASS (Neon, Glow, Futuristic)         ║
+// ║       TEMPLATE 6 | PREMIUM DARK GLASS (Neon, Glow, Futuristic)         ║
 // ╚════════════════════════════════════════════════════════════════════════════╝
 function cssDark(): string {
   return `
@@ -1143,7 +1143,7 @@ export function generateStandaloneHtml(menu: MenuData): string {
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>${r.name} — Menu</title>
+  <title>${r.name} | Menu</title>
   <meta name="description" content="${r.tagline || r.name + ' digital menu'}">
   <meta name="theme-color" content="${menu.theme.primaryColor || '#1b1c1a'}">
   <meta property="og:type" content="website">

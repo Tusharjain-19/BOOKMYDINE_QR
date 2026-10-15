@@ -1,6 +1,6 @@
 const SITE_URL = "https://bookmydineqr.vercel.app";
 
-// All homepage FAQs — used by both the FAQ section component and schema
+// All homepage FAQs: used by both the FAQ section component and schema
 export const homepageFaqs = [
   {
     q: "What is BookMyDine QR?",
@@ -28,7 +28,7 @@ export const homepageFaqs = [
   },
   {
     q: "Is there a free plan or free trial?",
-    a: "We offer a completely free custom setup — our team designs your full digital menu at no cost before you pay anything. You review the live preview, and only subscribe if you're satisfied. Plans start at just ₹99 per month."
+    a: "We offer a completely free custom setup: our team designs your full digital menu at no cost before you pay anything. You review the live preview, and only subscribe if you're satisfied. Plans start at just ₹99 per month."
   },
   {
     q: "How much does BookMyDine QR cost?",
@@ -40,7 +40,7 @@ export const homepageFaqs = [
   },
   {
     q: "Do my customers need to download an app to view the menu?",
-    a: "No app download is required. Customers simply scan the QR code with their phone camera, and the digital menu opens instantly in their mobile browser. It works on all smartphones — iPhone, Android, and tablets."
+    a: "No app download is required. Customers simply scan the QR code with their phone camera, and the digital menu opens instantly in their mobile browser. It works on all smartphones: iPhone, Android, and tablets."
   },
   {
     q: "How do I get started with BookMyDine QR?",
@@ -72,7 +72,7 @@ export const homepageFaqs = [
   },
   {
     q: "How is BookMyDine QR different from other QR menu tools?",
-    a: "Most QR menu tools require you to learn complex dashboards and build menus yourself. BookMyDine QR is a fully managed service — you send us your menu via WhatsApp, and we handle everything: design, formatting, hosting, updates, and QR code generation. Zero technical skills required."
+    a: "Most QR menu tools require you to learn complex dashboards and build menus yourself. BookMyDine QR is a fully managed service: you send us your menu via WhatsApp, and we handle everything: design, formatting, hosting, updates, and QR code generation. Zero technical skills required."
   },
   {
     q: "Do I get printable QR code graphics for my tables?",
@@ -80,7 +80,7 @@ export const homepageFaqs = [
   },
   {
     q: "How fast does the digital menu load?",
-    a: "Our digital menus are hosted on a high-speed CDN and load in under 1 second on any mobile connection, including 3G networks. No app download or registration is needed — guests see the menu instantly after scanning."
+    a: "Our digital menus are hosted on a high-speed CDN and load in under 1 second on any mobile connection, including 3G networks. No app download or registration is needed; guests see the menu instantly after scanning."
   },
   {
     q: "Can I have multiple QR codes for different areas or tables?",

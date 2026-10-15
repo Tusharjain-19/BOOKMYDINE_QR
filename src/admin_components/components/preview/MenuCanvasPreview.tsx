@@ -15,7 +15,7 @@ export const MenuCanvasPreview: React.FC<MenuCanvasPreviewProps> = ({
   menuData,
   deviceView,
 }) => {
-  // Generate the EXACT same HTML that gets downloaded — directly from htmlGenerator.ts
+  // Generate the EXACT same HTML that gets downloaded: directly from htmlGenerator.ts
   const htmlContent = useMemo(() => generateStandaloneHtml(menuData), [menuData]);
 
   const getContainerClass = () => {

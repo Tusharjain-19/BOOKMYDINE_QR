@@ -284,7 +284,7 @@ function IntakeFormContent() {
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-slate-300">Chosen Plan:</span>
                 <span className="bg-emerald-600 text-white font-extrabold px-3 py-1 rounded-full uppercase tracking-wider text-[11px] shadow-sm">
-                  {formData.plan.toUpperCase()} PLAN — {formData.planPrice}
+                  {formData.plan.toUpperCase()} PLAN | {formData.planPrice}
                 </span>
               </div>
               <span className="text-emerald-400 font-bold flex items-center gap-1.5">

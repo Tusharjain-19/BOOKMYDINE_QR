@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "BookMyDine QR — Digital Restaurant Menu Platform",
+    name: "BookMyDine QR | Digital Restaurant Menu Platform",
     short_name: "BookMyDine QR",
     description:
       "India's leading done-for-you digital menu platform. We design, host & manage beautiful QR code menus for restaurants, cafes, and hotels.",
